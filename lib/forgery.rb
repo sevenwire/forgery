@@ -30,15 +30,34 @@ protected
   end
 
   def self.path_to_format(format)
+    if external_path_to_format(format) && File.exists?(external_path_to_format(format))
+      external_path_to_format(format)
+    else
+      internal_path_to_format(format)
+    end
+  end
+
+  def self.external_path_to_format(format)
+    RAILS_ROOT + '/lib/forgery/formats/' + format.to_s if defined?(RAILS_ROOT)
+  end
+
+  def self.internal_path_to_format(format)
     File.dirname(__FILE__) + '/formats/' + format.to_s
   end
 
   def self.path_to_dictionary(dictionary)
-    File.dirname(__FILE__) + '/dictionaries/' + dictionary.to_s
+    if external_path_to_dictionary(dictionary) && File.exists?(external_path_to_dictionary(dictionary))
+      external_path_to_dictionary(dictionary)
+    else
+      internal_path_to_dictionary(dictionary)
+    end
   end
 
-end
+  def self.external_path_to_dictionary(dictionary)
+    RAILS_ROOT + '/lib/forgery/dictionaries/' + dictionary.to_s if defined?(RAILS_ROOT)
+  end
 
-Dir[File.expand_path(File.dirname(__FILE__) + '/**/*.rb')].uniq.each do |file|
-  require file
+  def self.internal_path_to_dictionary(dictionary)
+    File.dirname(__FILE__) + '/dictionaries/' + dictionary.to_s
+  end
 end
