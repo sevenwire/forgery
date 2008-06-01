@@ -1,3 +1,5 @@
+require 'digest/sha1'
+
 class BasicForgery < Forgery
   dictionaries :colors
 
@@ -14,22 +16,39 @@ class BasicForgery < Forgery
                :allow_upper => true,
                :allow_numeric => true,
                :allow_special => false}.merge!(options)
-    self.random_text(options)
+    self.text(options)
   end
 
-  def self.encrypt(password="password", salt="salt")
+  def self.encrypt(password="password", salt=Time.now.to_s)
     Digest::SHA1.hexdigest("--#{salt}--#{password}--")
-  end
-
-  def self.salt
-    Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{self.password}--")
   end
 
   def self.boolean
     [true, false].random
   end
 
-  def self.random_text(options={})
+  def self.color
+    COLORS.random
+  end
+
+  def self.hex_color
+    hex_value = ""
+    6.times { hex_value << HEX_DIGITS.random }
+    "##{hex_value}"
+  end
+
+  def self.short_hex_color
+    hex_color[0,4]
+  end
+
+  def self.number(options={})
+    options = {:at_least => 1,
+               :at_most => 10}.merge(options)
+
+    (options[:at_least]..options[:at_most]).random
+  end
+
+  def self.text(options={})
     options = {:at_least => 10,
                :at_most => 15,
                :allow_lower => true,
@@ -46,26 +65,5 @@ class BasicForgery < Forgery
     length = (options[:at_least]..options[:at_most]).random
 
     allowed_characters.random_subset(length).join
-  end
-
-  def self.number(options={})
-    options = {:at_least => 1,
-               :at_most => 10}.merge(options)
-
-    (options[:at_least]..options[:at_most]).random
-  end
-
-  def self.color
-    COLORS.random
-  end
-
-  def self.hex_color
-    hex_value = ""
-    6.times { hex_value << HEX_DIGITS.random }
-    "##{hex_value}"
-  end
-
-  def self.short_hex_color
-    hex_color[0,4]
   end
 end

@@ -14,7 +14,7 @@ describe AddressForgery do
     AddressForgery::STREET_SUFFIXES.should include(AddressForgery.street_suffix)
   end
 
-  describe "#street_address" do
+  describe ".street_address" do
     before do
       @split_address = AddressForgery.street_address.split
     end
