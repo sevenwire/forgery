@@ -4,7 +4,7 @@ class BasicForgery < Forgery
   HEX_DIGITS = %w{0 1 2 3 4 5 6 7 8 9 a b c d e f}
   UPPER_ALPHA = ('A'..'Z').to_a
   LOWER_ALPHA = ('a'..'z').to_a
-  NUMERIC = (0..9).to_a
+  NUMERIC = ('0'..'9').to_a
   SPECIAL_CHARACTERS = %w{! ' @ # $ % ^ & * ( ) _ + - = [ ] { } ; : " , . / ?}
 
   def self.password(options={})
@@ -45,7 +45,7 @@ class BasicForgery < Forgery
 
     length = (options[:at_least]..options[:at_most]).random
 
-    allowed_characters.rand_subset(length, false).join
+    allowed_characters.random_subset(length).join
   end
 
   def self.number(options={})
