@@ -3,15 +3,15 @@ class AddressForgery < Forgery
   formats :zip, :phone, :street_number
 
   def self.street_name
-    STREETS.at_rand
+    STREETS.random
   end
 
   def self.street_number
-    STREET_NUMBER_FORMATS.at_rand.numerify
+    STREET_NUMBER_FORMATS.random.to_numbers
   end
 
   def self.street_suffix
-    STREET_SUFFIXES.at_rand
+    STREET_SUFFIXES.random
   end
 
   def self.street_address
@@ -19,26 +19,26 @@ class AddressForgery < Forgery
   end
 
   def self.city
-    CITIES.at_rand
+    CITIES.random
   end
 
   def self.state
-    STATES.at_rand
+    STATES.random
   end
 
   def self.state_abbrev
-    STATE_ABBREVS.at_rand
+    STATE_ABBREVS.random
   end
 
   def self.zip
-    ZIP_FORMATS.at_rand.numerify
+    ZIP_FORMATS.random.to_numbers
   end
 
   def self.phone
-    PHONE_FORMATS.at_rand.numerify
+    PHONE_FORMATS.random.to_numbers
   end
 
   def self.country
-    COUNTRIES.at_rand
+    COUNTRIES.random
   end
 end

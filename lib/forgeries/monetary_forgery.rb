@@ -7,7 +7,7 @@ class MonetaryForgery < Forgery
     options = {:max => 10,
                :min => 0}.merge(options)
 
-    value = ((options[:min] * 100)..(options[:max] * 100)).at_rand
+    value = ((options[:min] * 100)..(options[:max] * 100)).random
     "%1.2f" % (value.to_f / 100)
   end
 end

@@ -1,5 +1,5 @@
 class String
-  def numerify
-    self.gsub(/#/) { Kernel.rand(10).to_s }
+  def to_numbers(replace='#')
+    self.gsub(/#{replace}/){ Kernel.rand(10) }
   end
 end

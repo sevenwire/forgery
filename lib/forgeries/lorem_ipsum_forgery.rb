@@ -95,7 +95,7 @@ protected
     return quantity if quantity.class == Range
 
     if options[:random]
-      start = (0..options[:random_limit]).at_rand
+      start = (0..options[:random_limit]).random
       start..(start+quantity-1)
     else
       0..(quantity-1)

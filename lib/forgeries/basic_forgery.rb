@@ -26,7 +26,7 @@ class BasicForgery < Forgery
   end
 
   def self.boolean
-    [true, false].at_rand
+    [true, false].random
   end
 
   def self.random_text(options={})
@@ -43,7 +43,7 @@ class BasicForgery < Forgery
     allowed_characters += NUMERIC if options[:allow_numeric]
     allowed_characters += SPECIAL_CHARACTERS if options[:allow_special]
 
-    length = (options[:at_least]..options[:at_most]).at_rand
+    length = (options[:at_least]..options[:at_most]).random
 
     allowed_characters.rand_subset(length, false).join
   end
@@ -52,16 +52,16 @@ class BasicForgery < Forgery
     options = {:at_least => 1,
                :at_most => 10}.merge(options)
 
-    (options[:at_least]..options[:at_most]).at_rand
+    (options[:at_least]..options[:at_most]).random
   end
 
   def self.color
-    COLORS.at_rand
+    COLORS.random
   end
 
   def self.hex_color
     hex_value = ""
-    6.times { hex_value << HEX_DIGITS.at_rand }
+    6.times { hex_value << HEX_DIGITS.random }
     "##{hex_value}"
   end
 

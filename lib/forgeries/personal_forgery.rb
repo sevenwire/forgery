@@ -1,6 +1,6 @@
 class PersonalForgery < Forgery
   def self.gender
-    %w{Male Female}.at_rand
+    %w{Male Female}.random
   end
 
   def self.abbreviated_gender
@@ -8,6 +8,6 @@ class PersonalForgery < Forgery
   end
 
   def self.shirt_size
-    %w{XS S M L XL 2XL 3XL}.at_rand
+    %w{XS S M L XL 2XL 3XL}.random
   end
 end
