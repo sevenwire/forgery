@@ -2,7 +2,7 @@ class InternetForgery < Forgery
   dictionaries :male_first_names, :female_first_names, :last_names, :top_level_domains, :company_names
 
   def self.user_name
-    (MALE_FIRST_NAMES.random + LAST_NAMES.random).downcase
+    (MALE_FIRST_NAMES.random[0,1] + LAST_NAMES.random).downcase
   end
 
   def self.top_level_domain

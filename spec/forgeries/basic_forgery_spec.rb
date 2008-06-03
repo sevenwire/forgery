@@ -81,16 +81,22 @@ describe BasicForgery do
     end
   end
 
-  it "should return a random color" do
-    BasicForgery::COLORS.should include(BasicForgery.color)
+  describe ".color" do
+    it "should return a random color" do
+      BasicForgery::COLORS.should include(BasicForgery.color)
+    end
   end
 
-  it "should return a 6-character hex color" do
-    BasicForgery.hex_color.should match(/#(#{BasicForgery::HEX_DIGITS.join('|')}){6}/)
+  describe ".hex_color" do
+    it "should return a 6-character hex color" do
+      BasicForgery.hex_color.should match(/#(#{BasicForgery::HEX_DIGITS.join('|')}){6}/)
+    end
   end
 
-  it "should return a 3-character hex color" do
-    BasicForgery.short_hex_color.should match(/#(#{BasicForgery::HEX_DIGITS.join('|')}){3}/)
+  describe ".short_hex_color" do
+    it "should return a 3-character hex color" do
+      BasicForgery.short_hex_color.should match(/#(#{BasicForgery::HEX_DIGITS.join('|')}){3}/)
+    end
   end
 
   describe ".number" do
