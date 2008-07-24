@@ -9,6 +9,10 @@ class NameForgery < Forgery
     [MALE_FIRST_NAMES, FEMALE_FIRST_NAMES].random.random
   end
 
+  def self.full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   def self.male_first_name
     MALE_FIRST_NAMES.random
   end
