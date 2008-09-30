@@ -17,14 +17,15 @@ Generator
 
 <pre><code>
 ./script/generate forgery
+</code></pre>
 
 In a rails project this generator creates:
-RAILS_ROOT/lib/forgery
-RAILS_ROOT/lib/forgery/dictionaries
-RAILS_ROOT/lib/forgery/extensions
-RAILS_ROOT/lib/forgery/forgeries
-RAILS_ROOT/lib/forgery/formats
-</code></pre>
+
+* RAILS_ROOT/lib/forgery
+* RAILS_ROOT/lib/forgery/dictionaries
+* RAILS_ROOT/lib/forgery/extensions
+* RAILS_ROOT/lib/forgery/forgeries
+* RAILS_ROOT/lib/forgery/formats
 
 You can then use these directories to write your own dictionaries, class
 extensions, forgeries, and formats.
