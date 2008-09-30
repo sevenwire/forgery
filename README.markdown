@@ -15,6 +15,7 @@ plugin includes a generator providing directories to make your own forgeries.
 Generator
 =========
 
+<pre><code>
 ./script/generate forgery
 
 In a rails project this generator creates:
@@ -23,6 +24,7 @@ RAILS_ROOT/lib/forgery/dictionaries
 RAILS_ROOT/lib/forgery/extensions
 RAILS_ROOT/lib/forgery/forgeries
 RAILS_ROOT/lib/forgery/formats
+</code></pre>
 
 You can then use these directories to write your own dictionaries, class
 extensions, forgeries, and formats.
@@ -41,6 +43,7 @@ Examples
 Here I'll supply a few examples of how it works, in general.  See each forgery
 for individual examples.
 
+<pre><code>
 BasicForgery.password # => "wYMYvq"
 BasicForgery.password :allow_special => true # => ";Qo^N[T"
 BasicForgery.hex_color # => "#f4d841"
@@ -48,7 +51,7 @@ BasicForgery.hex_color # => "#f4d841"
 MonetaryForgery.money # => "8.21"
 MonetaryForgery.formatted_money # => "$3.25"
 MonetaryForgery.money :min => 100, :max => 1000 # => "848.97"
-
+</code></pre>
 
 Notes
 =====
