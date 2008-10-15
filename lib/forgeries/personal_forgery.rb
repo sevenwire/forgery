@@ -1,6 +1,9 @@
 class PersonalForgery < Forgery
+  GENDERS =  %w{Male Female}
+  SHIRT_SIZES = %w{XS S M L XL 2XL 3XL}
+  
   def self.gender
-    %w{Male Female}.random
+    GENDERS.random
   end
 
   def self.abbreviated_gender
@@ -8,6 +11,6 @@ class PersonalForgery < Forgery
   end
 
   def self.shirt_size
-    %w{XS S M L XL 2XL 3XL}.random
+    SHIRT_SIZES.random
   end
 end
