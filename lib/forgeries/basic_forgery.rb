@@ -1,7 +1,7 @@
 require 'digest/sha1'
 
 class BasicForgery < Forgery
-  dictionaries :colors
+  dictionaries :colors, :frequencies
 
   HEX_DIGITS = %w{0 1 2 3 4 5 6 7 8 9 a b c d e f}
   UPPER_ALPHA = ('A'..'Z').to_a
@@ -65,5 +65,9 @@ class BasicForgery < Forgery
     length = (options[:at_least]..options[:at_most]).random
 
     allowed_characters.random_subset(length).join
+  end
+
+  def self.frequency
+    FREQUENCIES.random
   end
 end

@@ -1,5 +1,6 @@
 class NameForgery < Forgery
-  dictionaries :last_names, :male_first_names, :female_first_names, :company_names
+  dictionaries :last_names, :male_first_names, :female_first_names, :company_names,
+    :name_suffixes, :name_titles
 
   def self.last_name
     LAST_NAMES.random
@@ -23,5 +24,13 @@ class NameForgery < Forgery
 
   def self.company_name
     COMPANY_NAMES.random
+  end
+
+  def self.title
+    NAME_TITLES.random
+  end
+
+  def self.suffix
+    NAME_SUFFIXES.random
   end
 end
