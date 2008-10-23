@@ -33,9 +33,8 @@ class BasicForgery < Forgery
   end
 
   def self.hex_color
-    hex_value = ""
-    6.times { hex_value << HEX_DIGITS.random }
-    "##{hex_value}"
+    hex_digits = (1..6).collect { HEX_DIGITS.random}
+    "##{hex_digits.join}"
   end
 
   def self.short_hex_color
