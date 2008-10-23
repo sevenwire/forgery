@@ -1,6 +1,5 @@
 class PersonalForgery < Forgery
-  GENDERS =  %w{Male Female}
-  SHIRT_SIZES = %w{XS S M L XL 2XL 3XL}
+  dictionaries :shirt_sizes, :genders
   
   def self.gender
     GENDERS.random
