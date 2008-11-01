@@ -8,6 +8,7 @@ class BasicForgery < Forgery
   LOWER_ALPHA = ('a'..'z').to_a
   NUMERIC = ('0'..'9').to_a
   SPECIAL_CHARACTERS = %w{! ' @ # $ % ^ & * ( ) _ + - = [ ] { } ; : " , . / ?}
+  BOOLEAN = [true, false]
 
   def self.password(options={})
     options = {:at_least => 6,
@@ -24,7 +25,7 @@ class BasicForgery < Forgery
   end
 
   def self.boolean
-    [true, false].random
+    BOOLEAN.random
   end
 
   def self.color
@@ -32,9 +33,8 @@ class BasicForgery < Forgery
   end
 
   def self.hex_color
-    hex_value = ""
-    6.times { hex_value << HEX_DIGITS.random }
-    "##{hex_value}"
+    hex_digits = (1..6).collect { HEX_DIGITS.random}
+    "##{hex_digits.join}"
   end
 
   def self.short_hex_color
