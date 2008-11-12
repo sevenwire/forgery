@@ -54,6 +54,22 @@ MonetaryForgery.formatted_money # => "$3.25"
 MonetaryForgery.money :min => 100, :max => 1000 # => "848.97"
 </code></pre>
 
+TODO
+====
+
+* Delayed reading of dictionaries, forms, etc (speed and memory concerns)
+* Add secondary syntax similar to Factory Girl (or better?)
+
+Thanks
+======
+
+Thanks to the authors and contributors:
+
+* Nathan Sutton (nate aka fowlduck)
+* Brandon Arbini (brandonarbini)
+* Josh Nichols (technicalpickles)
+* Jeremy Stephens (viking aka crookshanks)
+
 Notes
 =====
 
