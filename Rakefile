@@ -36,6 +36,7 @@ begin
     s.homepage = "http://github.com/sevenwire/forgery"
     s.description = "TODO"
     s.authors = ["Nathan Sutton"]
+    s.files = FileList["[A-Z]*.*", "{bin,generators,lib,test,spec}/**/*"]
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
