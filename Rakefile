@@ -26,3 +26,17 @@ Rake::RDocTask.new do |t|
   t.options << '--all'
   t.options << '--line-numbers'
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |s|
+    s.name = "forgery"
+    s.summary = "TODO"
+    s.email = "nate@sevenwire.com"
+    s.homepage = "http://github.com/sevenwire/forgery"
+    s.description = "TODO"
+    s.authors = ["Nathan Sutton"]
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end

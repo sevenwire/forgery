@@ -1,3 +1,5 @@
+# Require forgeries at the bottom of the file so Forgery works as a gem
+
 class Forgery
   def self.dictionaries(*dictionaries)
     dictionaries.each do |dictionary|
@@ -60,4 +62,8 @@ protected
   def self.internal_path_to_dictionary(dictionary)
     File.dirname(__FILE__) + '/dictionaries/' + dictionary.to_s
   end
+end
+
+Dir[File.expand_path(File.dirname(__FILE__) + '/**/*.rb')].uniq.each do |file|
+  require file
 end
