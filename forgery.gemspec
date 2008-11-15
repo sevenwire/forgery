@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = %q{nate@sevenwire.com}
   s.homepage = %q{http://github.com/sevenwire/forgery}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.0}
+  s.rubygems_version = %q{1.3.1}
   s.summary = %q{TODO}
 
   if s.respond_to? :specification_version then
