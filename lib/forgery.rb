@@ -1,5 +1,9 @@
 # Require forgeries at the bottom of the file so Forgery works as a gem
 
+Dir[File.expand_path(File.dirname(__FILE__) + '/extensions/**/*.rb')].uniq.each do |file|
+  require file
+end
+
 class Forgery
   def self.dictionaries(*dictionaries)
     dictionaries.each do |dictionary|
@@ -64,6 +68,15 @@ protected
   end
 end
 
-Dir[File.expand_path(File.dirname(__FILE__) + '/**/*.rb')].uniq.each do |file|
+def Forgery(forgery, method=nil, *args)
+  klass = "#{forgery.to_s.camelize}Forgery".constantize
+  if method
+    klass.send(method, *args)
+  else
+    klass
+  end
+end
+
+Dir[File.expand_path(File.dirname(__FILE__) + '/forgeries/**/*.rb')].uniq.each do |file|
   require file
 end
