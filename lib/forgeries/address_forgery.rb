@@ -1,8 +1,5 @@
 # Generates random address information.
 class AddressForgery < Forgery
-  dictionaries :streets, :street_suffixes, :cities, :states, :state_abbrevs, :countries
-  formats :zip, :phone, :street_number
-
   # Gets a random street name out of the 'streets' dictionary.
   #
   #   AddressForgery.street_name
@@ -11,7 +8,7 @@ class AddressForgery < Forgery
   #   AddressForgery.street_name
   #   # => "Fordem"
   def self.street_name
-    STREETS.random
+    dictionaries[:streets].random
   end
 
   # Gets one of the formats from 'street_number_formats' and converts it to
@@ -23,7 +20,7 @@ class AddressForgery < Forgery
   #   AddressForgery.street_number
   #   # => 1234
   def self.street_number
-    STREET_NUMBER_FORMATS.random.to_numbers
+    formats[:street_number].random.to_numbers
   end
 
   # Gets a random street suffix out of the 'street_suffixes' dictionary.
@@ -34,7 +31,7 @@ class AddressForgery < Forgery
   #   AddressForgery.street_suffix
   #   # => "Parkway"
   def self.street_suffix
-    STREET_SUFFIXES.random
+    dictionaries[:street_suffixes].random
   end
 
   # Gets a full street address, including street number, street name, and
@@ -57,7 +54,7 @@ class AddressForgery < Forgery
   #   AddressForgery.city
   #   # => "Sacramento"
   def self.city
-    CITIES.random
+    dictionaries[:cities].random
   end
 
   # Gets a random state out of the 'states' dictionary.
@@ -68,7 +65,7 @@ class AddressForgery < Forgery
   #   AddressForgery.state
   #   # => "Minnesota"
   def self.state
-    STATES.random
+    dictionaries[:states].random
   end
 
   # Gets a random state abbreviation out of the 'state_abbrev' dictionary.
@@ -79,7 +76,7 @@ class AddressForgery < Forgery
   #   AddressForgery.state_abbrev
   #   # => "TX"
   def self.state_abbrev
-    STATE_ABBREVS.random
+    dictionaries[:state_abbrevs].random
   end
 
   # Gets one of the formats from 'zip_formats' and converts it to numbers.
@@ -90,7 +87,7 @@ class AddressForgery < Forgery
   #   AddressForgery.zip
   #   # => "66702-4349"
   def self.zip
-    ZIP_FORMATS.random.to_numbers
+    formats[:zip].random.to_numbers
   end
 
   # Gets one of the formats from 'phone_formats' and converts it to numbers.
@@ -101,7 +98,7 @@ class AddressForgery < Forgery
   #   AddressForgery.phone
   #   # => "1-(589)248-0418"
   def self.phone
-    PHONE_FORMATS.random.to_numbers
+    formats[:phone].random.to_numbers
   end
 
   # Gets a random country out of the 'countries' dictionary.
@@ -112,6 +109,6 @@ class AddressForgery < Forgery
   #   AddressForgery.country
   #   # => "Romania"
   def self.country
-    COUNTRIES.random
+    dictionaries[:countries].random
   end
 end

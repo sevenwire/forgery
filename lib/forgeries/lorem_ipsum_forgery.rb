@@ -1,7 +1,4 @@
 class LoremIpsumForgery < Forgery
-  dictionaries :lorem_ipsum
-  LOREM_IPSUM_WORDS = LOREM_IPSUM.join(" ").downcase.gsub(/\.|,|;/, '').split(" ")
-  LOREM_IPSUM_CHARACTERS = LOREM_IPSUM.join("").downcase.gsub(/[^a-z\s]/,'')
 
   def self.text(what=:sentence, quantity=2, options={})
     case what
@@ -30,9 +27,9 @@ class LoremIpsumForgery < Forgery
   end
 
   def self.characters(quantity=10, options={})
-    options.merge!(:random_limit => LOREM_IPSUM_CHARACTERS.length-quantity) if quantity.is_a?(Fixnum)
+    options.merge!(:random_limit => lorem_ipsum_characters.length-quantity) if quantity.is_a?(Fixnum)
 
-    LOREM_IPSUM_CHARACTERS[range_from_quantity(quantity, options)]
+    lorem_ipsum_characters[range_from_quantity(quantity, options)]
   end
 
   def self.word(options={})
@@ -40,9 +37,9 @@ class LoremIpsumForgery < Forgery
   end
 
   def self.words(quantity=10, options={})
-    options.merge!(:random_limit => LOREM_IPSUM_WORDS.length-quantity) if quantity.is_a?(Fixnum)
+    options.merge!(:random_limit => lorem_ipsum_words.length-quantity) if quantity.is_a?(Fixnum)
 
-    LOREM_IPSUM_WORDS[range_from_quantity(quantity, options)].join(" ")
+    lorem_ipsum_words[range_from_quantity(quantity, options)].join(" ")
   end
 
   def self.sentence(options={})
@@ -50,9 +47,9 @@ class LoremIpsumForgery < Forgery
   end
 
   def self.sentences(quantity=2, options={})
-    options.merge!(:random_limit => (LOREM_IPSUM.length-quantity)) if quantity.is_a?(Fixnum)
+    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length-quantity)) if quantity.is_a?(Fixnum)
 
-    LOREM_IPSUM[range_from_quantity(quantity, options)].join(" ")
+    dictionaries[:lorem_ipsum][range_from_quantity(quantity, options)].join(" ")
   end
 
   def self.paragraph(options={})
@@ -66,7 +63,7 @@ class LoremIpsumForgery < Forgery
                              :end => "" },
                            :html => false,
                            :sentences => 3)
-    options.merge!(:random_limit => (LOREM_IPSUM.length/options[:sentences])-quantity) if quantity.is_a?(Fixnum)
+    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length/options[:sentences])-quantity) if quantity.is_a?(Fixnum)
 
     if options[:html]
       options[:wrap] = { :start => "<p>",
@@ -81,7 +78,7 @@ class LoremIpsumForgery < Forgery
     range.to_a.length.times do |i|
       paragraphs << (
         options[:wrap][:start] +
-        LOREM_IPSUM[start..(start+options[:sentences]-1)].join(" ") +
+        dictionaries[:lorem_ipsum][start..(start+options[:sentences]-1)].join(" ") +
         options[:wrap][:end]
       )
       start += options[:sentences]
@@ -103,5 +100,13 @@ protected
       0..(quantity-1)
     end
   end
-  
+
+  def self.lorem_ipsum_words
+    @@lorem_ipsum_words ||= dictionaries[:lorem_ipsum].join(" ").downcase.gsub(/\.|,|;/, '').split(" ")
+  end
+
+  def self.lorem_ipsum_characters
+    @@lorem_ipsum_characters ||= dictionaries[:lorem_ipsum].join("").downcase.gsub(/[^a-z\s]/,'')
+  end
+
 end

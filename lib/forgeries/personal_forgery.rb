@@ -1,8 +1,7 @@
 class PersonalForgery < Forgery
-  dictionaries :races, :languages, :shirt_sizes, :genders
 
   def self.gender
-    GENDERS.random
+    dictionaries[:genders].random
   end
 
   def self.abbreviated_gender
@@ -10,14 +9,14 @@ class PersonalForgery < Forgery
   end
 
   def self.shirt_size
-    SHIRT_SIZES.random
+    dictionaries[:shirt_sizes].random
   end
 
   def self.race
-    RACES.random
+    dictionaries[:races].random
   end
 
   def self.language
-    LANGUAGES.random
+    dictionaries[:languages].random
   end
 end

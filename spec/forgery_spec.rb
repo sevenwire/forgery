@@ -1,18 +1,24 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 describe Forgery do
-  it "should define constants for defined dictionaries" do
-    Forgery.dictionaries :cities, :colors, :countries
-    Forgery::CITIES.should be_is_a(Array)
-    Forgery::COLORS.should be_is_a(Array)
-    Forgery::COUNTRIES.should be_is_a(Array)
+  it "should load a dictionary when it is requested" do
+    Forgery.dictionaries.reset!
+
+    Forgery.dictionaries.should_not be_loaded(:colors)
+
+    Forgery.dictionaries[:colors]
+
+    Forgery.dictionaries.should be_loaded(:colors)
   end
 
-  it "should define constants for defined formats" do
-    Forgery.formats :phone, :street_number, :zip
-    Forgery::PHONE_FORMATS.should be_is_a(Array)
-    Forgery::STREET_NUMBER_FORMATS.should be_is_a(Array)
-    Forgery::ZIP_FORMATS.should be_is_a(Array)
+  it "should load formats when it is requested" do
+    Forgery.formats.reset!
+
+    Forgery.formats.should_not be_loaded(:phone)
+
+    Forgery.formats[:phone]
+
+    Forgery.formats.should be_loaded(:phone)
   end
 
   it "should accept a symbol and return the appropriate forgery class" do
