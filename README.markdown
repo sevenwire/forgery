@@ -21,11 +21,11 @@ Generator
 
 In a rails project this generator creates:
 
-* RAILS_ROOT/lib/forgery
-* RAILS_ROOT/lib/forgery/dictionaries
-* RAILS_ROOT/lib/forgery/extensions
-* RAILS_ROOT/lib/forgery/forgeries
-* RAILS_ROOT/lib/forgery/formats
+* RAILS\_ROOT/lib/forgery
+* RAILS\_ROOT/lib/forgery/dictionaries
+* RAILS\_ROOT/lib/forgery/extensions
+* RAILS\_ROOT/lib/forgery/forgeries
+* RAILS\_ROOT/lib/forgery/formats
 
 You can then use these directories to write your own dictionaries, class
 extensions, forgeries, and formats.
@@ -74,7 +74,7 @@ Thanks
 
 Thanks to the authors and contributors:
 
-* Nathan Sutton (nate aka fowlduck)
+* Nate Sutton (nate aka fowlduck)
 * Brandon Arbini (brandonarbini)
 * Josh Nichols (technicalpickles)
 * Jeremy Stephens (viking aka crookshanks)
