@@ -57,8 +57,7 @@ MonetaryForgery.money :min => 100, :max => 1000 # => "848.97"
 TODO
 ====
 
-* Delayed reading of dictionaries, forms, etc (speed and memory concerns)
-* Add secondary syntax similar to Factory Girl (or better?)
+* Add instanced forgeries for more relative information generation.
 
 Thanks
 ======
