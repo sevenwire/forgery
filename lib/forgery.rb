@@ -2,7 +2,7 @@
 # within rails and outside of it.
 
 # Loading forgery helpers.
-require File.expand_path(File.dirname(__FILE__) + '/file_loader')
+require File.expand_path(File.dirname(__FILE__) + '/file_reader')
 require File.expand_path(File.dirname(__FILE__) + '/dictionaries')
 require File.expand_path(File.dirname(__FILE__) + '/formats')
 
