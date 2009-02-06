@@ -52,6 +52,16 @@ describe AddressForgery do
     Forgery.dictionaries[:state_abbrevs].should include(state_abbrev)
   end
 
+  it "should return a random Canadian province or territory" do
+    province = AddressForgery.province
+    Forgery.dictionaries[:provinces].should include(province)
+  end
+
+  it "should return a random Canadian province or territory abbreviation" do
+    province_abbrev = AddressForgery.province_abbrev
+    Forgery.dictionaries[:province_abbrevs].should include(province_abbrev)
+  end
+
   it "should return a random country" do
     country = AddressForgery.country
     Forgery.dictionaries[:countries].should include(country)

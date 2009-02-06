@@ -79,6 +79,28 @@ class AddressForgery < Forgery
     dictionaries[:state_abbrevs].random
   end
 
+  # Gets a random Canadian province or territory out of the 'provinces' dictionary.
+  #
+  #   AddressForgery.province
+  #   # => "Ontario"
+  #
+  #   AddressForgery.province
+  #   # => "Northwest Territories"
+  def self.province
+    dictionaries[:provinces].random
+  end
+
+  # Gets a random Canadian province or territory abbreviation out of the 'province_abbrev' dictionary.
+  #
+  #   AddressForgery.province_abbrev
+  #   # => "ON"
+  #
+  #   AddressForgery.province_abbrev
+  #   # => "NT"
+  def self.province_abbrev
+    dictionaries[:province_abbrevs].random
+  end
+
   # Gets one of the formats from 'zip_formats' and converts it to numbers.
   #
   #   AddressForgery.zip
