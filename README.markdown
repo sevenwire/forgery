@@ -15,9 +15,7 @@ plugin includes a generator providing directories to make your own forgeries.
 Generator
 =========
 
-<pre><code>
-./script/generate forgery
-</code></pre>
+  ./script/generate forgery
 
 In a rails project this generator creates:
 
