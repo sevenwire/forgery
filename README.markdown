@@ -15,7 +15,7 @@ plugin includes a generator providing directories to make your own forgeries.
 Generator
 =========
 
-  ./script/generate forgery
+    ./script/generate forgery
 
 In a rails project this generator creates:
 
@@ -42,23 +42,23 @@ Examples
 Here I'll supply a few examples of how it works, in general.  See each forgery
 for individual examples.
 
-  # Traditional syntax
-  BasicForgery.password # => "wYMYvq"
-  BasicForgery.password :allow_special => true # => ";Qo^N[T"
-  BasicForgery.hex_color # => "#f4d841"
-
-  MonetaryForgery.money # => "8.21"
-  MonetaryForgery.formatted_money # => "$3.25"
-  MonetaryForgery.money :min => 100, :max => 1000 # => "848.97"
-
-  # Alternate syntax
-  Forgery(:basic).password # => "b6qZTQEH"
-  Forgery(:basic).password :allow_special => true # => "XlrhV%An"
-  Forgery(:basic).hex_color # => "#46b73f"
-
-  Forgery(:monetary).money # => "1.58"
-  Forgery(:monetary).formatted_money # => "$3.48"
-  Forgery(:monetary).money :min => 100, :max => 1000 # => "923.36"
+    # Traditional syntax
+    BasicForgery.password # => "wYMYvq"
+    BasicForgery.password :allow_special => true # => ";Qo^N[T"
+    BasicForgery.hex_color # => "#f4d841"
+    
+    MonetaryForgery.money # => "8.21"
+    MonetaryForgery.formatted_money # => "$3.25"
+    MonetaryForgery.money :min => 100, :max => 1000 # => "848.97"
+    
+    # Alternate syntax
+    Forgery(:basic).password # => "b6qZTQEH"
+    Forgery(:basic).password :allow_special => true # => "XlrhV%An"
+    Forgery(:basic).hex_color # => "#46b73f"
+    
+    Forgery(:monetary).money # => "1.58"
+    Forgery(:monetary).formatted_money # => "$3.48"
+    Forgery(:monetary).money :min => 100, :max => 1000 # => "923.36"
 
 TODO
 ====
