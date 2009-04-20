@@ -12,6 +12,12 @@ Forgery generates fake data from dictionaries, formats, and recipes.  The
 plugin includes a generator providing directories to make your own forgeries.
 
 
+Install
+=======
+
+  config.gem "sevenwire-forgery", :lib => "forgery", :source => "http://gems.github.com"
+
+
 Generator
 =========
 
