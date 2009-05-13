@@ -14,4 +14,8 @@ class InternetForgery < Forgery
   def self.email_address
     self.user_name + '@' + self.domain_name
   end
+  
+  def self.ip_v4
+    (1..4).collect{|x| rand(256)}.join('.')
+  end
 end
