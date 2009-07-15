@@ -66,10 +66,17 @@ for individual examples.
     Forgery(:monetary).formatted_money # => "$3.48"
     Forgery(:monetary).money :min => 100, :max => 1000 # => "923.36"
 
+DOCUMENTATION
+=============
+
+Documentation can be found at [http://docs.github.com/sevenwire/forgery](http://docs.github.com/sevenwire/forgery)
+
 TODO
 ====
 
 * Add instanced forgeries for more relative information generation.
+* Add markov chains.
+* Add a way to use probability in forgeries.
 
 Thanks
 ======
