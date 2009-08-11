@@ -32,5 +32,9 @@ describe InternetForgery do
     it "should return a country-code top level domain" do
       Forgery.dictionaries[:country_code_top_level_domains].should include(InternetForgery.cctld)
     end
+
+    it "should return the cctld in correct two-letter format" do
+      InternetForgery.cctld.should =~ /\A[a-z]{2}\Z/
+    end
   end
 end
