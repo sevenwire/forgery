@@ -14,4 +14,8 @@ class InternetForgery < Forgery
   def self.email_address
     self.user_name + '@' + self.domain_name
   end
+
+  def self.cctld
+    dictionaries[:country_code_top_level_domains].random
+  end
 end
