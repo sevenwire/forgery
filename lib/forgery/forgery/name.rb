@@ -24,6 +24,14 @@ class Forgery::Name < Forgery
     dictionaries[:company_names].random
   end
 
+  def self.job_title
+    dictionaries[:job_titles].random.sub('#{N}', self.job_title_suffix)
+  end
+
+  def self.job_title_suffix
+    dictionaries[:job_title_suffixes].random
+  end
+
   def self.title
     dictionaries[:name_titles].random
   end
