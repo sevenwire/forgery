@@ -31,4 +31,5 @@ class NameForgery < Forgery
   def self.suffix
     dictionaries[:name_suffixes].random
   end
+
 end

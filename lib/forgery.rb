@@ -2,39 +2,23 @@
 # within rails and outside of it.
 
 # Loading forgery helpers.
-require File.expand_path(File.dirname(__FILE__) + '/file_reader')
-require File.expand_path(File.dirname(__FILE__) + '/dictionaries')
-require File.expand_path(File.dirname(__FILE__) + '/formats')
+require File.expand_path(File.dirname(__FILE__) + '/forgery/file_reader')
+require File.expand_path(File.dirname(__FILE__) + '/forgery/dictionaries')
+require File.expand_path(File.dirname(__FILE__) + '/forgery/formats')
 
 # Loading class extensions
-Dir[File.expand_path(File.dirname(__FILE__) + '/extensions/**/*.rb')].uniq.each do |file|
+Dir[File.expand_path(File.dirname(__FILE__) + '/forgery/extensions/**/*.rb')].uniq.each do |file|
   require file
 end
 
-class Forgery
+# Load the forgery base class
+require File.expand_path(File.dirname(__FILE__) + '/forgery/forgery')
 
-  def self.dictionaries
-    @@dictionaries ||= Dictionaries.new
-  end
+# Load the forgery api method
+require File.expand_path(File.dirname(__FILE__) + '/forgery/forgery_api')
 
-  def self.formats
-    @@formats ||= Formats.new
-  end
-
-end
-
-# Alternate Forgery api, see spec/forgery_spec.rb for examples.
-def Forgery(forgery, method=nil, *args)
-  klass = "#{forgery.to_s.camelize}Forgery".constantize
-  if method
-    klass.send(method, *args)
-  else
-    klass
-  end
-end
-
-# Loading the other forgeries AFTER the initial Forgery class is defined.
-Dir[File.expand_path(File.dirname(__FILE__) + '/forgeries/**/*.rb')].uniq.each do |file|
+# Loading the other forgeries AFTER the initial forgery class is defined.
+Dir[File.expand_path(File.dirname(__FILE__) + '/forgery/forgeries/**/*.rb')].uniq.each do |file|
   require file
 end
 

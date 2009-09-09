@@ -21,7 +21,6 @@ class LoremIpsumForgery < Forgery
     end
   end
 
-
   def self.character(options={})
     self.characters(1, options)
   end

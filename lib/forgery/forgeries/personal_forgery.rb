@@ -19,4 +19,5 @@ class PersonalForgery < Forgery
   def self.language
     dictionaries[:languages].random
   end
+
 end
