@@ -3,6 +3,7 @@ class String
     self.gsub(/#{replace}/){ Kernel.rand(10) }
   end
 
+  # Ripped right out of rails
   if !defined?(RAILS_ROOT)
     def camelize(first_letter = :upper)
       case first_letter

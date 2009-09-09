@@ -1,11 +1,11 @@
 class Forgery
 
   def self.dictionaries
-    @@dictionaries ||= Forgery::Dictionaries.new
+    @@dictionaries ||= Dictionaries.new
   end
 
   def self.formats
-    @@formats ||= Forgery::Formats.new
+    @@formats ||= Formats.new
   end
 
 end
