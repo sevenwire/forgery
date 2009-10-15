@@ -2,6 +2,13 @@ require 'rake'
 require 'rake/rdoctask'
 require 'spec/rake/spectask'
 
+begin
+  require 'sdoc_helpers'
+rescue LoadError
+  puts "sdoc support not enabled. Please gem install sdoc-helpers."
+end
+
+
 desc 'Default: run specs with rcov.'
 task :default => :rcov_spec
 
