@@ -49,13 +49,13 @@ Here I'll supply a few examples of how it works, in general.  See each forgery
 for individual examples.
 
     # Traditional syntax
-    BasicForgery.password # => "wYMYvq"
-    BasicForgery.password :allow_special => true # => ";Qo^N[T"
-    BasicForgery.hex_color # => "#f4d841"
+    Forgery::Basic.password # => "wYMYvq"
+    Forgery::Basic.password :allow_special => true # => ";Qo^N[T"
+    Forgery::Basic.hex_color # => "#f4d841"
     
-    MonetaryForgery.money # => "8.21"
-    MonetaryForgery.formatted_money # => "$3.25"
-    MonetaryForgery.money :min => 100, :max => 1000 # => "848.97"
+    Forgery::Monetary.money # => "8.21"
+    Forgery::Monetary.formatted_money # => "$3.25"
+    Forgery::Monetary.money :min => 100, :max => 1000 # => "848.97"
     
     # Alternate syntax
     Forgery(:basic).password # => "b6qZTQEH"
