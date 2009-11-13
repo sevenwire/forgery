@@ -53,4 +53,17 @@ describe Forgery do
     Forgery.rails_root.should == '/path/from/rails/dot/root'
     Object.instance_eval { remove_const(:Rails) }
   end
+
+  it "should return nil when RAILS_ROOT and Rails.root are not defined" do
+    Forgery.rails_root.should be_nil
+  end
+
+  it "should not be a rails environment when there is not a rails_root" do
+    Forgery.rails?.should be_false
+  end
+
+  it "should be a rails environment when there is a rails_root" do
+    Forgery.stub!(:rails?).and_return(true)
+    Forgery.rails?.should be_true
+  end
 end
