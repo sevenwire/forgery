@@ -1,2 +1,3 @@
-coverage
-doc
+/coverage
+/doc
+/pkg
