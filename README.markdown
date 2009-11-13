@@ -15,21 +15,21 @@ plugin includes a generator providing directories to make your own forgeries.
 Install
 =======
 
-    config.gem "sevenwire-forgery", :lib => "forgery", :source => "http://gems.github.com"
+    config.gem 'forgery', :source => 'http://gemcutter.org'
 
 
 Generator
 =========
 
-    ./script/generate forgery
+    ruby script/generate forgery
 
 In a rails project this generator creates:
 
-* RAILS\_ROOT/lib/forgery
-* RAILS\_ROOT/lib/forgery/dictionaries
-* RAILS\_ROOT/lib/forgery/extensions
-* RAILS\_ROOT/lib/forgery/forgeries
-* RAILS\_ROOT/lib/forgery/formats
+* Rails.root/lib/forgery
+* Rails.root/lib/forgery/dictionaries
+* Rails.root/lib/forgery/extensions
+* Rails.root/lib/forgery/forgeries
+* Rails.root/lib/forgery/formats
 
 You can then use these directories to write your own dictionaries, class
 extensions, forgeries, and formats.
