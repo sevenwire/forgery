@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe Dictionaries do
+describe Forgery::Dictionaries do
   it "should check if the dictionary is loaded" do
-    dictionaries = Dictionaries.new
+    dictionaries = Forgery::Dictionaries.new
 
     dictionaries[:colors]
 
@@ -10,7 +10,7 @@ describe Dictionaries do
   end
 
   it "should load a dictionary when called by the key" do
-    dictionaries = Dictionaries.new
+    dictionaries = Forgery::Dictionaries.new
 
     dictionaries.reset!
 
@@ -22,7 +22,7 @@ describe Dictionaries do
   end
 
   it "should clear the loaded dictionaries when calling reset!" do
-    dictionaries = Dictionaries.new
+    dictionaries = Forgery::Dictionaries.new
 
     dictionaries[:colors]
 

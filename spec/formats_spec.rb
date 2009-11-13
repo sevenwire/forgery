@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe Formats do
+describe Forgery::Formats do
   it "should check if the dictionary is loaded" do
-    formats = Formats.new
+    formats = Forgery::Formats.new
 
     formats[:phone]
 
@@ -10,7 +10,7 @@ describe Formats do
   end
 
   it "should load a dictionary when called by the key" do
-    formats = Formats.new
+    formats = Forgery::Formats.new
 
     formats.reset!
 
@@ -22,7 +22,7 @@ describe Formats do
   end
 
   it "should clear the loaded formats when calling reset!" do
-    formats = Formats.new
+    formats = Forgery::Formats.new
 
     formats[:phone]
 

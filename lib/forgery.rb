@@ -1,24 +1,26 @@
 # Require forgeries at the bottom of the file so Forgery works as a gem both
 # within rails and outside of it.
 
+current_path = File.expand_path(File.dirname(__FILE__))
+
 # Loading forgery helpers.
-require File.expand_path(File.dirname(__FILE__) + '/forgery/file_reader')
-require File.expand_path(File.dirname(__FILE__) + '/forgery/dictionaries')
-require File.expand_path(File.dirname(__FILE__) + '/forgery/formats')
+require current_path + '/forgery/file_reader'
+require current_path + '/forgery/dictionaries'
+require current_path + '/forgery/formats'
 
 # Loading class extensions
-Dir[File.expand_path(File.dirname(__FILE__) + '/forgery/extensions/**/*.rb')].uniq.each do |file|
+Dir[current_path + '/forgery/extensions/**/*.rb'].uniq.each do |file|
   require file
 end
 
 # Load the forgery base class
-require File.expand_path(File.dirname(__FILE__) + '/forgery/forgery')
+require current_path + '/forgery/forgery'
 
 # Load the forgery api method
-require File.expand_path(File.dirname(__FILE__) + '/forgery/forgery_api')
+require current_path + '/forgery/forgery_api'
 
 # Loading the other forgeries AFTER the initial forgery class is defined.
-Dir[File.expand_path(File.dirname(__FILE__) + '/forgery/forgeries/**/*.rb')].uniq.each do |file|
+Dir[current_path + '/forgery/forgeries/**/*.rb'].uniq.each do |file|
   require file
 end
 
