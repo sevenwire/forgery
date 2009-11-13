@@ -1,4 +1,5 @@
 require File.dirname(__FILE__) + '/spec_helper'
+require 'pathname'
 
 describe Forgery do
   it "should load a dictionary when it is requested" do
@@ -38,5 +39,18 @@ describe Forgery do
   it "should accept two symbols and arguments, passing them along to the appropriate method" do
     LoremIpsumForgery.should_receive(:text).with(:sentences, 2)
     Forgery(:lorem_ipsum, :text, :sentences, 2)
+  end
+
+  it "should return the rails root path if RAILS_ROOT is defined" do
+    RAILS_ROOT = '/path/from/rails/root/const'
+    Forgery.rails_root.should == '/path/from/rails/root/const'
+    Object.instance_eval { remove_const(:RAILS_ROOT) }
+  end
+
+  it "should return the rails root path as a string if Rails.root is defined" do
+    Rails = Object.new
+    Rails.stub!(:root).and_return(Pathname.new('/path/from/rails/dot/root'))
+    Forgery.rails_root.should == '/path/from/rails/dot/root'
+    Object.instance_eval { remove_const(:Rails) }
   end
 end
