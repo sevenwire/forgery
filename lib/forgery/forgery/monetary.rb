@@ -1,4 +1,4 @@
-class MonetaryForgery < Forgery
+class Forgery::Monetary < Forgery
 
   def self.formatted_money(options={})
     "$%1.2f" % money(options)

@@ -36,7 +36,7 @@ class Forgery
 
     # Returns the path to a format outside of forgery
     def self.external_path_to_format(format)
-      RAILS_ROOT + '/lib/forgery/formats/' + format.to_s if defined?(RAILS_ROOT)
+      Forgery.rails_root + '/lib/forgery/formats/' + format.to_s if Forgery.rails?
     end
 
     # Returns the path to a format inside of forgery
@@ -56,7 +56,7 @@ class Forgery
 
     # Returns the path to a dictionary outside of forgery
     def self.external_path_to_dictionary(dictionary)
-      RAILS_ROOT + '/lib/forgery/dictionaries/' + dictionary.to_s if defined?(RAILS_ROOT)
+      Forgery.rails_root + '/lib/forgery/dictionaries/' + dictionary.to_s if Forgery.rails?
     end
 
     # Returns the path to a dictionary within forgery

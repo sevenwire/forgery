@@ -23,21 +23,21 @@ describe Forgery do
   end
 
   it "should accept a symbol and return the appropriate forgery class" do
-    Forgery(:address).should == AddressForgery
-    Forgery(:basic).should == BasicForgery
-    Forgery(:internet).should == InternetForgery
+    Forgery(:address).should == Forgery::Address
+    Forgery(:basic).should == Forgery::Basic
+    Forgery(:internet).should == Forgery::Internet
   end
 
   it "should accept two symbols, finding the right class and calling the appropriate method" do
-    AddressForgery.should_receive(:street_name)
+    Forgery::Address.should_receive(:street_name)
     Forgery(:address, :street_name)
 
-    NameForgery.should_receive(:full_name)
+    Forgery::Name.should_receive(:full_name)
     Forgery(:name, :full_name)
   end
 
   it "should accept two symbols and arguments, passing them along to the appropriate method" do
-    LoremIpsumForgery.should_receive(:text).with(:sentences, 2)
+    Forgery::LoremIpsum.should_receive(:text).with(:sentences, 2)
     Forgery(:lorem_ipsum, :text, :sentences, 2)
   end
 

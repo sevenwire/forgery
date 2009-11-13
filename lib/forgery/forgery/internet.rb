@@ -1,4 +1,4 @@
-class InternetForgery < Forgery
+class Forgery::Internet < Forgery
 
   def self.user_name
     (dictionaries[:male_first_names].random[0,1] + dictionaries[:last_names].random).downcase

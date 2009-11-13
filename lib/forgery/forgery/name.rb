@@ -1,4 +1,4 @@
-class NameForgery < Forgery
+class Forgery::Name < Forgery
 
   def self.last_name
     dictionaries[:last_names].random

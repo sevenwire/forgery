@@ -20,7 +20,7 @@ require current_path + '/forgery/forgery'
 require current_path + '/forgery/forgery_api'
 
 # Loading the other forgeries AFTER the initial forgery class is defined.
-Dir[current_path + '/forgery/forgeries/**/*.rb'].uniq.each do |file|
+Dir[current_path + '/forgery/forgery/**/*.rb'].uniq.each do |file|
   require file
 end
 

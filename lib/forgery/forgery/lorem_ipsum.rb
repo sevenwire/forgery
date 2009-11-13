@@ -1,4 +1,4 @@
-class LoremIpsumForgery < Forgery
+class Forgery::LoremIpsum < Forgery
 
   def self.text(what=:sentence, quantity=2, options={})
     case what
