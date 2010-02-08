@@ -24,14 +24,13 @@ class Forgery
       lines
     end
 
-    # Search file in all load_paths, starting from last to first, so
+    # Search a file in all load_paths, starting from last to first, so
     # last takes precedence over first.
     def self.find_file(name, folder)
-      Forgery.load_paths.each do |path|
+      Forgery.load_paths.reverse.each do |path|
         file = "#{path}/#{folder}/#{name}"
         return file if File.exists?(file)
       end
     end
   end
-
 end

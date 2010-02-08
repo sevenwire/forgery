@@ -11,10 +11,10 @@ class Forgery
   def self.load_paths
     @@load_paths ||= [File.dirname(__FILE__)]
   end
-  
+    
   def self.load_from!(path)
-    self.load_paths << path
-    Dir[File.expand_path("#{path}/**/*.rb")].uniq.each { |file| require file }
+    self.load_paths << File.expand_path(path)
+    Dir["#{self.load_paths.last}/**/*.rb"].uniq.each { |file| require file }
   end
   
   def self.rails_root
