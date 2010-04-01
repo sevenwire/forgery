@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/spec_helper'
+require 'spec_helper'
 
 describe Forgery::FileReader do
   it "should return an array when calling read_dictionary" do
