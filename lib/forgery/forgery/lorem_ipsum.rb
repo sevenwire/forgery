@@ -3,26 +3,26 @@ class Forgery::LoremIpsum < Forgery
   def self.text(what=:sentence, quantity=2, options={})
     case what
     when :character
-      self.character(options)
+      character(options)
     when :characters
-      self.characters(quantity, options)
+      characters(quantity, options)
     when :word
-      self.word(options)
+      word(options)
     when :words
-      self.words(quantity, options)
+      words(quantity, options)
     when :sentence
-      self.sentence(options)
+      sentence(options)
     when :sentences
-      self.sentences(quantity, options)
+      sentences(quantity, options)
     when :paragraph
-      self.paragraph(options)
+      paragraph(options)
     when :paragraphs
-      self.paragraphs(quantity, options)
+      paragraphs(quantity, options)
     end
   end
 
   def self.character(options={})
-    self.characters(1, options)
+    characters(1, options)
   end
 
   def self.characters(quantity=10, options={})
@@ -32,7 +32,7 @@ class Forgery::LoremIpsum < Forgery
   end
 
   def self.word(options={})
-    self.words(1, options)
+    words(1, options)
   end
 
   def self.words(quantity=10, options={})
@@ -42,7 +42,7 @@ class Forgery::LoremIpsum < Forgery
   end
 
   def self.sentence(options={})
-    self.sentences(1, options)
+    sentences(1, options)
   end
 
   def self.sentences(quantity=2, options={})
@@ -52,7 +52,7 @@ class Forgery::LoremIpsum < Forgery
   end
 
   def self.paragraph(options={})
-    self.paragraphs(1, options)
+    paragraphs(1, options)
   end
 
   def self.paragraphs(quantity=2, options={})

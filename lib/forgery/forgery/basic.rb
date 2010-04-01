@@ -37,7 +37,7 @@ class Forgery::Basic < Forgery
                :allow_upper => true,
                :allow_numeric => true,
                :allow_special => false}.merge!(options)
-    self.text(options)
+    text(options)
   end
 
   # SHA1 hexdigests a password salted with the current time

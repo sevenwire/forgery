@@ -1,6 +1,6 @@
 class String
   def to_numbers(replace='#')
-    self.gsub(/#{replace}/){ Kernel.rand(10) }
+    gsub(/#{replace}/){ Kernel.rand(10) }
   end
 
   # Ripped right out of rails

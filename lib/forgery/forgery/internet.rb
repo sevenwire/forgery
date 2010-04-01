@@ -13,7 +13,7 @@ class Forgery::Internet < Forgery
   end
 
   def self.email_address
-    self.user_name + '@' + self.domain_name
+    user_name + '@' + domain_name
   end
 
 end
