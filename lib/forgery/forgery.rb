@@ -9,10 +9,10 @@ class Forgery
   end
 
   def self.rails_root
-    if defined?(RAILS_ROOT)
-      RAILS_ROOT
-    elsif defined?(Rails)
+    if defined?(Rails)
       Rails.root.to_s
+    elsif defined?(RAILS_ROOT)
+      RAILS_ROOT
     end
   end
 
