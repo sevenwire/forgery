@@ -29,8 +29,4 @@ end
 
 # Loading rails forgeries to override current forgery methods and add new
 # forgeries
-if Forgery.rails?
-  Dir[File.expand_path(Forgery.rails_root + '/lib/forgery/**/*.rb')].uniq.each do |file|
-    require file
-  end
-end
+Forgery.load_from! "#{Forgery.rails_root}/lib/forgery" if Forgery.rails?
