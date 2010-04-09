@@ -16,6 +16,9 @@ end
 # Load the forgery base class
 require 'forgery/forgery'
 
+# Load the forgery version
+require 'forgery/version'
+
 # Load the forgery api method
 require 'forgery/forgery_api'
 

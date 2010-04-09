@@ -33,18 +33,3 @@ Rake::RDocTask.new do |t|
   t.options << '--all'
   t.options << '--line-numbers'
 end
-
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |s|
-    s.name = "forgery"
-    s.summary = "Easy and customizable generation of forged data."
-    s.email = "nate@sevenwire.com"
-    s.homepage = "http://github.com/sevenwire/forgery"
-    s.description = "Easy and customizable generation of forged data. Can be used as a gem or a rails plugin. Includes rails generators for creating your own forgeries."
-    s.authors = ["Nathan Sutton"]
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler not available. Install it with: gem install jeweler"
-end
