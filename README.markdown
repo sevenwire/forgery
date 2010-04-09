@@ -95,6 +95,7 @@ Thanks to the authors and contributors:
 * Lukas Westermann (lwe)
 * Mike Dungan
 * Andrew Selder (aselder)
+* Thomas Sinclair (anathematic)
 
 ## Notes
 
