@@ -7,16 +7,16 @@ class Forgery
   def self.formats
     @@formats ||= Formats.new
   end
-  
+
   def self.load_paths
     @@load_paths ||= [File.dirname(__FILE__)]
   end
-    
+
   def self.load_from!(path)
     self.load_paths << File.expand_path(path)
     Dir["#{self.load_paths.last}/**/*.rb"].uniq.each { |file| require file }
   end
-  
+
   def self.rails_root
     if defined?(Rails)
       Rails.root.to_s
