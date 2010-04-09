@@ -27,4 +27,14 @@ describe Forgery::Internet do
       Forgery::Internet.email_address.should match(/.+@.+\.(#{Forgery.dictionaries[:top_level_domains].join("|")})/)
     end
   end
+
+  describe ".cctld" do
+    it "should return a country-code top level domain" do
+      Forgery.dictionaries[:country_code_top_level_domains].should include(Forgery::Internet.cctld)
+    end
+
+    it "should return the cctld in correct two-letter format" do
+      Forgery::Internet.cctld.should =~ /\A[a-z]{2}\Z/
+    end
+  end
 end
