@@ -27,7 +27,7 @@ plugin includes a generator providing directories to make your own forgeries.
     # Add this to your Gemfile
     gem 'forgery'
 
-## Generator
+## Rails 2 Generator
 
     ruby script/generate forgery
 
