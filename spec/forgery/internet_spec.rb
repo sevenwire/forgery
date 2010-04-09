@@ -37,4 +37,17 @@ describe Forgery::Internet do
       Forgery::Internet.cctld.should =~ /\A[a-z]{2}\Z/
     end
   end
+
+  describe '.ip_v4' do
+    it 'should be 4 integers between 0 and 255 seprated by "."' do
+      val = Forgery::Internet.ip_v4
+      nums = val.split('.')
+      nums.should have(4).items
+      nums.each do |num|
+        num.should =~ /\d{1,3}/
+        num.to_i.should <= 255
+        num.to_i.should >= 0 
+      end
+    end
+  end
 end

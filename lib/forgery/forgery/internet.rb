@@ -19,4 +19,9 @@ class Forgery::Internet < Forgery
   def self.cctld
     dictionaries[:country_code_top_level_domains].random
   end
+
+  def self.ip_v4
+    (1..4).map{rand(256)}.join('.')
+  end
+
 end
