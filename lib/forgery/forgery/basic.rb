@@ -50,7 +50,7 @@ class Forgery::Basic < Forgery
   #
   #   Forgery(:basic).encrypt('your-password', Time.utc(2009))
   #   # => "4b157c2fbf430b962842d21926eaa887c3a12f81"
-  def self.encrypt(password="password", salt=Time.now.to_s)
+  def self.encrypt(password="password", salt=::Time.now.to_s)
     Digest::SHA1.hexdigest("--#{salt}--#{password}--")
   end
 
