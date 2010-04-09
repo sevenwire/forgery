@@ -94,6 +94,7 @@ Thanks to the authors and contributors:
 * Darcy Laycock (Sutto)
 * Lukas Westermann (lwe)
 * Mike Dungan
+* Andrew Selder (aselder)
 
 ## Notes
 
