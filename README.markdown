@@ -92,6 +92,7 @@ Thanks to the authors and contributors:
 * Josh Nichols (technicalpickles)
 * Jeremy Stephens (viking aka crookshanks)
 * Darcy Laycock (Sutto)
+* Lukas Westermann (lwe)
 
 ## Notes
 
