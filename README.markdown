@@ -1,5 +1,4 @@
-Forgery
-=======
+# Forgery
 
 The Problem:
 Making meaningful development data for your application.
@@ -12,14 +11,23 @@ Forgery generates fake data from dictionaries, formats, and recipes.  The
 plugin includes a generator providing directories to make your own forgeries.
 
 
-Install
-=======
+## Install
 
-    config.gem 'forgery', :source => 'http://gemcutter.org'
+### Run
 
+    gem install forgery
 
-Generator
-=========
+### Rails 2
+
+    # Add this to your config/environment.rb
+    config.gem 'forgery'
+
+### Rails 3
+
+    # Add this to your Gemfile
+    gem 'forgery'
+
+## Generator
 
     ruby script/generate forgery
 
@@ -42,8 +50,7 @@ See the forgeries in the plugin for examples of how to write your own.
 See which dictionaries each forgery uses to override them with your own.
 
 
-Examples
-========
+## Examples
 
 Here I'll supply a few examples of how it works, in general.  See each forgery
 for individual examples.
@@ -66,20 +73,17 @@ for individual examples.
     Forgery(:monetary).formatted_money # => "$3.48"
     Forgery(:monetary).money :min => 100, :max => 1000 # => "923.36"
 
-DOCUMENTATION
-=============
+## DOCUMENTATION
 
-Documentation can be found at [http://docs.github.com/sevenwire/forgery](http://docs.github.com/sevenwire/forgery)
+Documentation can be found at [http://sevenwire.github.com/forgery/](http://sevenwire.github.com/forgery/)
 
-TODO
-====
+## TODO
 
 * Add instanced forgeries for more relative information generation.
 * Add markov chains.
 * Add a way to use probability in forgeries.
 
-Thanks
-======
+## Thanks
 
 Thanks to the authors and contributors:
 
@@ -89,8 +93,7 @@ Thanks to the authors and contributors:
 * Jeremy Stephens (viking aka crookshanks)
 * Darcy Laycock (Sutto)
 
-Notes
-=====
+## Notes
 
 This is a work in progress.  If you find bugs or have forgeries to contribute,
 we'll gladly take them and give credit.
