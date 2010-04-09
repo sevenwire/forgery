@@ -87,6 +87,7 @@ Thanks to the authors and contributors:
 * Brandon Arbini (brandonarbini)
 * Josh Nichols (technicalpickles)
 * Jeremy Stephens (viking aka crookshanks)
+* Darcy Laycock (Sutto)
 
 Notes
 =====
