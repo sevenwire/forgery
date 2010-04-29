@@ -135,4 +135,16 @@ class Forgery::Address < Forgery
     dictionaries[:countries].random
   end
 
+
+  # Gets a random continent out of the 'continents' dictionary.
+  #
+  #   Forgery(:address).continent
+  #   # => "Africa"
+  #
+  #   Forgery(:address).continent
+  #   # => "Europe"
+  def self.continent
+    dictionaries[:continents].random
+  end
+
 end
