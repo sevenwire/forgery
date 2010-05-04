@@ -18,7 +18,7 @@ class Forgery
   end
 
   def self.rails_root
-    if defined?(Rails)
+    if defined?(Rails) && Rails.respond_to?(:root)
       Rails.root.to_s
     elsif defined?(RAILS_ROOT)
       RAILS_ROOT
