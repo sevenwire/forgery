@@ -117,6 +117,10 @@ describe Forgery::Basic do
     it "should return text whose length is <= the at_most option" do
       Forgery::Basic.text(:at_least => 15).size.should <= 15
     end
+    
+    it "should return text whose length is == the exactly option" do
+      Forgery::Basic.text(:exactly => 20).size.should == 20
+    end
 
     it "should only uppercase characters" do
       Forgery::Basic.text(:allow_lower => false,

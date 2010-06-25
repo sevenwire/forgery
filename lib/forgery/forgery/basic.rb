@@ -86,20 +86,21 @@ class Forgery::Basic < Forgery
   end
 
   def self.text(options={})
-    options = {:at_least => 10,
-               :at_most => 15,
-               :allow_lower => true,
-               :allow_upper => true,
+    options = {:at_least      => 10,
+               :at_most       => 15,
+               :allow_lower   => true,
+               :allow_upper   => true,
                :allow_numeric => true,
-               :allow_special => false}.merge!(options)
+               :allow_special => false,
+               :exactly       => nil}.merge!(options)
 
     allowed_characters = []
     allowed_characters += LOWER_ALPHA if options[:allow_lower]
     allowed_characters += UPPER_ALPHA if options[:allow_upper]
     allowed_characters += NUMERIC if options[:allow_numeric]
     allowed_characters += SPECIAL_CHARACTERS if options[:allow_special]
-
-    length = (options[:at_least]..options[:at_most]).random
+    
+    length = options[:exactly] || (options[:at_least]..options[:at_most]).random
 
     allowed_characters.random_subset(length).join
   end
