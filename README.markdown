@@ -31,6 +31,10 @@ plugin includes a generator providing directories to make your own forgeries.
 
     ruby script/generate forgery
 
+## Rails 3 Generator
+
+		rails generate forgery
+
 In a rails project this generator creates:
 
 * Rails.root/lib/forgery
