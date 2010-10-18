@@ -67,6 +67,11 @@ describe Forgery::Address do
     Forgery.dictionaries[:countries].should include(country)
   end
 
+  it "should return a random continent" do
+    continent = Forgery::Address.continent
+    Forgery.dictionaries[:continents].should include(continent)
+  end
+
   it "should return a random zip code" do
     zip_format = Forgery::Address.zip.gsub(/\d/, '#')
     Forgery.formats[:zip].should include(zip_format)
