@@ -46,7 +46,7 @@ In a rails project this generator creates:
 You can then use these directories to write your own dictionaries, class
 extensions, forgeries, and formats.
 
-Forgery will look first here for dictionaries and formats, so you can override
+Forgery will first look here for dictionaries and formats, so you can override
 the ones used in the plugin.
 
 See the forgeries in the plugin for examples of how to write your own.
@@ -100,6 +100,7 @@ Thanks to the authors and contributors:
 * Mike Dungan
 * Andrew Selder (aselder)
 * Thomas Sinclair (anathematic)
+* Stafford Brunk (wingrunr21)
 
 ## Notes
 
