@@ -2,3 +2,4 @@
 /doc
 /pkg
 /forgery-*.gem
+.DS_Store

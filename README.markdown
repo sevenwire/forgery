@@ -87,8 +87,8 @@ Dictionaries are files with no extensions.  Entries are separated by new lines.
 ###Forgeries
 Forgeries are classes that inherit from the Forgery class.  A basic forgery definition is as follows
 
-class NewForgery < Forgery
-end
+	class NewForgery < Forgery
+	end
 
 ###Extensions
 Extensions are additional methods/functionality that are added to classes (Ruby core or otherwise)
