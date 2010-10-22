@@ -40,7 +40,8 @@ class Forgery::Name < Forgery
     dictionaries[:name_suffixes].random
   end
 
-	def self.location
-		dictionaries[:locations].random
-	end
+  def self.location
+    dictionaries[:locations].random
+  end
+
 end

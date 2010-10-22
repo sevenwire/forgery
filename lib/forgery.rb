@@ -31,5 +31,5 @@ end
 # Only run this for Rails < 3.0 since we need to use a Railtie to initialize >= 3.0
 Forgery.load_from! "#{Forgery.rails_root}/lib/forgery" if Forgery.rails? && Rails::VERSION::STRING < "3.0.0"
 
-#Include our Railtie if Rails >= 3.0.0
+# Include our Railtie if Rails >= 3.0.0
 require 'forgery/forgery_railtie' if Forgery.rails? && Rails::VERSION::STRING >= "3.0.0"

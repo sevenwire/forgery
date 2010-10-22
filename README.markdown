@@ -33,7 +33,7 @@ plugin includes a generator providing directories to make your own forgeries.
 
 ## Rails 3 Generator
 
-		rails generate forgery
+    rails generate forgery
 
 In a rails project this generator creates:
 
@@ -77,24 +77,29 @@ for individual examples.
     Forgery(:monetary).formatted_money # => "$3.48"
     Forgery(:monetary).money :min => 100, :max => 1000 # => "923.36"
 
-##Customization
+## Customization
+
 You can utilize the directories generated in /lib to customize the behavior of forgery.
+
 Examples of each of these components are available in the source.
 
-###Dictionaries
+### Dictionaries
+
 Dictionaries are files with no extensions.  Entries are separated by new lines.
 
-###Forgeries
+### Forgeries
+
 Forgeries are classes that inherit from the Forgery class.  A basic forgery definition is as follows
 
-	class NewForgery < Forgery
-	end
+    class NewForgery < Forgery
+    end
 
-###Extensions
-Extensions are additional methods/functionality that are added to classes (Ruby core or otherwise)
-that are loaded by Forgery.  Follow standard Ruby practices.
+### Extensions
 
-###Formats
+Extensions are additional methods/functionality that are added to classes (Ruby core or otherwise) that are loaded by Forgery.  Follow standard Ruby practices.
+
+### Formats
+
 Formatting for numerical fields.  Each numerical entry corresponds to a # mark.
 
 ## DOCUMENTATION
