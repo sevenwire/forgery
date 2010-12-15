@@ -1,15 +1,19 @@
+require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 class Forgery
-  class FileWriter < Forgery
+
+  class FileWriter
+    
     # Creates a dictionary file with data from a web page
-    def self.create_dictionary(dictionary_name, source_document, selector)
-      doc = Nokogiri::XML(open(source_document))
+    def self.create_dictionary(dictionary_name, source_url, selector)   
+      doc = open_document(source_url)
+      puts "DOC: #{doc.inspect}"
       lines = []
-      doc.search(elements_path).each do |node|
-        lines << node.content unless node.content == ''
+      doc.search(selector).each do |node|
+        lines << node.content
       end
-      create_file(file_name, lines)
+      file_path = create_file(dictionary_name, lines)
     end
     
     # Path to which new dictionaries will be written 
@@ -24,7 +28,7 @@ class Forgery
     end
 
     protected
-    
+    # Creates file with a line for each item in the supplied array
     def self.create_file(name, lines)
       file_path = File.join(write_path, name)
       File.open(file_path, "w") do |f|
@@ -34,7 +38,12 @@ class Forgery
         end
       end
       puts "Created file #{name} in #{write_path}"
-      file_path
+      file_path 
+    end
+    
+    # opens url so that nokogiri 
+    def self.open_document(url)
+      doc = Nokogiri::XML(open url)
     end
   end
 end
