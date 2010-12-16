@@ -6,9 +6,8 @@ class Forgery
   class FileWriter
     
     # Creates a dictionary file with data from a web page
-    def self.create_dictionary(dictionary_name, source_url, selector)   
-      doc = open_document(source_url)
-      puts "DOC: #{doc.inspect}"
+    def self.create_dictionary(dictionary_name, source_url, selector)
+      doc = open_page(source_url)
       lines = []
       doc.search(selector).each do |node|
         lines << node.content
@@ -40,10 +39,10 @@ class Forgery
       puts "Created file #{name} in #{write_path}"
       file_path 
     end
-    
-    # opens url so that nokogiri 
-    def self.open_document(url)
-      doc = Nokogiri::XML(open url)
+
+    # opens url and parses document
+    def self.open_page(url)
+      doc = Nokogiri.parse(open url)
     end
   end
 end

@@ -35,11 +35,3 @@ Rake::RDocTask.new do |t|
   t.options << '--line-numbers'
 end
 
-desc 'clear out rubinius files'
-task :clean do |t|
-  files = Dir.glob("./**/*.rbc")
-  files.each do |f|
-    File.delete(f)
-  end
-end
-
