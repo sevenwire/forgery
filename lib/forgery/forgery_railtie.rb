@@ -1,6 +1,5 @@
 require 'forgery'
 require 'rails'
-require 'file_writer'
 
 class ForgeryRailtie < Rails::Railtie
   initializer "forgery_railtie.initialize" do
