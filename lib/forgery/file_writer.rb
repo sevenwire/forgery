@@ -18,12 +18,12 @@ class Forgery
     # Path to which new dictionaries will be written 
     # './dictionaries' by default
     def self.write_path
-      @@write_path ||= File.join(File.dirname(__FILE__), :dictionaries.to_s)
+      @@write_path
     end
 
     # sets path to which new dictionaries will be written 
     def self.write_to!(path)
-      self.write_path = File.expand_path path
+      @@write_path = File.expand_path path
     end
 
     protected
