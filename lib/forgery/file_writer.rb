@@ -42,7 +42,7 @@ class Forgery
 
     # opens url and parses document
     def self.open_page(url)
-      doc = Nokogiri.parse(open url)
+      Nokogiri.parse(open url)
     end
   end
 end
