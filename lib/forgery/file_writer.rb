@@ -4,7 +4,7 @@ require 'open-uri'
 class Forgery
 
   class FileWriter
-    
+
     # Creates a dictionary file with data from a web page
     def self.create_dictionary(dictionary_name, source_url, css_or_xpath)
       doc = open_page(source_url)
@@ -14,16 +14,16 @@ class Forgery
       end
       file_path = create_file(dictionary_name, lines)
     end
-    
+
     # Path to which new dictionaries will be written 
     # './dictionaries' by default
     def self.write_path
       @@write_path ||= File.join(File.dirname(__FILE__), :dictionaries.to_s)
     end
-  
+
     # sets path to which new dictionaries will be written 
-    def self.write_to!(path) 
-      @@write_path = File.expand_path path, '/'
+    def self.write_to!(path)
+      self.write_path = File.expand_path path
     end
 
     protected
@@ -37,7 +37,7 @@ class Forgery
         end
       end
       puts "Created file #{name} in #{write_path}"
-      file_path 
+      file_path
     end
 
     # opens url and parses document
