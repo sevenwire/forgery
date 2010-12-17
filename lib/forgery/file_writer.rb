@@ -23,7 +23,7 @@ class Forgery
   
     # sets path to which new dictionaries will be written 
     def self.write_to!(path) 
-      @@write_path = File.expand_path(path)
+      @@write_path = path
     end
 
     protected

@@ -5,7 +5,7 @@ require 'file_writer'
 class ForgeryRailtie < Rails::Railtie
   initializer "forgery_railtie.initialize" do
     Forgery.load_from! "#{Rails.root}/lib/forgery"
-    Forgery.write_to! "#{Rails.root}/lib/forgery/dictionaries"
+    Forgery::FileWriter.write_to! "#{Rails.root}/lib/forgery/dictionaries"
   end
 
   rake_tasks do
