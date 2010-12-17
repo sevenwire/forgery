@@ -6,10 +6,10 @@ class Forgery
   class FileWriter
     
     # Creates a dictionary file with data from a web page
-    def self.create_dictionary(dictionary_name, source_url, selector)
+    def self.create_dictionary(dictionary_name, source_url, css_or_xpath)
       doc = open_page(source_url)
       lines = []
-      doc.search(selector).each do |node|
+      doc.search(css_or_xpath).each do |node|
         lines << node.content
       end
       file_path = create_file(dictionary_name, lines)
@@ -18,7 +18,7 @@ class Forgery
     # Path to which new dictionaries will be written 
     # './dictionaries' by default
     def self.write_path
-      @@write_path ||= File.join(File.dirname(__FILE__), :dictionaries)
+      @@write_path ||= File.join(File.dirname(__FILE__), :dictionaries.to_s)
     end
   
     # sets path to which new dictionaries will be written 

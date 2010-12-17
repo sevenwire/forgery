@@ -1,14 +1,13 @@
 require 'rake'
 require 'rake/rdoctask'
 require 'spec/rake/spectask'
-require 'nokogiri'
+require File.expand_path('lib/forgery/file_writer')
 
 begin
   require 'sdoc_helpers'
 rescue LoadError
   puts "sdoc support not enabled. Please gem install sdoc-helpers."
 end
-
 
 desc 'Default: run specs with rcov.'
 task :default => :rcov_spec
@@ -35,3 +34,14 @@ Rake::RDocTask.new do |t|
   t.options << '--line-numbers'
 end
 
+desc "Create a dictionary file from web content"
+task :create_dictionary, :dictionary_name, :source_url, :css_or_xpath do |t, args|
+  puts Dir.pwd
+  dictionary_name = args[:dictionary_name].to_s || raise("parameter :dictionary_name is required")
+  puts dictionary_name
+  source_url = args[:source_url].to_s || raise("parameter :source_url is required")
+  puts source_url
+  css_or_xpath = args[:css_or_xpath].to_s || raise("parameter :css_or_xpath is required")
+  puts css_or_xpath
+  Forgery::FileWriter.create_dictionary dictionary_name, source_url, css_or_xpath
+end
