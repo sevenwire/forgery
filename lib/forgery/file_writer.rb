@@ -6,10 +6,10 @@ class Forgery
   class FileWriter
 
     # Creates a dictionary file with data from a web page
-    def self.create_dictionary(dictionary_name, source_url, css_or_xpath)
+    def self.create_dictionary(dictionary_name, source_url, *css_or_xpath)
       doc = open_page(source_url)
       lines = []
-      doc.search(css_or_xpath).each do |node|
+      doc.search(*css_or_xpath).each do |node|
         lines << node.content
       end
       file_path = create_file(dictionary_name, lines)

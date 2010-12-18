@@ -34,11 +34,20 @@ Rake::RDocTask.new do |t|
   t.options << '--line-numbers'
 end
 
-desc "Create a dictionary file from web content."
+desc %q{
+Create a dictionary file from web content (xml or html).
+
+:dictionary_name  -- the name of your new dictionary file
+:source_url       -- web page containing the data for your dictionary file
+:css_or_xpath     -- css or xpath selector(s) to element(s) containing the desired data
+
+Usage:
+rake create_dictionary[test,'http://www.html_or_xml_page.com','li']
+}
 task :create_dictionary, :dictionary_name, :source_url, :css_or_xpath do |t, args|
   dictionary_name = args[:dictionary_name].to_s || raise("parameter :dictionary_name is required")
   source_url = args[:source_url].to_s || raise("parameter :source_url is required")
   css_or_xpath = args[:css_or_xpath].to_s || raise("parameter :css_or_xpath is required")
-  
+
   Forgery::FileWriter.create_dictionary dictionary_name, source_url, css_or_xpath
 end
