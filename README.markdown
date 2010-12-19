@@ -46,6 +46,7 @@ In a rails project this generator creates:
 You can then use these directories to write your own dictionaries, class
 extensions, forgeries, and formats.
 
+
 Forgery will first look here for dictionaries and formats, so you can override
 the ones used in the plugin.
 
@@ -54,6 +55,19 @@ See the forgeries in the plugin for examples of how to write your own.
 See which dictionaries each forgery uses to override them with your own.
 
 
+The Rails 3 plugin also registers a rake task which can generate new dictionaries
+from html or xml on the web.
+
+Writes to '${RAILS_ROOT}/lib/forgery/dictionaries' by default
+(this can be overriden by setting Forgery::FileWriter#write_to!)
+
+Parameters:
+:dictionary_name  -- the name of your new dictionary file
+:source_url       -- web page containing the data for your dictionary file
+:css_or_xpath     -- css or xpath selector(s) to element(s) containing the desired data
+
+Usage:
+rake create_dictionary[name_of_file,'http://www.html_or_xml_page.com','li']
 ## Examples
 
 Here I'll supply a few examples of how it works, in general.  See each forgery

@@ -16,12 +16,12 @@ class Forgery
     end
 
     # Path to which new dictionaries will be written 
-    # './dictionaries' by default
+    # '${GEM_HOME}/lib/forgery/dictionaries' by default
     def self.write_path
       @@write_path
     end
 
-    # sets path to which new dictionaries will be written 
+    # Sets path to which new dictionaries will be written
     def self.write_to!(path)
       @@write_path = File.expand_path path
     end
