@@ -67,7 +67,7 @@ Parameters:
 :css_or_xpath     -- css or xpath selector(s) to element(s) containing the desired data
 
 Usage:
-rake create_dictionary[name_of_file,'http://www.html_or_xml_page.com','li']
+    rake create_dictionary[name_of_file,'http://www.html_or_xml_page.com','li']
 ## Examples
 
 Here I'll supply a few examples of how it works, in general.  See each forgery
