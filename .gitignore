@@ -4,5 +4,5 @@
 /forgery-*.gem
 .DS_Store
 .rakeTasks
-.markdown
 .rbc
+.iml
