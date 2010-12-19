@@ -12,7 +12,8 @@ class Forgery
       doc.search(*css_or_xpath).each do |node|
         lines << node.content
       end
-      file_path = create_file(dictionary_name, lines)
+      raise empty_msg if lines.empty?
+      create_file(dictionary_name, lines)
     end
 
     # Path to which new dictionaries will be written 
@@ -26,7 +27,7 @@ class Forgery
       @@write_path = File.expand_path path
     end
 
-    protected
+    private
     # Creates file with a line for each item in the supplied array
     def self.create_file(name, lines)
       file_path = File.join(write_path, name)
@@ -43,6 +44,11 @@ class Forgery
     # opens url and parses document
     def self.open_page(url)
       Nokogiri.parse(open url)
+    end
+
+    def self.empty_msg
+      msg = %q{No items found. Please double check your css or xpath selectors
+      and ensure that the site you are trying to reach does not block scripts. }
     end
   end
 end

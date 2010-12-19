@@ -4,7 +4,7 @@ describe Forgery::FileWriter do
   before :each do
     Forgery::FileWriter.write_to! 'spec/data/dictionaries'
     @lines = ['one', 'two', 'three']
-    @file = Forgery::FileWriter.create_file 'test_file', @lines
+    @file = Forgery::FileWriter.create_file 'sample', @lines
   end
 
   it "should create a dictionary file when given an array" do
@@ -19,29 +19,34 @@ describe Forgery::FileWriter do
   it "should create a dictionary file an html page" do
     html_doc = get_sample 'mock_web_page.html'
     Forgery::FileWriter.stub!(:open_page).and_return(html_doc)
-    dictionary = Forgery::FileWriter.create_dictionary('numbers', 'http://www.fakeurl.com', '#list li')
+    dictionary = Forgery::FileWriter.create_dictionary('sample', 'http://www.fakeurl.com', '#list li')
     File.exist?(File.expand_path(dictionary)).should be_true
     IO.readlines(dictionary)[1].chomp.should == 'dos'
-    File.delete(dictionary)
   end
 
   it "should create a dictionary file from xml content" do
     xml_doc = get_sample 'mock_xml_doc.xml'
     Forgery::FileWriter.stub!(:open_page).and_return(xml_doc)
-    dictionary = Forgery::FileWriter.create_dictionary('dogs', 'http://www.fakeurl.com', '//dog')
+    dictionary = Forgery::FileWriter.create_dictionary('sample', 'http://www.fakeurl.com', '//dog')
     File.exist?(File.expand_path(dictionary)).should be_true
     IO.readlines(dictionary)[0].chomp.should == 'Labrador Retriever'
-    File.delete(dictionary)
   end
 
   it "should accept multiple selectors for html/xml content" do
     html_doc = get_sample('mock_web_page.html')
     Forgery::FileWriter.stub!(:open_page).and_return(html_doc)
-    dictionary = Forgery::FileWriter.create_dictionary('multiple_selectors_sample', 'http://www.fakeurl.com', 'h1', 'h2', 'p')
+    dictionary = Forgery::FileWriter.create_dictionary('sample', 'http://www.fakeurl.com', 'h1', 'h2', 'p')
     File.exist?(File.expand_path(dictionary)).should be_true
     IO.readlines(dictionary)[0].chomp.should == 'Title'
     IO.readlines(dictionary)[2].chomp.should == 'Paragraph.'
-    File.delete(dictionary)
+  end
+
+  it "should raise an exception if no dictionary items are found" do
+    xml_doc = get_sample 'mock_xml_doc.xml'
+    msg = Forgery::FileWriter.send :empty_msg
+    lambda {
+      Forgery::FileWriter.create_dictionary('sample', 'http://www.fakeurl.com', 'cat')
+    }.should raise_error(RuntimeError, msg)
   end
 
   after :each do
