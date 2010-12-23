@@ -23,4 +23,9 @@ describe Range do
   it "should return nil if the maximum is less than the minimum" do
     ("z".."a").random.should be_nil
   end
+
+  it "should not return the maximum at excluded range" do
+    srand(6) # seeds rand for rand(10) == 9
+    (1...10).random.should_not be_equal 10
+  end
 end
