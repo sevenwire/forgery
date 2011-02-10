@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.name        = "forgery"
   s.version     = Forgery::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = "Nathan Sutton"
-  s.email       = "nate@sevenwire.com"
+  s.authors     = ["Nathan Sutton", "Brandon Arbini"]
+  s.email       = ["nate@zencoder.com", "brandon@zencoder.com"]
   s.homepage    = "http://github.com/sevenwire/forgery"
   s.summary     = "Easy and customizable generation of forged data."
   s.description = "Easy and customizable generation of forged data. Can be used as a gem or a rails plugin. Includes rails generators for creating your own forgeries."
