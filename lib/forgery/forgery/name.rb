@@ -44,4 +44,7 @@ class Forgery::Name < Forgery
     dictionaries[:locations].random
   end
 
+  def self.industry
+    dictionaries[:industries].random
+  end
 end
