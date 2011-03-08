@@ -16,6 +16,10 @@ class Forgery::Internet < Forgery
     user_name + '@' + domain_name
   end
 
+  def self.email_subject(options={})
+    Forgery::LoremIpsum.title(options)
+  end
+
   def self.cctld
     dictionaries[:country_code_top_level_domains].random
   end
