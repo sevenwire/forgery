@@ -18,6 +18,8 @@ class Forgery::LoremIpsum < Forgery
       paragraph(options)
     when :paragraphs
       paragraphs(quantity, options)
+    when :title
+      title(options)
     end
   end
 
@@ -86,6 +88,9 @@ class Forgery::LoremIpsum < Forgery
     paragraphs.join(options[:separator])
   end
 
+  def self.title(options={})
+    sentence(options).chop.gsub(/\b./){$&.upcase}
+  end
 
 protected
 
