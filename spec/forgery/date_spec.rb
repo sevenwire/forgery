@@ -81,4 +81,54 @@ describe Forgery::Date do
       (0..5).map { |i| Date.today.year - i - 5 }.should include(year)
     end
   end
+
+  describe '.date' do
+    it 'should return a valid date within 7300 days of the current date' do
+      date = Forgery::Date.date
+      date.should > Date.today - 7300
+      date.should < Date.today + 7300
+    end
+  end
+
+  describe '.date(:future => true)' do
+    it 'should return a date greater than the current one' do
+      date = Forgery::Date.date(:future => true)
+      date.should >= Date.today
+    end
+  end
+
+  describe '.date(:min_delta => 5, :max_delta => 5, :future => true)' do
+    it 'should return a date 5 days from the current one' do
+      date = Forgery::Date.date(:min_delta => 5, :max_delta => 5, :future => true)
+      date.should >= Date.today + 5
+    end
+  end
+
+  describe '.date(:min_delta => 5, :max_delta => 10, :future => true)' do
+    it 'should return a date that is between 5 and 10 days greater than the current one' do
+      date = Forgery::Date.date(:min_delta => 5, :max_delta => 10, :future => true)
+      (0..5).map { |i| Date.today + i + 5 }.should include(date)
+    end
+  end
+
+  describe '.date(:past => true)' do
+    it 'should return a date less than the current one' do
+      date = Forgery::Date.date(:past => true)
+      date.should <= Date.today
+    end
+  end
+
+  describe '.date(:min_delta => 5, :max_delta => 5, :past => true)' do
+    it 'should return a date 5 days until the current one' do
+      date = Forgery::Date.date(:min_delta => 5, :max_delta => 5, :past => true)
+      date.should == Date.today - 5
+    end
+  end
+
+  describe '.date(:min_delta => 5, :max_delta => 10, :past => true)' do
+    it 'should return a date that is between 5 and 10 days less than the current one' do
+      date = Forgery::Date.date(:min_delta => 5, :max_delta => 10, :past => true)
+      (0..5).map { |i| Date.today - i - 5 }.should include(date)
+    end
+  end
 end
