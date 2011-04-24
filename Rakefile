@@ -1,6 +1,8 @@
+require 'rubygems'
 require 'rake'
+require 'rspec/core'
+require 'rspec/core/rake_task'
 require 'rake/rdoctask'
-require 'spec/rake/spectask'
 require File.expand_path('./lib/forgery/file_writer')
 
 begin
@@ -13,15 +15,15 @@ desc 'Default: run specs with rcov.'
 task :default => :rcov_spec
 
 desc 'Run the specs'
-Spec::Rake::SpecTask.new(:spec) do |t|
-  t.spec_opts = ['--colour --format progress --loadby mtime --reverse']
-  t.spec_files = FileList['spec/**/*_spec.rb']
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.rspec_opts = ['--colour --format progress']
+  t.pattern = FileList['spec/**/*_spec.rb']
 end
 
 desc 'Run the specs with rcov'
-Spec::Rake::SpecTask.new("rcov_spec") do |t|
-  t.spec_files = FileList['spec/**/*_spec.rb']
-  t.spec_opts = ['--color']
+RSpec::Core::RakeTask.new("rcov_spec") do |t|
+  t.pattern = FileList['spec/**/*_spec.rb']
+  t.rspec_opts = ['--color']
   t.rcov = true
   t.rcov_opts = ['--exclude', '^spec,/gems/']
 end
