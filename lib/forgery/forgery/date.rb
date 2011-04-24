@@ -66,6 +66,6 @@ class Forgery::Date < Forgery
     end
 
     #Apply our delta to today
-    DateTime.now.to_date + delta
+    ::Date.today + delta
   end
 end
