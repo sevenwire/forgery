@@ -34,18 +34,8 @@ class Forgery::Date < Forgery
   def self.year(options={})
     options.reverse_merge!(:future => false, :past => false, :min_delta => 0, :max_delta => 20)
 
-    #Calculate our delta
-    delta = options[:min_delta] + rand(options[:max_delta] + 1 - options[:min_delta]).to_i
-
-    #Potentially negate our delta if future is false
-    unless (options[:future])
-      if options[:past] || rand(2).zero?
-        delta *= -1
-      end
-    end
-
     #Apply our delta to this year
-    DateTime.now.year + delta
+    DateTime.now.year + delta(options)
   end
 
   def self.day
@@ -55,7 +45,13 @@ class Forgery::Date < Forgery
   def self.date(options={})
     options.reverse_merge!(:future => false, :past => false, :min_delta => 0, :max_delta => 7300)
 
-    #Calculate our delta
+    #Apply our delta to today
+    ::Date.today + delta(options)
+  end
+
+  private
+  #Calculate our delta
+  def self.delta(options)
     delta = options[:min_delta] + rand(options[:max_delta] + 1 - options[:min_delta]).to_i
 
     #Potentially negate our delta if future is false
@@ -64,8 +60,6 @@ class Forgery::Date < Forgery
         delta *= -1
       end
     end
-
-    #Apply our delta to today
-    ::Date.today + delta
+    delta
   end
 end
