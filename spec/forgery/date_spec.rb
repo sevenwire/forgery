@@ -50,7 +50,7 @@ describe Forgery::Date do
   describe '.year(:min_delta => 5, :max_delta => 5, :future => true)' do
     it 'should return a year 5 years from the current one' do
       year = Forgery::Date.year(:min_delta => 5, :max_delta => 5, :future => true)
-      year.should >= Date.today.year + 5
+      year.should == Date.today.year + 5
     end
   end
 
@@ -100,7 +100,7 @@ describe Forgery::Date do
   describe '.date(:min_delta => 5, :max_delta => 5, :future => true)' do
     it 'should return a date 5 days from the current one' do
       date = Forgery::Date.date(:min_delta => 5, :max_delta => 5, :future => true)
-      date.should >= Date.today + 5
+      date.should == Date.today + 5
     end
   end
 
