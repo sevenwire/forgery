@@ -60,4 +60,25 @@ describe Forgery::Date do
       (0..5).map { |i| Date.today.year + i + 5 }.should include(year)
     end
   end
+
+  describe '.year(:past => true)' do
+    it 'should return a year less than the current one' do
+      year = Forgery::Date.year(:past => true)
+      year.should <= Date.today.year
+    end
+  end
+
+  describe '.year(:min_delta => 5, :max_delta => 5, :past => true)' do
+    it 'should return a year 5 years until the current one' do
+      year = Forgery::Date.year(:min_delta => 5, :max_delta => 5, :past => true)
+      year.should == Date.today.year - 5
+    end
+  end
+
+  describe '.year(:min_delta => 5, :max_delta => 10, :past => true)' do
+    it 'should return a year that is between 5 and 10 years less than the current one' do
+      year = Forgery::Date.year(:min_delta => 5, :max_delta => 10, :past => true)
+      (0..5).map { |i| Date.today.year - i - 5 }.should include(year)
+    end
+  end
 end
