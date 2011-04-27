@@ -140,6 +140,8 @@ Thanks to the authors and contributors:
 * Andrew Selder (aselder)
 * Thomas Sinclair (anathematic)
 * Stafford Brunk (wingrunr21)
+* SixArm (SixArm)
+* Akira Matsuda (amatsuda)
 
 ## Notes
 
