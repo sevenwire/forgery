@@ -46,7 +46,7 @@ describe Forgery::Internet do
       nums.each do |num|
         num.should =~ /\d{1,3}/
         num.to_i.should <= 255
-        num.to_i.should >= 0 
+        num.to_i.should >= 0
       end
     end
   end

@@ -31,6 +31,10 @@ plugin includes a generator providing directories to make your own forgeries.
 
     ruby script/generate forgery
 
+## Rails 3 Generator
+
+    rails generate forgery
+
 In a rails project this generator creates:
 
 * Rails.root/lib/forgery
@@ -42,7 +46,8 @@ In a rails project this generator creates:
 You can then use these directories to write your own dictionaries, class
 extensions, forgeries, and formats.
 
-Forgery will look first here for dictionaries and formats, so you can override
+
+Forgery will first look here for dictionaries and formats, so you can override
 the ones used in the plugin.
 
 See the forgeries in the plugin for examples of how to write your own.
@@ -50,6 +55,19 @@ See the forgeries in the plugin for examples of how to write your own.
 See which dictionaries each forgery uses to override them with your own.
 
 
+The Rails 3 plugin also registers a rake task which can generate new dictionaries
+from html or xml on the web.
+
+Writes to '${RAILS_ROOT}/lib/forgery/dictionaries' by default
+(this can be overriden by setting Forgery::FileWriter#write_to!)
+
+Parameters:
+:dictionary_name  -- the name of your new dictionary file
+:source_url       -- web page containing the data for your dictionary file
+:css_or_xpath     -- css or xpath selector(s) to element(s) containing the desired data
+
+Usage:
+    rake create_dictionary[name_of_file,'http://www.html_or_xml_page.com','li']
 ## Examples
 
 Here I'll supply a few examples of how it works, in general.  See each forgery
@@ -72,6 +90,31 @@ for individual examples.
     Forgery(:monetary).money # => "1.58"
     Forgery(:monetary).formatted_money # => "$3.48"
     Forgery(:monetary).money :min => 100, :max => 1000 # => "923.36"
+
+## Customization
+
+You can utilize the directories generated in /lib to customize the behavior of forgery.
+
+Examples of each of these components are available in the source.
+
+### Dictionaries
+
+Dictionaries are files with no extensions.  Entries are separated by new lines.
+
+### Forgeries
+
+Forgeries are classes that inherit from the Forgery class.  A basic forgery definition is as follows
+
+    class NewForgery < Forgery
+    end
+
+### Extensions
+
+Extensions are additional methods/functionality that are added to classes (Ruby core or otherwise) that are loaded by Forgery.  Follow standard Ruby practices.
+
+### Formats
+
+Formatting for numerical fields.  Each numerical entry corresponds to a # mark.
 
 ## DOCUMENTATION
 
@@ -96,6 +139,9 @@ Thanks to the authors and contributors:
 * Mike Dungan
 * Andrew Selder (aselder)
 * Thomas Sinclair (anathematic)
+* Stafford Brunk (wingrunr21)
+* SixArm (SixArm)
+* Akira Matsuda (amatsuda)
 
 ## Notes
 

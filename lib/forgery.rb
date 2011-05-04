@@ -5,6 +5,7 @@ current_path = File.expand_path(File.dirname(__FILE__)) + '/'
 
 # Loading forgery helpers.
 require 'forgery/file_reader'
+require 'forgery/file_writer'
 require 'forgery/dictionaries'
 require 'forgery/formats'
 
@@ -27,6 +28,8 @@ Dir[current_path + 'forgery/forgery/**/*.rb'].uniq.each do |file|
   require file
 end
 
-# Loading rails forgeries to override current forgery methods and add new
-# forgeries
-Forgery.load_from! "#{Forgery.rails_root}/lib/forgery" if Forgery.rails?
+# Loading rails forgeries to override current forgery methods and add new forgeries
+# Only run this for Rails < 3.0 since we need to use a Railtie to initialize >= 3.0
+Forgery.load_from! "#{Forgery.rails_root}/lib/forgery" if Forgery.rails? && Rails::VERSION::STRING < "3.0.0"
+# Include our Railtie if Rails >= 3.0.0
+require 'forgery/forgery_railtie' if Forgery.rails? && Rails::VERSION::STRING >= "3.0.0"
