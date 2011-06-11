@@ -8,11 +8,11 @@ class Forgery::BaconIpsum < Forgery::LoremIpsum
 protected
 
   def self.bacon_ipsum_words
-    @@bacon_ipsum_words ||= dictionaries[:bacon_ipsum].join(" ").downcase.gsub(/\.|,|;/, '').split(" ")
+    @@bacon_ipsum_words ||= dictionaries[DICT_KEY].join(" ").downcase.gsub(/\.|,|;/, '').split(" ")
   end
 
   def self.bacon_ipsum_characters
-    @@bacon_ipsum_characters ||= dictionaries[:bacon_ipsum].join("").downcase.gsub(/[^a-z\s]/,'')
+    @@bacon_ipsum_characters ||= dictionaries[DICT_KEY].join("").downcase.gsub(/[^a-z\s]/,'')
   end
 
   class << self
