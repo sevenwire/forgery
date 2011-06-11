@@ -1,4 +1,6 @@
 class Forgery::LoremIpsum < Forgery
+  
+  DICT_KEY = :lorem_ipsum
 
   def self.text(what=:sentence, quantity=2, options={})
     case what
@@ -48,9 +50,9 @@ class Forgery::LoremIpsum < Forgery
   end
 
   def self.sentences(quantity=2, options={})
-    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length-quantity)) if quantity.is_a?(Fixnum)
+    options.merge!(:random_limit => (dictionaries[DICT_KEY].length-quantity)) if quantity.is_a?(Fixnum)
 
-    dictionaries[:lorem_ipsum][range_from_quantity(quantity, options)].join(" ")
+    dictionaries[DICT_KEY][range_from_quantity(quantity, options)].join(" ")
   end
 
   def self.paragraph(options={})
@@ -64,7 +66,7 @@ class Forgery::LoremIpsum < Forgery
                              :end => "" },
                            :html => false,
                            :sentences => 3)
-    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length/options[:sentences])-quantity) if quantity.is_a?(Fixnum)
+    options.merge!(:random_limit => (dictionaries[DICT_KEY].length/options[:sentences])-quantity) if quantity.is_a?(Fixnum)
 
     if options[:html]
       options[:wrap] = { :start => "<p>",
@@ -79,7 +81,7 @@ class Forgery::LoremIpsum < Forgery
     range.to_a.length.times do |i|
       paragraphs << (
         options[:wrap][:start] +
-        dictionaries[:lorem_ipsum][start..(start+options[:sentences]-1)].join(" ") +
+        dictionaries[DICT_KEY][start..(start+options[:sentences]-1)].join(" ") +
         options[:wrap][:end]
       )
       start += options[:sentences]
@@ -106,11 +108,11 @@ protected
   end
 
   def self.lorem_ipsum_words
-    @@lorem_ipsum_words ||= dictionaries[:lorem_ipsum].join(" ").downcase.gsub(/\.|,|;/, '').split(" ")
+    @@lorem_ipsum_words ||= dictionaries[DICT_KEY].join(" ").downcase.gsub(/\.|,|;/, '').split(" ")
   end
 
   def self.lorem_ipsum_characters
-    @@lorem_ipsum_characters ||= dictionaries[:lorem_ipsum].join("").downcase.gsub(/[^a-z\s]/,'')
+    @@lorem_ipsum_characters ||= dictionaries[DICT_KEY].join("").downcase.gsub(/[^a-z\s]/,'')
   end
 
 end
