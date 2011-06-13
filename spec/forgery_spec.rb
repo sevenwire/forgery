@@ -41,11 +41,14 @@ describe Forgery do
     Forgery(:lorem_ipsum, :text, :sentences, 2)
   end
 
-  it "should return the rails root path if RAILS_ROOT is defined" do
+  it "should return the rails root path if Rails.root is defined" do
     RAILS_ROOT = '/path/from/rails/root/const'
     Forgery.rails_root.should == '/path/from/rails/root/const'
     Object.instance_eval { remove_const(:RAILS_ROOT) }
   end
+    RAILS_ROOT = '/path/from/rails/root/const'
+    Forgery.rails_root.should == '/path/from/rails/root/const'
+    Object.instance_eval { remove_const(:RAILS_ROOT) }
 
   it "should return the rails root path as a string if Rails.root is defined" do
     Rails = Object.new
@@ -54,7 +57,7 @@ describe Forgery do
     Object.instance_eval { remove_const(:Rails) }
   end
 
-  it "should return nil when RAILS_ROOT and Rails.root are not defined" do
+  it "should return nil when Rails.root and Rails.root are not defined" do
     Forgery.rails_root.should be_nil
   end
 
