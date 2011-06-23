@@ -2,7 +2,7 @@ require 'forgery'
 require 'rails'
 
 class ForgeryRailtie < Rails::Railtie
-  to_prepare do
+  config.to_prepare do
     Forgery.load_from! "#{Rails.root}/lib/forgery"
   end
 
