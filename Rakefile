@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'rspec/core'
 require 'rspec/core/rake_task'
-require 'rake/rdoctask'
+require 'rdoc/task'
 require File.expand_path('./lib/forgery/file_writer')
 
 begin
