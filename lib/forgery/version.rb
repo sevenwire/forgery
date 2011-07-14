@@ -1,3 +1,3 @@
 class Forgery
-  VERSION = "0.3.10"
+  VERSION = "0.3.11"
 end
