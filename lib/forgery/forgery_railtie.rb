@@ -1,5 +1,6 @@
 require 'forgery'
 require 'rails'
+require 'rake'
 
 class ForgeryRailtie < Rails::Railtie
   extend Rake::DSL
