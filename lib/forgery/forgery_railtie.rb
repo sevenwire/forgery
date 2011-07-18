@@ -1,7 +1,10 @@
 require 'forgery'
 require 'rails'
+require 'rake'
 
 class ForgeryRailtie < Rails::Railtie
+  extend Rake::DSL
+  
   config.to_prepare do
     Forgery.load_from! "#{Rails.root}/lib/forgery"
   end
@@ -12,7 +15,7 @@ class ForgeryRailtie < Rails::Railtie
       Create a dictionary file from web content (xml or html).
       Writes to the directory specified by Forgery::FileWriter#write_to!
       '${GEM_HOME}/lib/forgery/dictionaries' by default (standalone)
-      '${RAILS_ROOT}/lib/forgery/dictionaries' by default (as a Rails 3 plugin)
+      '${Rails.root}/lib/forgery/dictionaries' by default (as a Rails 3 plugin)
 
       Parameters:
       :dictionary_name  -- the name of your new dictionary file

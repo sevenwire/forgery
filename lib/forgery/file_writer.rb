@@ -37,7 +37,7 @@ class Forgery
           f.puts stripped_line unless stripped_line.empty?
         end
       end
-      puts "Created file #{name} in #{write_path}"
+      puts "Created file #{name} in #{write_path}" unless ENV["TESTING_VIA_RSPEC"]
       file_path
     end
 

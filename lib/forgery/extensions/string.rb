@@ -4,7 +4,7 @@ class String
   end
 
   # Ripped right out of rails
-  if !defined?(RAILS_ROOT)
+  if !defined?(Rails.root)
     def camelize(first_letter = :upper)
       case first_letter
       when :upper

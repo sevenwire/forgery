@@ -1,6 +1,8 @@
 require 'rspec'
 require File.expand_path(File.dirname(__FILE__) + '/../init')
 
+ENV["TESTING_VIA_RSPEC"] = "true"
+
 RSpec.configure do |config|
 
 end
