@@ -41,15 +41,6 @@ describe Forgery do
     Forgery(:lorem_ipsum, :text, :sentences, 2)
   end
 
-  it "should return the rails root path if Rails.root is defined" do
-    RAILS_ROOT = '/path/from/rails/root/const'
-    Forgery.rails_root.should == '/path/from/rails/root/const'
-    Object.instance_eval { remove_const(:RAILS_ROOT) }
-  end
-    RAILS_ROOT = '/path/from/rails/root/const'
-    Forgery.rails_root.should == '/path/from/rails/root/const'
-    Object.instance_eval { remove_const(:RAILS_ROOT) }
-
   it "should return the rails root path as a string if Rails.root is defined" do
     Rails = Object.new
     Rails.stub!(:root).and_return(Pathname.new('/path/from/rails/dot/root'))
