@@ -1,132 +1,122 @@
-# Forgery
+Forgery
+=======
 
-The Problem:
-Making meaningful development data for your application.
+**A Problem**:
+It's harder than *absolutely easy* to make meaningful, simple, data for testing and development.
 
-The Solution:
-A fake data generator that does more than just lorem ipsum and random text
-(well, it does those too, but also does much more).
+**A Solution**:
+A fake data generator that provides not only a host of basics and a rememberable syntax, but a customizable library to boot.
 
-Forgery generates fake data from dictionaries, formats, and recipes.  The
-plugin includes a generator providing directories to make your own forgeries.
-
-
-## Install
-
-### Run
-
-    gem install forgery
-
-### Rails 2
-
-    # Add this to your config/environment.rb
-    config.gem 'forgery'
-
-### Rails 3
-
-    # Add this to your Gemfile
-    gem 'forgery'
-
-## Rails 2 Generator
-
-    ruby script/generate forgery
-
-## Rails 3 Generator
-
-    rails generate forgery
-
-In a rails project this generator creates:
-
-* Rails.root/lib/forgery
-* Rails.root/lib/forgery/dictionaries
-* Rails.root/lib/forgery/extensions
-* Rails.root/lib/forgery/forgeries
-* Rails.root/lib/forgery/formats
-
-You can then use these directories to write your own dictionaries, class
-extensions, forgeries, and formats.
+Welcome to Forgery, an excellent solution to a problem so hard you didn't know it was there.
 
 
-Forgery will first look here for dictionaries and formats, so you can override
-the ones used in the plugin.
+Using
+-----
 
-See the forgeries in the plugin for examples of how to write your own.
+You'll want to read individual Forgery categories for more information, but these are the basics:
 
-See which dictionaries each forgery uses to override them with your own.
+~~~ Ruby
+Forgery(:basic).password
+  #=> "b6qZTQEH"
+
+Forgery(:internet).email_address
+  #=> "krainboltgreene@crt.net"
+
+Forgery(:monetary).money
+  #=> "1.58"
+
+Forgery(:lorem_ipsum).words(10)
+  #=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas."
+
+Forgery(:monetary).formatted_money :min => 100, :max => 1000
+  #=> "$923.36"
+~~~
+
+And many many [more]()!
+
+Alternatively you can write it like this: 
+
+~~~ Ruby
+Forgery::Basic.hex_color
+Forgery::Name.full_name
+Forgery::Personal.shirt_size
+~~~
+
+In addition, you can always write your own dictionaries and formats, overriding the ones in the gem.
+Fully explained [here]().
 
 
-The Rails 3 plugin also registers a rake task which can generate new dictionaries
-from html or xml on the web.
+Installing
+----------
 
-Writes to '${RAILS_ROOT}/lib/forgery/dictionaries' by default
-(this can be overriden by setting Forgery::FileWriter#write_to!)
+Like any gem, you can install Forgery two ways depending on it's use.
 
-Parameters:
-:dictionary_name  -- the name of your new dictionary file
-:source_url       -- web page containing the data for your dictionary file
-:css_or_xpath     -- css or xpath selector(s) to element(s) containing the desired data
+For normal Ruby development, you need simply use:
 
-Usage:
-    rake create_dictionary[name_of_file,'http://www.html_or_xml_page.com','li']
-## Examples
+~~~
+$ gem install forgery
+~~~
 
-Here I'll supply a few examples of how it works, in general.  See each forgery
-for individual examples.
+This will add it to your gem library, just like any normal gem.
+You can then use it like any normal gem library.
+See [examples]() for more.
 
-    # Traditional syntax
-    Forgery::Basic.password # => "wYMYvq"
-    Forgery::Basic.password :allow_special => true # => ";Qo^N[T"
-    Forgery::Basic.hex_color # => "#f4d841"
-    
-    Forgery::Monetary.money # => "8.21"
-    Forgery::Monetary.formatted_money # => "$3.25"
-    Forgery::Monetary.money :min => 100, :max => 1000 # => "848.97"
-    
-    # Alternate syntax
-    Forgery(:basic).password # => "b6qZTQEH"
-    Forgery(:basic).password :allow_special => true # => "XlrhV%An"
-    Forgery(:basic).hex_color # => "#46b73f"
-    
-    Forgery(:monetary).money # => "1.58"
-    Forgery(:monetary).formatted_money # => "$3.48"
-    Forgery(:monetary).money :min => 100, :max => 1000 # => "923.36"
 
-## Customization
+**Rails 3.x**
 
-You can utilize the directories generated in /lib to customize the behavior of forgery.
+If you're using Rails 3.x you need to do a few extra things (that are probably rote).
+First step is to add it to your `Rails.root/Gemfile`, we also suggest specifying the latest version (found on rubygems):
 
-Examples of each of these components are available in the source.
+~~~ ruby
+gem 'forgery', '0.3.12'
+~~~
 
-### Dictionaries
+Then you'll need to run `bundle install` to install and lock in your new gem.
+Next you'll want to run the special Rails 3 generator:
 
-Dictionaries are files with no extensions.  Entries are separated by new lines.
+~~~
+$ [bundle exec] rails generate forgery
+~~~
 
-### Forgeries
+**Rails 2.x**
 
-Forgeries are classes that inherit from the Forgery class.  A basic forgery definition is as follows
+For **Rails 2.x** you'll need to do something a little different, by first editing your `Rails.root/config/environment.rb` and adding this to the configuration block:
 
-    class NewForgery < Forgery
-    end
+~~~ ruby
+config.gem 'forgery'
+~~~
 
-### Extensions
+Then you'll need to run this in your command line:
 
-Extensions are additional methods/functionality that are added to classes (Ruby core or otherwise) that are loaded by Forgery.  Follow standard Ruby practices.
+~~~
+$ script/generate forgery
+~~~
 
-### Formats
+**Generators**
 
-Formatting for numerical fields.  Each numerical entry corresponds to a # mark.
+This Rails generators will make these directories in your Rails.root directory:
 
-## DOCUMENTATION
+~~~ YAML
+- Rails.root/lib/forgery
+- Rails.root/lib/forgery/dictionaries
+- Rails.root/lib/forgery/extensions
+- Rails.root/lib/forgery/forgeries
+- Rails.root/lib/forgery/formats
+~~~
 
-Documentation can be found at [http://sevenwire.github.com/forgery/](http://sevenwire.github.com/forgery/)
+You can then use these directories to write your own dictionaries, class extensions, forgeries, and formats.
 
-## TODO
 
-* Add instanced forgeries for more relative information generation.
-* Add markov chains.
-* Add a way to use probability in forgeries.
+Contributing
+------------
 
-## Thanks
+This is a work in progress and an open source project, so feel free to contribute.
+We'll take pull requests via git or suggestions via the issues tab.
+Any work done on Forgery will get you into the credits list and in our hearts.
+
+
+Credits
+-------
 
 Thanks to the authors and contributors:
 
@@ -143,11 +133,29 @@ Thanks to the authors and contributors:
 * SixArm (SixArm)
 * Akira Matsuda (amatsuda)
 
-## Notes
 
-This is a work in progress.  If you find bugs or have forgeries to contribute,
-we'll gladly take them and give credit.
+Licensing
+---------
 
-Enjoy.
+Copyright (c) 2007 Sevenwire LLC
 
-Nate Sutton (nate@sevenwire.com)
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+On that note, have fun!
