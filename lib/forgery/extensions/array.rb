@@ -6,6 +6,7 @@ class Forgery
         to_a
       end
 
+      # The only forgery extension that returns an extended object
       def random
         Forgery::Extend(self[Kernel.rand(size)])
       end
@@ -13,7 +14,7 @@ class Forgery
       def random_subset(len=2)
         rs = []
         len.times { rs << random }
-        Forgery::Extend(rs)
+        rs
       end
 
     end
