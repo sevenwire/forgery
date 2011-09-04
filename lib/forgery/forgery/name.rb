@@ -5,7 +5,7 @@ class Forgery::Name < Forgery
   end
 
   def self.first_name
-    [dictionaries[:male_first_names], dictionaries[:female_first_names]].random.random.unextend
+    Forgery::Extend(dictionaries[:male_first_names] + dictionaries[:female_first_names]).random.unextend
   end
 
   def self.full_name
