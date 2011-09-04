@@ -1,49 +1,49 @@
-class String
-  def to_numbers(replace='#')
-    gsub(/#{replace}/){ Kernel.rand(10) }
-  end
+class Forgery
+  module Extensions
+    class String < ::String
 
-  # Ripped right out of rails
-  if !defined?(Rails.root)
-    def camelize(first_letter = :upper)
-      case first_letter
-      when :upper
-        to_s.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
-      when :lower
-        first.downcase + camelize(self)[1..-1]
+      def unextend
+        to_s
       end
-    end
 
-    def underscore
-      to_s.gsub(/::/, '/').
-        gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
-        gsub(/([a-z\d])([A-Z])/,'\1_\2').
-        tr("-", "_").
-        downcase
-    end
+      def to_numbers(replace='#')
+        gsub(/#{replace}/){ Kernel.rand(10) }
+      end
 
-    if Module.method(:const_get).arity == 1
-      def constantize
-        names = self.split('::')
-        names.shift if names.empty? || names.first.empty?
-
-        constant = Object
-        names.each do |name|
-          constant = constant.const_defined?(name) ? constant.const_get(name) : constant.const_missing(name)
+      # Ripped right out of rails
+      def camelize(first_letter = :upper)
+        case first_letter
+        when :upper
+          to_s.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
+        when :lower
+          first.downcase + camelize(self)[1..-1]
         end
-        constant
       end
-    else
-      def constantize
-        names = self.split('::')
-        names.shift if names.empty? || names.first.empty?
 
-        constant = Object
-        names.each do |name|
-          constant = constant.const_get(name, false) || constant.const_missing(name)
+      if Module.method(:const_get).arity == 1
+        def constantize
+          names = self.split('::')
+          names.shift if names.empty? || names.first.empty?
+
+          constant = Object
+          names.each do |name|
+            constant = constant.const_defined?(name) ? constant.const_get(name) : constant.const_missing(name)
+          end
+          constant
         end
-        constant
+      else
+        def constantize
+          names = self.split('::')
+          names.shift if names.empty? || names.first.empty?
+
+          constant = Object
+          names.each do |name|
+            constant = constant.const_get(name, false) || constant.const_missing(name)
+          end
+          constant
+        end
       end
+
     end
   end
 end

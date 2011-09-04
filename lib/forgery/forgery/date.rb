@@ -1,38 +1,38 @@
 require 'date'
 
 class Forgery::Date < Forgery
-  DAYS = %w{Sunday Monday Tuesday Wednesday Thursday Friday Saturday}
-  DAYS_ABBR = %w{Sun Mon Tue Wed Thu Fri Sat}
-  MONTHS = %w{January February March April May June July August September October November December}
-  MONTHS_ABBR = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
+  DAYS = Forgery::Extend(%w{Sunday Monday Tuesday Wednesday Thursday Friday Saturday})
+  DAYS_ABBR = Forgery::Extend(%w{Sun Mon Tue Wed Thu Fri Sat})
+  MONTHS = Forgery::Extend(%w{January February March April May June July August September October November December})
+  MONTHS_ABBR = Forgery::Extend(%w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec))
 
   def self.day_of_week(options={})
-    options.reverse_merge!(:abbr => false)
+    options = {:abbr => false}.merge(options)
 
     if (options[:abbr])
-      DAYS_ABBR.random
+      DAYS_ABBR.random.unextend
     else
-      DAYS.random
+      DAYS.random.unextend
     end
   end
 
   def self.month(options={})
-    options.reverse_merge!(:abbr => false, :numerical => false)
+    options = {:abbr => false, :numerical => false}.merge(options)
 
     if (options[:numerical])
       1 + rand(12)
     else
       if (options[:abbr])
-        MONTHS_ABBR.random
+        MONTHS_ABBR.random.unextend
       else
-        MONTHS.random
+        MONTHS.random.unextend
       end
     end
 
   end
 
   def self.year(options={})
-    options.reverse_merge!(:future => false, :past => false, :min_delta => 0, :max_delta => 20)
+    options = {:future => false, :past => false, :min_delta => 0, :max_delta => 20}.merge(options)
 
     #Apply our delta to this year
     DateTime.now.year + delta(options)
@@ -43,7 +43,7 @@ class Forgery::Date < Forgery
   end
 
   def self.date(options={})
-    options.reverse_merge!(:future => false, :past => false, :min_delta => 0, :max_delta => 7300)
+    options = {:future => false, :past => false, :min_delta => 0, :max_delta => 7300}.merge(options)
 
     #Apply our delta to today
     ::Date.today + delta(options)

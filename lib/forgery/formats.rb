@@ -8,7 +8,7 @@ class Forgery
 
     def [](key)
       symbolized_key = key.to_sym
-      @formats[symbolized_key] ||= FileReader.read_format(symbolized_key)
+      @formats[symbolized_key] ||= Forgery::Extend(FileReader.read_format(symbolized_key))
     end
 
     def loaded?(key)

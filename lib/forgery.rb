@@ -9,12 +9,13 @@ require 'forgery/file_writer'
 require 'forgery/dictionaries'
 require 'forgery/formats'
 
-# Loading class extensions
+# Loading extensions
+require 'forgery/extend'
 Dir[current_path + 'forgery/extensions/**/*.rb'].uniq.each do |file|
   require file
 end
 
-# Load the forgery base class
+# Load the forgery base classes
 require 'forgery/forgery'
 
 # Load the forgery version

@@ -1,11 +1,21 @@
-class Array
-  def random
-    self[Kernel.rand(size)]
-  end
+class Forgery
+  module Extensions
+    class Array < ::Array
 
-  def random_subset(len=2)
-    rs = []
-    len.times { rs << random }
-    rs
+      def unextend
+        to_a
+      end
+
+      def random
+        Forgery::Extend(self[Kernel.rand(size)])
+      end
+
+      def random_subset(len=2)
+        rs = []
+        len.times { rs << random }
+        Forgery::Extend(rs)
+      end
+
+    end
   end
 end

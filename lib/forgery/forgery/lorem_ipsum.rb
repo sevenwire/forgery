@@ -58,12 +58,13 @@ class Forgery::LoremIpsum < Forgery
   end
 
   def self.paragraphs(quantity=2, options={})
-    options.reverse_merge!(:separator => "\n\n",
+    default_options = {:separator => "\n\n",
                            :wrap => {
                              :start => "",
                              :end => "" },
                            :html => false,
-                           :sentences => 3)
+                           :sentences => 3}
+    options = default_options.merge(options)
     options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length/options[:sentences])-quantity) if quantity.is_a?(Fixnum)
 
     if options[:html]

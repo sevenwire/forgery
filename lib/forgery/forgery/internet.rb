@@ -5,7 +5,7 @@ class Forgery::Internet < Forgery
   end
 
   def self.top_level_domain
-    dictionaries[:top_level_domains].random
+    dictionaries[:top_level_domains].random.unextend
   end
 
   def self.domain_name
@@ -21,7 +21,7 @@ class Forgery::Internet < Forgery
   end
 
   def self.cctld
-    dictionaries[:country_code_top_level_domains].random
+    dictionaries[:country_code_top_level_domains].random.unextend
   end
 
   def self.ip_v4

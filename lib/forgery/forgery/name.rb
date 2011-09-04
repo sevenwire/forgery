@@ -1,11 +1,11 @@
 class Forgery::Name < Forgery
 
   def self.last_name
-    dictionaries[:last_names].random
+    dictionaries[:last_names].random.unextend
   end
 
   def self.first_name
-    [dictionaries[:male_first_names], dictionaries[:female_first_names]].random.random
+    [dictionaries[:male_first_names], dictionaries[:female_first_names]].random.random.unextend
   end
 
   def self.full_name
@@ -13,38 +13,38 @@ class Forgery::Name < Forgery
   end
 
   def self.male_first_name
-    dictionaries[:male_first_names].random
+    dictionaries[:male_first_names].random.unextend
   end
 
   def self.female_first_name
-    dictionaries[:female_first_names].random
+    dictionaries[:female_first_names].random.unextend
   end
 
   def self.company_name
-    dictionaries[:company_names].random
+    dictionaries[:company_names].random.unextend
   end
 
   def self.job_title
-    dictionaries[:job_titles].random.sub('#{N}', self.job_title_suffix)
+    dictionaries[:job_titles].random.sub('#{N}', self.job_title_suffix).unextend
   end
 
   def self.job_title_suffix
-    dictionaries[:job_title_suffixes].random
+    dictionaries[:job_title_suffixes].random.unextend
   end
 
   def self.title
-    dictionaries[:name_titles].random
+    dictionaries[:name_titles].random.unextend
   end
 
   def self.suffix
-    dictionaries[:name_suffixes].random
+    dictionaries[:name_suffixes].random.unextend
   end
 
   def self.location
-    dictionaries[:locations].random
+    dictionaries[:locations].random.unextend
   end
 
   def self.industry
-    dictionaries[:industries].random
+    dictionaries[:industries].random.unextend
   end
 end

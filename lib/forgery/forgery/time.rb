@@ -6,7 +6,7 @@ class Forgery::Time < Forgery
   #   Forgery(:timezone).timezone
   #   # => "Sydney"
   def self.zone
-    dictionaries[:zones].random
+    dictionaries[:zones].random.unextend
   end
 
 end

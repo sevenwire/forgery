@@ -9,7 +9,7 @@ class Forgery::Address < Forgery
   #   Forgery(:address).street_name
   #   # => "Fordem"
   def self.street_name
-    dictionaries[:streets].random
+    dictionaries[:streets].random.unextend
   end
 
   # Gets one of the formats from 'street_number_formats' and converts it to
@@ -32,7 +32,7 @@ class Forgery::Address < Forgery
   #   Forgery(:address).street_suffix
   #   # => "Parkway"
   def self.street_suffix
-    dictionaries[:street_suffixes].random
+    dictionaries[:street_suffixes].random.unextend
   end
 
   # Gets a full street address, including street number, street name, and
@@ -55,7 +55,7 @@ class Forgery::Address < Forgery
   #   Forgery(:address).city
   #   # => "Sacramento"
   def self.city
-    dictionaries[:cities].random
+    dictionaries[:cities].random.unextend
   end
 
   # Gets a random state out of the 'states' dictionary.
@@ -66,7 +66,7 @@ class Forgery::Address < Forgery
   #   Forgery(:address).state
   #   # => "Minnesota"
   def self.state
-    dictionaries[:states].random
+    dictionaries[:states].random.unextend
   end
 
   # Gets a random state abbreviation out of the 'state_abbrev' dictionary.
@@ -77,7 +77,7 @@ class Forgery::Address < Forgery
   #   Forgery(:address).state_abbrev
   #   # => "TX"
   def self.state_abbrev
-    dictionaries[:state_abbrevs].random
+    dictionaries[:state_abbrevs].random.unextend
   end
 
   # Gets a random Canadian province or territory out of the 'provinces' dictionary.
@@ -88,7 +88,7 @@ class Forgery::Address < Forgery
   #   Forgery(:address).province
   #   # => "Northwest Territories"
   def self.province
-    dictionaries[:provinces].random
+    dictionaries[:provinces].random.unextend
   end
 
   # Gets a random Canadian province or territory abbreviation out of the 'province_abbrev' dictionary.
@@ -99,7 +99,7 @@ class Forgery::Address < Forgery
   #   Forgery(:address).province_abbrev
   #   # => "NT"
   def self.province_abbrev
-    dictionaries[:province_abbrevs].random
+    dictionaries[:province_abbrevs].random.unextend
   end
 
   # Gets one of the formats from 'zip_formats' and converts it to numbers.
@@ -132,7 +132,7 @@ class Forgery::Address < Forgery
   #   Forgery(:address).country
   #   # => "Romania"
   def self.country
-    dictionaries[:countries].random
+    dictionaries[:countries].random.unextend
   end
 
 
@@ -144,7 +144,7 @@ class Forgery::Address < Forgery
   #   Forgery(:address).continent
   #   # => "Europe"
   def self.continent
-    dictionaries[:continents].random
+    dictionaries[:continents].random.unextend
   end
 
 end

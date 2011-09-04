@@ -2,12 +2,12 @@ require 'digest/sha1'
 
 class Forgery::Basic < Forgery
 
-  HEX_DIGITS = %w{0 1 2 3 4 5 6 7 8 9 a b c d e f}
-  UPPER_ALPHA = ('A'..'Z').to_a
-  LOWER_ALPHA = ('a'..'z').to_a
-  NUMERIC = ('0'..'9').to_a
-  SPECIAL_CHARACTERS = %w{! ' @ # $ % ^ & * ( ) _ + - = [ ] { } ; : " , . / ?}
-  BOOLEAN = [true, false]
+  HEX_DIGITS = Forgery::Extend(%w{0 1 2 3 4 5 6 7 8 9 a b c d e f})
+  UPPER_ALPHA = Forgery::Extend(('A'..'Z').to_a)
+  LOWER_ALPHA = Forgery::Extend(('a'..'z').to_a)
+  NUMERIC = Forgery::Extend(('0'..'9').to_a)
+  SPECIAL_CHARACTERS = Forgery::Extend(%w{! ' @ # $ % ^ & * ( ) _ + - = [ ] { } ; : " , . / ?})
+  BOOLEAN = Forgery::Extend([true, false])
 
   # Gets a random string for use as a password
   #
@@ -66,11 +66,11 @@ class Forgery::Basic < Forgery
   end
 
   def self.color
-    dictionaries[:colors].random
+    dictionaries[:colors].random.unextend
   end
 
   def self.hex_color
-    hex_digits = (1..6).collect { HEX_DIGITS.random}
+    hex_digits = (1..6).collect { HEX_DIGITS.random.unextend}
     "##{hex_digits.join}"
   end
 
@@ -82,7 +82,7 @@ class Forgery::Basic < Forgery
     options = {:at_least => 1,
                :at_most => 10}.merge(options)
 
-    (options[:at_least]..options[:at_most]).random
+    Forgery::Extend((options[:at_least]..options[:at_most])).random
   end
 
   def self.text(options={})
@@ -99,14 +99,14 @@ class Forgery::Basic < Forgery
     allowed_characters += UPPER_ALPHA if options[:allow_upper]
     allowed_characters += NUMERIC if options[:allow_numeric]
     allowed_characters += SPECIAL_CHARACTERS if options[:allow_special]
-    
-    length = options[:exactly] || (options[:at_least]..options[:at_most]).random
 
-    allowed_characters.random_subset(length).join
+    length = options[:exactly] || Forgery::Extend((options[:at_least]..options[:at_most])).random
+
+    Forgery::Extend(allowed_characters).random_subset(length).join
   end
 
   def self.frequency
-    dictionaries[:frequencies].random
+    dictionaries[:frequencies].random.unextend
   end
 
 end
