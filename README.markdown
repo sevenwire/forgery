@@ -132,6 +132,7 @@ Thanks to the authors and contributors:
 * Stafford Brunk (wingrunr21)
 * SixArm (SixArm)
 * Akira Matsuda (amatsuda)
+* Diego Plentz (plentz)
 
 
 Licensing
