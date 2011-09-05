@@ -99,7 +99,7 @@ protected
     return quantity if quantity.is_a?(Range)
 
     if options[:random]
-      start = (0..options[:random_limit]).random
+      start = Forgery::Extend(0..options[:random_limit]).random
       start..(start+quantity-1)
     else
       0..(quantity-1)

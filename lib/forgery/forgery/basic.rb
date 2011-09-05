@@ -82,7 +82,7 @@ class Forgery::Basic < Forgery
     options = {:at_least => 1,
                :at_most => 10}.merge(options)
 
-    Forgery::Extend((options[:at_least]..options[:at_most])).random
+    Forgery::Extend(options[:at_least]..options[:at_most]).random
   end
 
   def self.text(options={})
@@ -100,7 +100,7 @@ class Forgery::Basic < Forgery
     allowed_characters += NUMERIC if options[:allow_numeric]
     allowed_characters += SPECIAL_CHARACTERS if options[:allow_special]
 
-    length = options[:exactly] || Forgery::Extend((options[:at_least]..options[:at_most])).random
+    length = options[:exactly] || Forgery::Extend(options[:at_least]..options[:at_most]).random
 
     Forgery::Extend(allowed_characters).random_subset(length).join
   end

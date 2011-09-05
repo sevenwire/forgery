@@ -94,6 +94,10 @@ describe Forgery::LoremIpsum do
     it "should return text with 1 or more character" do
       Forgery::LoremIpsum.words.size.should >= 1
     end
+
+    it "should return a random set of words" do
+      Forgery::LoremIpsum.words(2, :random => true)
+    end
   end
 
   describe ".word" do
