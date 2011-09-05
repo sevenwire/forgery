@@ -96,13 +96,11 @@ $ script/generate forgery
 
 This Rails generators will make these directories in your Rails.root directory:
 
-```yaml
 - Rails.root/lib/forgery
 - Rails.root/lib/forgery/dictionaries
 - Rails.root/lib/forgery/extensions
 - Rails.root/lib/forgery/forgeries
 - Rails.root/lib/forgery/formats
-```
 
 You can then use these directories to write your own dictionaries, class extensions, forgeries, and formats.
 
