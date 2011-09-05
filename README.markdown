@@ -131,6 +131,7 @@ Thanks to the authors and contributors:
 * SixArm (SixArm)
 * Akira Matsuda (amatsuda)
 * Diego Plentz (plentz)
+* Gabe Berke-Williams (gabebw)
 
 
 Licensing
