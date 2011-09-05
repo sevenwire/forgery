@@ -15,7 +15,7 @@ Using
 
 You'll want to read individual Forgery categories for more information, but these are the basics:
 
-~~~ Ruby
+```ruby
 Forgery(:basic).password
   #=> "b6qZTQEH"
 
@@ -30,17 +30,17 @@ Forgery(:lorem_ipsum).words(10)
 
 Forgery(:monetary).formatted_money :min => 100, :max => 1000
   #=> "$923.36"
-~~~
+```
 
 And many many [more]()!
 
 Alternatively you can write it like this: 
 
-~~~ Ruby
+```ruby
 Forgery::Basic.hex_color
 Forgery::Name.full_name
 Forgery::Personal.shirt_size
-~~~
+```
 
 In addition, you can always write your own dictionaries and formats, overriding the ones in the gem.
 Fully explained [here]().
@@ -53,9 +53,9 @@ Like any gem, you can install Forgery two ways depending on it's use.
 
 For normal Ruby development, you need simply use:
 
-~~~
+```bash
 $ gem install forgery
-~~~
+```
 
 This will add it to your gem library, just like any normal gem.
 You can then use it like any normal gem library.
@@ -67,42 +67,42 @@ See [examples]() for more.
 If you're using Rails 3.x you need to do a few extra things (that are probably rote).
 First step is to add it to your `Rails.root/Gemfile`, we also suggest specifying the latest version (found on rubygems):
 
-~~~ ruby
+```ruby
 gem 'forgery', '0.3.12'
-~~~
+```
 
 Then you'll need to run `bundle install` to install and lock in your new gem.
 Next you'll want to run the special Rails 3 generator:
 
-~~~
+```
 $ [bundle exec] rails generate forgery
-~~~
+```
 
 **Rails 2.x**
 
 For **Rails 2.x** you'll need to do something a little different, by first editing your `Rails.root/config/environment.rb` and adding this to the configuration block:
 
-~~~ ruby
+```ruby
 config.gem 'forgery'
-~~~
+```
 
 Then you'll need to run this in your command line:
 
-~~~
+```bash
 $ script/generate forgery
-~~~
+```
 
 **Generators**
 
 This Rails generators will make these directories in your Rails.root directory:
 
-~~~ YAML
+```yaml
 - Rails.root/lib/forgery
 - Rails.root/lib/forgery/dictionaries
 - Rails.root/lib/forgery/extensions
 - Rails.root/lib/forgery/forgeries
 - Rails.root/lib/forgery/formats
-~~~
+```
 
 You can then use these directories to write your own dictionaries, class extensions, forgeries, and formats.
 
