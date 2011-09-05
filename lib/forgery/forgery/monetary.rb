@@ -7,9 +7,8 @@ class Forgery::Monetary < Forgery
   def self.money(options={})
     options = {:max => 10,
                :min => 0}.merge(options)
-    
-    random = Random.new
-    value = random.rand((options[:min] * 100)..(options[:max] * 100))
+
+    value = Forgery::Extend((options[:min] * 100)..(options[:max] * 100)).random
     "%1.2f" % (value.to_f / 100)
   end
 
