@@ -1,13 +1,10 @@
 # -*- encoding: utf-8 -*-
-lib = File.expand_path('../lib/', __FILE__)
-$:.unshift lib unless $:.include?(lib)
-
+$:.push File.expand_path("../lib", __FILE__)
 require 'forgery/version'
 
 Gem::Specification.new do |s|
   s.name        = "forgery"
   s.version     = Forgery::VERSION
-  s.platform    = Gem::Platform::RUBY
   s.authors     = ["Nathan Sutton", "Brandon Arbini"]
   s.email       = ["nate@zencoder.com", "brandon@zencoder.com"]
   s.homepage    = "http://github.com/sevenwire/forgery"

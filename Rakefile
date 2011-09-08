@@ -1,40 +1,12 @@
-require 'rubygems'
-require 'rake'
-require 'rspec/core'
+require 'bundler'
 require 'rspec/core/rake_task'
-require 'rdoc/task'
+
+Bundler::GemHelper.install_tasks
+RSpec::Core::RakeTask.new
+
+task :default => :spec
+
 require File.expand_path('./lib/forgery/file_writer')
-
-begin
-  require 'sdoc_helpers'
-rescue LoadError
-  puts "sdoc support not enabled. Please gem install sdoc-helpers."
-end
-
-desc 'Default: run specs with rcov.'
-task :default => :rcov_spec
-
-desc 'Run the specs'
-RSpec::Core::RakeTask.new(:spec) do |t|
-  t.rspec_opts = ['--colour --format progress']
-  t.pattern = FileList['spec/**/*_spec.rb']
-end
-
-desc 'Run the specs with rcov'
-RSpec::Core::RakeTask.new("rcov_spec") do |t|
-  t.pattern = FileList['spec/**/*_spec.rb']
-  t.rspec_opts = ['--color']
-  t.rcov = true
-  t.rcov_opts = ['--exclude', '^spec,/gems/']
-end
-
-Rake::RDocTask.new do |t|
-  t.rdoc_dir = 'doc'
-  t.rdoc_files.include('lib/**/*.rb')
-  t.options << '--inline-source'
-  t.options << '--all'
-  t.options << '--line-numbers'
-end
 
 desc %q{
 Create a dictionary file from web content (xml or html).
