@@ -48,7 +48,7 @@ class Forgery::CreditCard < Forgery
     number += check_digit(number)
   end
 
- private
+private
 
   def self.check_digit(number)
     # for explanation, please see: http://www.darkcoding.net/credit-card/luhn-formula/

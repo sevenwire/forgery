@@ -5,7 +5,6 @@ current_path = File.expand_path(File.dirname(__FILE__)) + '/'
 
 # Loading forgery helpers.
 require 'forgery/file_reader'
-require 'forgery/file_writer'
 require 'forgery/dictionaries'
 require 'forgery/formats'
 
