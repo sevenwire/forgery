@@ -1,19 +1,19 @@
 # Generates random credit card numbers.
 class Forgery::CreditCard < Forgery
 
-  CARDS = [
+  CARDS = Forgery::Extend([
     {:type => 'Visa', :length => 16, :prefixes => %w"4539 4556 4916 4532 4929 40240071 4485 4716 4"},
     {:type => 'MasterCard', :length => 16, :prefixes => %w"51 52 53 54 55"},
     {:type => 'American Express', :length => 15, :prefixes => %w"34 37"},
     {:type => 'Discover', :length => 16, :prefixes => ["6011"]}
-  ]
+  ])
 
   # Gets a random credit card type
   #
   #   Forgery(:credit_card).type
   #   # => "Visa"
   def self.type
-    CARDS.choice[:type]
+    CARDS.random[:type]
   end
 
   # Gets a random credit card number
@@ -36,14 +36,14 @@ class Forgery::CreditCard < Forgery
     card = if options[:type]
       CARDS.find { |card| card[:type] == options[:type] }.clone
     else
-      CARDS.choice.clone
+      CARDS.random.clone
     end
     # merge the remaining options
     card.merge!(options)
     # start the number with a prefix for this card
-    number = card[:prefixes].choice
+    number = Forgery::Extend(card[:prefixes]).random
     # fill in the rest of the number with random digits, leave one space for the check digit
-    (card[:length] - number.length - 1).times { number += Forgery::Basic::NUMERIC.choice }
+    number << Forgery::Extend("#" * (card[:length] - number.length - 1)).to_numbers
     # add the check digit
     number += check_digit(number)
   end
