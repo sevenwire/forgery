@@ -3,8 +3,6 @@ class Forgery
     case object
     when Array
       Forgery::Extensions::Array.new(object)
-    when Hash
-      Forgery::Extensions::Hash.new(object)
     when Range
       Forgery::Extensions::Range.new(object.first, object.last, object.exclude_end?)
     when String
