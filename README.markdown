@@ -132,6 +132,7 @@ Thanks to the authors and contributors:
 * Akira Matsuda (amatsuda)
 * Diego Plentz (plentz)
 * Gabe Berke-Williams (gabebw)
+* Todd Mazierski (toddmazierski)
 
 
 Licensing
