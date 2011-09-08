@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
   s.summary     = "Easy and customizable generation of forged data."
   s.description = "Easy and customizable generation of forged data. Can be used as a gem or a rails plugin. Includes rails generators for creating your own forgeries."
   s.rubyforge_project = "forgery"
-  s.add_dependency "nokogiri", "~>1.4"
   s.add_development_dependency "rspec"
   s.files        = Dir.glob("{generators,lib}/**/*") + %w(LICENSE README.markdown Rakefile)
   s.require_path = 'lib'
