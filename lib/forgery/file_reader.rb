@@ -31,6 +31,7 @@ class Forgery
         file = "#{path}/#{folder}/#{name}"
         return file if File.exists?(file)
       end
+      raise ArgumentError.new("File '#{name}' wasn't found in '#{folder}' folder. Searched paths: \n#{Forgery.load_paths.join('\n')}")
     end
   end
 end
