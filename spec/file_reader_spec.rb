@@ -19,6 +19,11 @@ describe Forgery::FileReader do
     Forgery::FileReader.read_dictionary(:code_names).should include('Shiretoko')
   end
 
+  it "should raise an exception if file wasn't found in load paths" do
+    lambda {
+      Forgery::FileReader.read_dictionary(:non_existing_dictionary)
+    }.should raise_error(ArgumentError)
+  end
   after do
     # reset load_paths
     Forgery.load_paths.clear
