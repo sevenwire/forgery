@@ -68,7 +68,7 @@ If you're using Rails 3.x you need to do a few extra things (that are probably r
 First step is to add it to your `Rails.root/Gemfile`, we also suggest specifying the latest version (found on rubygems):
 
 ```ruby
-gem 'forgery', '0.3.12'
+gem 'forgery', '0.5.0'
 ```
 
 Then you'll need to run `bundle install` to install and lock in your new gem.
