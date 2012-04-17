@@ -50,4 +50,10 @@ describe Forgery::Internet do
       end
     end
   end
+
+  describe '.user_agent' do
+    it "should not be empty" do
+      Forgery::Internet.user_agent.should_not be_empty
+    end
+  end
 end
