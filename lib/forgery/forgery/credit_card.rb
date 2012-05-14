@@ -43,7 +43,7 @@ class Forgery::CreditCard < Forgery
     # start the number with a prefix for this card
     number = Forgery::Extend(card[:prefixes]).random
     # fill in the rest of the number with random digits, leave one space for the check digit
-    number << Forgery::Extend("#" * (card[:length] - number.length - 1)).to_numbers
+    number << string_to_numbers("#" * (card[:length] - number.length - 1))
     # add the check digit
     number += check_digit(number)
   end

@@ -7,8 +7,11 @@ class Forgery
     end
 
     def [](key)
-      symbolized_key = key.to_sym
-      @formats[symbolized_key] ||= Forgery::Extend(FileReader.read_format(symbolized_key))
+      @formats[key.to_sym] ||= begin
+        contents = FileReader.read_format(key)
+        contents.extend(Forgery::Extensions::ArrayExtensions)
+        contents
+      end
     end
 
     def loaded?(key)

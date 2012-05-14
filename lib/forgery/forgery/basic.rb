@@ -66,11 +66,11 @@ class Forgery::Basic < Forgery
   end
 
   def self.color
-    dictionaries[:colors].random.unextend
+    dictionaries[:colors].random
   end
 
   def self.hex_color
-    hex_digits = (1..6).collect { HEX_DIGITS.random.unextend}
+    hex_digits = (1..6).collect { HEX_DIGITS.random}
     "##{hex_digits.join}"
   end
 
@@ -106,7 +106,7 @@ class Forgery::Basic < Forgery
   end
 
   def self.frequency
-    dictionaries[:frequencies].random.unextend
+    dictionaries[:frequencies].random
   end
 
 end

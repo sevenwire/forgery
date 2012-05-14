@@ -49,6 +49,13 @@ class Forgery
     @@forgery_path ||= File.expand_path(File.dirname(__FILE__)) + '/'
   end
 
+  private
+
+  # TODO: move to module or use a different Forgery base class (eg. Forgery::Tool)
+  def self.string_to_numbers(string, replace='#')
+    string.gsub(/#{replace}/){ Kernel.rand(10) }
+  end
+
 end
 
 # Loading forgery helpers.
