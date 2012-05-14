@@ -12,7 +12,7 @@ class ForgeryGenerator < Rails::Generators::Base
 
     FileUtils.mkdir_p 'lib/forgery/dictionaries'
     FileUtils.mkdir_p 'lib/forgery/extensions'
-    FileUtils.mkdir_p 'lib/forgery/forgeries'
+    FileUtils.mkdir_p 'lib/forgery/tools'
     FileUtils.mkdir_p 'lib/forgery/formats'
   end
 end
