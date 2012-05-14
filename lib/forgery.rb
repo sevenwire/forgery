@@ -24,7 +24,7 @@ class Forgery
 
   def self.load_from!(path)
     self.load_paths << File.expand_path(path)
-    Dir["#{load_paths.last}/**/*.rb"].uniq.each { |file| require file }
+    Dir["#{load_paths.last}/**/*.rb"].each { |file| require file }
   end
 
   def self.rails_root
@@ -36,7 +36,7 @@ class Forgery
   end
 
   def self.load_extensions
-    Dir[forgery_path + 'forgery/extensions/**/*.rb'].uniq.each do |file|
+    Dir[forgery_path + 'forgery/extensions/**/*.rb'].each do |file|
       require file
     end
   end
@@ -71,7 +71,7 @@ Forgery.load_extensions
 require 'forgery/forgery_api'
 
 # Loading the other forgeries AFTER the initial forgery class is defined.
-Dir[Forgery.forgery_path + 'forgery/forgery/**/*.rb'].uniq.each do |file|
+Dir[Forgery.forgery_path + 'forgery/forgery/**/*.rb'].each do |file|
   require file
 end
 
