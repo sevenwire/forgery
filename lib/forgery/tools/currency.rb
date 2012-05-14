@@ -1,4 +1,4 @@
-class Forgery::Currency < Forgery
+class Forgery::Currency < Forgery::Tool
 
   # Generates a random currency description
   #

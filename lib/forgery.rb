@@ -2,20 +2,11 @@
 # within rails and outside of it.
 
 class Forgery
-
-  def self.dictionaries
-    @@dictionaries ||= Storage.new(:dictionaries)
-  end
-
   def self.[](forgery)
     @@forgery_class ||= Hash.new { |hash, key|
       hash[key] = Forgery::Extend("Forgery::#{Forgery::Extend(key.to_s).camelize}").constantize
     }
     @@forgery_class[forgery]
-  end
-
-  def self.formats
-    @@formats ||= Storage.new(:formats)
   end
 
   def self.load_paths
@@ -49,19 +40,16 @@ class Forgery
     @@forgery_path ||= File.expand_path(File.dirname(__FILE__)) + '/'
   end
 
-  private
-
-  # TODO: move to module or use a different Forgery base class (eg. Forgery::Tool)
-  def self.string_to_numbers(string, replace='#')
-    string.gsub(/#{replace}/){ Kernel.rand(10) }
-  end
-
 end
 
 # Loading forgery helpers.
 require 'forgery/file_reader'
 require 'forgery/storage'
+require 'forgery/tool'
 require 'forgery/version'
+
+# Backward compatability with Forgery as base class
+Forgery.extend Forgery::ToolMethods
 
 # Loading extensions
 require 'forgery/extend'
@@ -71,7 +59,7 @@ Forgery.load_extensions
 require 'forgery/forgery_api'
 
 # Loading the other forgeries AFTER the initial forgery class is defined.
-Dir[Forgery.forgery_path + 'forgery/forgery/**/*.rb'].each do |file|
+Dir[Forgery.forgery_path + 'forgery/tools/**/*.rb'].each do |file|
   require file
 end
 

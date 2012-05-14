@@ -1,5 +1,5 @@
 # Generates random credit card numbers.
-class Forgery::CreditCard < Forgery
+class Forgery::CreditCard < Forgery::Tool
 
   CARDS = Forgery::Extend([
     {:type => 'Visa', :length => 16, :prefixes => %w"4539 4556 4916 4532 4929 40240071 4485 4716 4"},

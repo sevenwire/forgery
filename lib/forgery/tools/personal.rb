@@ -1,4 +1,4 @@
-class Forgery::Personal < Forgery
+class Forgery::Personal < Forgery::Tool
 
   def self.gender
     dictionaries[:genders].random

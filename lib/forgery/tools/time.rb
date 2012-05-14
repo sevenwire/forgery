@@ -1,5 +1,5 @@
 # Generates random timezone information.
-class Forgery::Time < Forgery
+class Forgery::Time < Forgery::Tool
 
   # Gets a random timezone out of the 'timezones' dictionary
   #

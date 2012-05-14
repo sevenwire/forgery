@@ -1,6 +1,6 @@
 require 'digest/sha1'
 
-class Forgery::Basic < Forgery
+class Forgery::Basic < Forgery::Tool
 
   HEX_DIGITS = Forgery::Extend(%w{0 1 2 3 4 5 6 7 8 9 a b c d e f})
   UPPER_ALPHA = Forgery::Extend(('A'..'Z').to_a)

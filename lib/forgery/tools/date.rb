@@ -1,6 +1,6 @@
 require 'date'
 
-class Forgery::Date < Forgery
+class Forgery::Date < Forgery::Tool
   DAYS = Forgery::Extend(%w{Sunday Monday Tuesday Wednesday Thursday Friday Saturday})
   DAYS_ABBR = Forgery::Extend(%w{Sun Mon Tue Wed Thu Fri Sat})
   MONTHS = Forgery::Extend(%w{January February March April May June July August September October November December})

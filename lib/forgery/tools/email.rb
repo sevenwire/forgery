@@ -1,4 +1,4 @@
-class Forgery::Email < Forgery
+class Forgery::Email < Forgery::Tool
 
   def self.address
     Forgery::Internet.email_address

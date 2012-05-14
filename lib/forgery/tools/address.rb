@@ -1,5 +1,5 @@
 # Generates random address information.
-class Forgery::Address < Forgery
+class Forgery::Address < Forgery::Tool
 
   # Gets a random street name out of the 'streets' dictionary.
   #
