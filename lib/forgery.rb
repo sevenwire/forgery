@@ -7,6 +7,13 @@ class Forgery
     @@dictionaries ||= Dictionaries.new
   end
 
+  def self.[](forgery)
+    @@forgery_class ||= Hash.new { |hash, key|
+      hash[key] = Forgery::Extend("Forgery::#{Forgery::Extend(key.to_s).camelize}").constantize
+    }
+    @@forgery_class[forgery]
+  end
+
   def self.formats
     @@formats ||= Formats.new
   end

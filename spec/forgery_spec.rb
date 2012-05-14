@@ -22,23 +22,10 @@ describe Forgery do
     Forgery.formats.should be_loaded(:phone)
   end
 
-  it "should accept a symbol and return the appropriate forgery class" do
-    Forgery(:address).should == Forgery::Address
-    Forgery(:basic).should == Forgery::Basic
-    Forgery(:internet).should == Forgery::Internet
-  end
-
-  it "should accept two symbols, finding the right class and calling the appropriate method" do
-    Forgery::Address.should_receive(:street_name)
-    Forgery(:address, :street_name)
-
-    Forgery::Name.should_receive(:full_name)
-    Forgery(:name, :full_name)
-  end
-
-  it "should accept two symbols and arguments, passing them along to the appropriate method" do
-    Forgery::LoremIpsum.should_receive(:text).with(:sentences, 2)
-    Forgery(:lorem_ipsum, :text, :sentences, 2)
+  it "should lookup forgery class using hash accessor" do
+    Forgery[:address].should == Forgery::Address
+    Forgery[:basic].should == Forgery::Basic
+    Forgery[:internet].should == Forgery::Internet
   end
 
   it "should return the rails root path as a string if Rails.root is defined" do
@@ -59,5 +46,26 @@ describe Forgery do
   it "should be a rails environment when there is a rails_root" do
     Forgery.stub!(:rails?).and_return(true)
     Forgery.rails?.should be_true
+  end
+
+  describe "method" do
+    it "should accept a symbol and return the appropriate forgery class" do
+      Forgery(:address).should == Forgery::Address
+      Forgery(:basic).should == Forgery::Basic
+      Forgery(:internet).should == Forgery::Internet
+    end
+
+    it "should accept two symbols, finding the right class and calling the appropriate method" do
+      Forgery::Address.should_receive(:street_name)
+      Forgery(:address, :street_name)
+
+      Forgery::Name.should_receive(:full_name)
+      Forgery(:name, :full_name)
+    end
+
+    it "should accept two symbols and arguments, passing them along to the appropriate method" do
+      Forgery::LoremIpsum.should_receive(:text).with(:sentences, 2)
+      Forgery(:lorem_ipsum, :text, :sentences, 2)
+    end
   end
 end
