@@ -1,19 +1,15 @@
 class Forgery
-  module ToolMethods
-    def dictionaries
+  class Tool
+    def self.dictionaries
       @@dictionaries ||= Storage.new(:dictionaries)
     end
 
-    def formats
+    def self.formats
       @@formats ||= Storage.new(:formats)
     end
 
-    def string_to_numbers(string, replace='#')
+    def self.string_to_numbers(string, replace='#')
       string.gsub(/#{replace}/){ Kernel.rand(10) }
     end
-  end
-
-  class Tool
-    extend ToolMethods
   end
 end

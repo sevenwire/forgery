@@ -51,12 +51,12 @@ require 'forgery/version'
 # Deprecate Forgery classes using Forgery as base class by virtue
 # of calling dictionaries or formats methods on it.
 class Forgery
-  def self.dictionaries(*args)
+  def self.dictionaries
     warn 'The Forgery base class is deprecated. Use Forgery::Tool as the base class for your forgery classes or tools.'
     Forgery::Tool.dictionaries(*args)
   end
 
-  def self.formats(*args)
+  def self.formats
     warn 'The Forgery base class is deprecated. Use Forgery::Tool as the base class for your forgery classes or tools.'
     Forgery::Tool.formats(*args)
   end
