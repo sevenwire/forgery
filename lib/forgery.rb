@@ -4,7 +4,7 @@
 class Forgery
 
   def self.dictionaries
-    @@dictionaries ||= Dictionaries.new
+    @@dictionaries ||= Storage.new(:dictionaries)
   end
 
   def self.[](forgery)
@@ -15,7 +15,7 @@ class Forgery
   end
 
   def self.formats
-    @@formats ||= Formats.new
+    @@formats ||= Storage.new(:formats)
   end
 
   def self.load_paths
@@ -60,8 +60,7 @@ end
 
 # Loading forgery helpers.
 require 'forgery/file_reader'
-require 'forgery/dictionaries'
-require 'forgery/formats'
+require 'forgery/storage'
 require 'forgery/version'
 
 # Loading extensions

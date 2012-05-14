@@ -2,27 +2,17 @@ class Forgery
 
   class FileReader
 
-    # Returns an array of strings containing each line in the dictionary
-    def self.read_dictionary(dictionary)
-      read_file(find_file(dictionary, :dictionaries))
-    end
-
-    # Returns an array of strings containing each line in the format
-    def self.read_format(format)
-      read_file(find_file(format, :formats))
-    end
-
-  protected
-
-    # Reads a file while stripping leading and trailing whitespace, including
-    # newlines
-    def self.read_file(file)
+    # Reads file from a folder and returns array of content lines.
+    # Strips leading and trailing whitespace, including newlines.
+    def self.read_file_from_folder(file, folder)
       lines = []
-      IO.foreach(file) do |line|
+      IO.foreach(find_file(file, folder)) do |line|
         lines << line.strip unless line.strip == ''
       end
       lines
     end
+
+    private
 
     # Search a file in all load_paths, starting from last to first, so
     # last takes precedence over first.
