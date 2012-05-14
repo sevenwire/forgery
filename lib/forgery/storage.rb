@@ -11,7 +11,6 @@ class Forgery
       @store[key.to_sym] ||= begin
         contents = FileReader.read_file_from_folder(key, @folder)
         contents.extend(Forgery::Extensions::ArrayExtensions)
-        contents
       end
     end
 
