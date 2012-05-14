@@ -46,6 +46,8 @@ end
 require 'forgery/file_reader'
 require 'forgery/storage'
 require 'forgery/tool'
+require 'forgery/extend'
+require 'forgery/forgery_api'
 require 'forgery/version'
 
 # Deprecate Forgery classes using Forgery as base class by virtue
@@ -62,15 +64,10 @@ class Forgery
   end
 end
 
-# Loading extensions
-require 'forgery/extend'
 Forgery.load_extensions
 
-# Load the forgery api method
-require 'forgery/forgery_api'
-
-# Loading the other forgeries AFTER the initial forgery class is defined.
-Dir[Forgery.forgery_path + 'forgery/tools/**/*.rb'].each do |file|
+# Loading the forgery tools
+Dir[Forgery.gem_path + 'forgery/tools/**/*.rb'].each do |file|
   require file
 end
 
