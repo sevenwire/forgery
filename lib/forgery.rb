@@ -48,8 +48,19 @@ require 'forgery/storage'
 require 'forgery/tool'
 require 'forgery/version'
 
-# Backward compatability with Forgery as base class
-Forgery.extend Forgery::ToolMethods
+# Deprecate Forgery classes using Forgery as base class by virtue
+# of calling dictionaries or formats methods on it.
+class Forgery
+  def self.dictionaries(*args)
+    warn 'The Forgery base class is deprecated. Use Forgery::Tool as the base class for your forgery classes or tools.'
+    Forgery::Tool.dictionaries(*args)
+  end
+
+  def self.formats(*args)
+    warn 'The Forgery base class is deprecated. Use Forgery::Tool as the base class for your forgery classes or tools.'
+    Forgery::Tool.formats(*args)
+  end
+end
 
 # Loading extensions
 require 'forgery/extend'

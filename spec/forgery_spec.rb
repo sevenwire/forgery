@@ -3,23 +3,23 @@ require 'pathname'
 
 describe Forgery do
   it "should load a dictionary when it is requested" do
-    Forgery.dictionaries.reset!
+    Forgery::Tool.dictionaries.reset!
 
-    Forgery.dictionaries.should_not be_loaded(:colors)
+    Forgery::Tool.dictionaries.should_not be_loaded(:colors)
 
-    Forgery.dictionaries[:colors]
+    Forgery::Tool.dictionaries[:colors]
 
-    Forgery.dictionaries.should be_loaded(:colors)
+    Forgery::Tool.dictionaries.should be_loaded(:colors)
   end
 
   it "should load formats when it is requested" do
-    Forgery.formats.reset!
+    Forgery::Tool.formats.reset!
 
-    Forgery.formats.should_not be_loaded(:phone)
+    Forgery::Tool.formats.should_not be_loaded(:phone)
 
-    Forgery.formats[:phone]
+    Forgery::Tool.formats[:phone]
 
-    Forgery.formats.should be_loaded(:phone)
+    Forgery::Tool.formats.should be_loaded(:phone)
   end
 
   it "should lookup forgery class using hash accessor" do
