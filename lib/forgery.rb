@@ -1,30 +1,64 @@
 # Require forgeries at the bottom of the file so Forgery works as a gem both
 # within rails and outside of it.
 
-current_path = File.expand_path(File.dirname(__FILE__)) + '/'
+class Forgery
+
+  def self.dictionaries
+    @@dictionaries ||= Dictionaries.new
+  end
+
+  def self.formats
+    @@formats ||= Formats.new
+  end
+
+  def self.load_paths
+    @@load_paths ||= [ File.join(forgery_path, 'forgery') ]
+  end
+
+  def self.load_from!(path)
+    self.load_paths << File.expand_path(path)
+    Dir["#{load_paths.last}/**/*.rb"].uniq.each { |file| require file }
+  end
+
+  def self.rails_root
+    if defined?(Rails) && Rails.respond_to?(:root)
+      Rails.root.to_s
+    elsif defined?(RAILS_ROOT)
+      RAILS_ROOT
+    end
+  end
+
+  def self.load_extensions
+    Dir[forgery_path + 'forgery/extensions/**/*.rb'].uniq.each do |file|
+      require file
+    end
+  end
+
+  def self.rails?
+    !rails_root.nil?
+  end
+
+  def self.forgery_path
+    @@forgery_path ||= File.expand_path(File.dirname(__FILE__)) + '/'
+  end
+
+end
 
 # Loading forgery helpers.
 require 'forgery/file_reader'
 require 'forgery/dictionaries'
 require 'forgery/formats'
+require 'forgery/version'
 
 # Loading extensions
 require 'forgery/extend'
-Dir[current_path + 'forgery/extensions/**/*.rb'].uniq.each do |file|
-  require file
-end
-
-# Load the forgery base classes
-require 'forgery/forgery'
-
-# Load the forgery version
-require 'forgery/version'
+Forgery.load_extensions
 
 # Load the forgery api method
 require 'forgery/forgery_api'
 
 # Loading the other forgeries AFTER the initial forgery class is defined.
-Dir[current_path + 'forgery/forgery/**/*.rb'].uniq.each do |file|
+Dir[Forgery.forgery_path + 'forgery/forgery/**/*.rb'].uniq.each do |file|
   require file
 end
 
