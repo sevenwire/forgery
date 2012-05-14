@@ -16,19 +16,19 @@ Using
 You'll want to read individual Forgery categories for more information, but these are the basics:
 
 ```ruby
-Forgery(:basic).password
+Forgery[:basic].password
   #=> "b6qZTQEH"
 
-Forgery(:internet).email_address
+Forgery[:internet].email_address
   #=> "krainboltgreene@crt.net"
 
-Forgery(:monetary).money
+Forgery[:monetary].money
   #=> "1.58"
 
-Forgery(:lorem_ipsum).words(10)
+Forgery[:lorem_ipsum).words(10]
   #=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas."
 
-Forgery(:monetary).formatted_money :min => 100, :max => 1000
+Forgery[:monetary].formatted_money :min => 100, :max => 1000
   #=> "$923.36"
 ```
 

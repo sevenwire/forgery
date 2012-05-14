@@ -48,7 +48,7 @@ describe Forgery do
     Forgery.rails?.should be_true
   end
 
-  describe "method" do
+  pending "method is deprecated and will be removed" do
     it "should accept a symbol and return the appropriate forgery class" do
       Forgery(:address).should == Forgery::Address
       Forgery(:basic).should == Forgery::Basic
