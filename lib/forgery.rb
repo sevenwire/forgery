@@ -10,7 +10,7 @@ class Forgery
   end
 
   def self.load_paths
-    @@load_paths ||= [ File.join(forgery_path, 'forgery') ]
+    @@load_paths ||= [ File.join(gem_path, 'forgery') ]
   end
 
   def self.load_from!(path)
@@ -27,7 +27,7 @@ class Forgery
   end
 
   def self.load_extensions
-    Dir[forgery_path + 'forgery/extensions/**/*.rb'].each do |file|
+    Dir[gem_path + 'forgery/extensions/**/*.rb'].each do |file|
       require file
     end
   end
@@ -36,8 +36,8 @@ class Forgery
     !rails_root.nil?
   end
 
-  def self.forgery_path
-    @@forgery_path ||= File.expand_path(File.dirname(__FILE__)) + '/'
+  def self.gem_path
+    @@gem_path ||= File.expand_path(File.dirname(__FILE__)) + '/'
   end
 
 end
