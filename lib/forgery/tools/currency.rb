@@ -2,7 +2,7 @@ class Forgery::Currency < Forgery::Tool
 
   # Generates a random currency description
   #
-  #   Forgery(:currency).description
+  #   Forgery[:currency].description
   #   # => "Australian Dollars"
   def self.description
     dictionaries[:currency_descriptions].random
@@ -10,7 +10,7 @@ class Forgery::Currency < Forgery::Tool
   
   # Generates a random currency code for a country
   #
-  #   Forgery(:currency).code
+  #   Forgery[:currency].code
   #   # => "AUD"
   def self.code
     dictionaries[:currency_codes].random

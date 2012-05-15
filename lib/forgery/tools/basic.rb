@@ -11,10 +11,10 @@ class Forgery::Basic < Forgery::Tool
 
   # Gets a random string for use as a password
   #
-  #   Forgery(:basic).password
+  #   Forgery[:basic].password
   #   # => "1MbyMQhU"
   #
-  #   Forgery(:basic).password(:at_least => 3, :at_most => 5)
+  #   Forgery[:basic].password(:at_least => 3, :at_most => 5)
   #   # => "WbgP"
   #
   # Supported Options
@@ -42,13 +42,13 @@ class Forgery::Basic < Forgery::Tool
 
   # SHA1 hexdigests a password salted with the current time
   #
-  #   Forgery(:basic).encrypt
+  #   Forgery[:basic].encrypt
   #   # => "b2fbd3955a36068e93e0b9db45bcb178f08336f5"
   #
-  #   Forgery(:basic).encrypt('your-password')
+  #   Forgery[:basic].encrypt('your-password')
   #   # => "00932bafce4a9391f888ca77f81f98b8e89d3aa6"
   #
-  #   Forgery(:basic).encrypt('your-password', Time.utc(2009))
+  #   Forgery[:basic].encrypt('your-password', Time.utc(2009))
   #   # => "4b157c2fbf430b962842d21926eaa887c3a12f81"
   def self.encrypt(password="password", salt=::Time.now.to_s)
     Digest::SHA1.hexdigest("--#{salt}--#{password}--")
@@ -56,10 +56,10 @@ class Forgery::Basic < Forgery::Tool
 
   # Gets a random boolean value
   #
-  #   Forgery(:basic).boolean
+  #   Forgery[:basic].boolean
   #   # => true
   #
-  #   Forgery(:basic).boolean
+  #   Forgery[:basic].boolean
   #   # => false
   def self.boolean
     BOOLEAN.random

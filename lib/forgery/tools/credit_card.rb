@@ -10,7 +10,7 @@ class Forgery::CreditCard < Forgery::Tool
 
   # Gets a random credit card type
   #
-  #   Forgery(:credit_card).type
+  #   Forgery[:credit_card].type
   #   # => "Visa"
   def self.type
     CARDS.random[:type]
@@ -18,10 +18,10 @@ class Forgery::CreditCard < Forgery::Tool
 
   # Gets a random credit card number
   #
-  #   Forgery(:credit_card).number
+  #   Forgery[:credit_card].number
   #   # => "4539750423451972"
   #
-  #   Forgery(:credit_card).number(:type => 'Visa', :length => 13)
+  #   Forgery[:credit_card].number(:type => 'Visa', :length => 13)
   #   # => "4556180133982"
   #
   # Supported Options
