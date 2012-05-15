@@ -1,11 +1,11 @@
 class Forgery
   class Tool
     def self.dictionaries
-      @@dictionaries ||= Storage.new(:dictionaries)
+      @@dictionaries ||= Storage.new(FileReader.new(:dictionaries))
     end
 
     def self.formats
-      @@formats ||= Storage.new(:formats)
+      @@formats ||= Storage.new(FileReader.new(:formats))
     end
 
     def self.string_to_numbers(string, replace='#')

@@ -2,14 +2,14 @@ class Forgery
 
   class Storage 
 
-    def initialize(folder)
+    def initialize(file_reader)
       @store = {}
-      @folder = folder 
+      @file_reader = file_reader
     end
 
     def [](key)
       @store[key.to_sym] ||= begin
-        contents = FileReader.read_file_from_folder(key, @folder)
+        contents = @file_reader.read_file(key)
         contents.extend(Forgery::Extensions::ArrayExtensions)
       end
     end
