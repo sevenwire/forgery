@@ -25,7 +25,7 @@ Forgery[:internet].email_address
 Forgery[:monetary].money
   #=> "1.58"
 
-Forgery[:lorem_ipsum].words(10]
+Forgery[:lorem_ipsum].words(10)
   #=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas."
 
 Forgery[:monetary].formatted_money :min => 100, :max => 1000
