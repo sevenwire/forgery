@@ -1,4 +1,4 @@
-class Forgery
+module Forgery
   class Railtie < Rails::Railtie
     config.to_prepare do
       Forgery.load_from! "#{Rails.root}/lib/forgery"

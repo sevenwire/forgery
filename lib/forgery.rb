@@ -1,7 +1,7 @@
 # Require forgeries at the bottom of the file so Forgery works as a gem both
 # within rails and outside of it.
 
-class Forgery
+module Forgery
   def self.[](forgery)
     tools.find(forgery)
   end
@@ -54,15 +54,15 @@ require 'forgery/version'
 
 # Deprecate Forgery classes using Forgery as base class by virtue
 # of calling dictionaries or formats methods on it.
-class Forgery
+module Forgery
   def self.dictionaries
     warn 'The Forgery base class is deprecated. Use Forgery::Tool as the base class for your forgery classes or tools.'
-    Forgery::Tool.dictionaries(*args)
+    Forgery::Tool.dictionaries
   end
 
   def self.formats
     warn 'The Forgery base class is deprecated. Use Forgery::Tool as the base class for your forgery classes or tools.'
-    Forgery::Tool.formats(*args)
+    Forgery::Tool.formats
   end
 end
 

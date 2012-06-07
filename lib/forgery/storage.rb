@@ -1,5 +1,4 @@
-class Forgery
-
+module Forgery
   class Storage 
 
     def initialize(file_reader)
@@ -23,5 +22,4 @@ class Forgery
     end
 
   end
-
 end

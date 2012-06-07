@@ -1,4 +1,4 @@
-class Forgery
+module Forgery
   class Tool
     def self.dictionaries
       @@dictionaries ||= Storage.new(FileReader.new(:dictionaries))

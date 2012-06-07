@@ -1,5 +1,4 @@
-class Forgery
-
+module Forgery
   class FileReader
 
     def initialize(folder)

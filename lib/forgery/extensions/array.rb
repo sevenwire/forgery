@@ -1,4 +1,4 @@
-class Forgery
+module Forgery
   module Extensions
     module ArrayExtensions
       def unextend
