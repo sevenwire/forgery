@@ -9,7 +9,7 @@ class Forgery::Name < Forgery::Tool
   end
 
   def self.full_name
-    "#{self.first_name} #{self.last_name}"
+    "#{first_name} #{last_name}"
   end
 
   def self.male_first_name
@@ -25,7 +25,7 @@ class Forgery::Name < Forgery::Tool
   end
 
   def self.job_title
-    dictionaries[:job_titles].random.sub('#{N}', self.job_title_suffix)
+    dictionaries[:job_titles].random.sub('#{N}', job_title_suffix)
   end
 
   def self.job_title_suffix
