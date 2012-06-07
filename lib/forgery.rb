@@ -3,10 +3,11 @@
 
 class Forgery
   def self.[](forgery)
-    @@forgery_class ||= Hash.new { |hash, key|
-      hash[key] = Forgery::Extend("Forgery::#{Forgery::Extend(key.to_s).camelize}").constantize
-    }
-    @@forgery_class[forgery]
+    tools.find(forgery)
+  end
+
+  def self.tools
+    @@tools ||= ToolResolver.new
   end
 
   def self.load_paths
@@ -43,6 +44,7 @@ class Forgery
 end
 
 # Loading forgery helpers.
+require 'forgery/tool_resolver'
 require 'forgery/file_reader'
 require 'forgery/storage'
 require 'forgery/tool'
