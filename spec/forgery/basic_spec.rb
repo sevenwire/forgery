@@ -115,7 +115,7 @@ describe Forgery::Basic do
     end
 
     it "should return text whose length is <= the at_most option" do
-      Forgery::Basic.text(:at_least => 15).size.should <= 15
+      Forgery::Basic.text(:at_most => 15).size.should <= 15
     end
     
     it "should return text whose length is == the exactly option" do
