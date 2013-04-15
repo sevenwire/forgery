@@ -4,6 +4,7 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'rubygems'
 require 'bundler/setup'
 require 'forgery'
+require 'ipaddr'
 
 ENV["TESTING_VIA_RSPEC"] = "true"
 
