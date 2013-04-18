@@ -107,6 +107,10 @@ describe Forgery::Basic do
     it "should return a number <= the at_most option" do
       Forgery::Basic.number(:at_most => 12).should <= 12
     end
+
+    it "should return a number with a specified number of digits" do
+      Forgery::Basic.number(:digits => 5).to_s.length.should eq(5)
+    end
   end
 
   describe ".text" do
@@ -117,7 +121,7 @@ describe Forgery::Basic do
     it "should return text whose length is <= the at_most option" do
       Forgery::Basic.text(:at_most => 15).size.should <= 15
     end
-    
+
     it "should return text whose length is == the exactly option" do
       Forgery::Basic.text(:exactly => 20).size.should == 20
     end
