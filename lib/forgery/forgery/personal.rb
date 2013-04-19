@@ -20,4 +20,11 @@ class Forgery::Personal < Forgery
     dictionaries[:languages].random.unextend
   end
 
+  def self.social_security_number
+    [3, 2, 4].map { |d| Forgery::Basic.number(:digits => d) }.join('-')
+  end
+  class << self
+    alias ssn social_security_number
+  end
+
 end
