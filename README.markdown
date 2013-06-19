@@ -1,3 +1,6 @@
+**This is not really maintained anymore. Use with caution.**
+
+
 Forgery
 =======
 
@@ -32,7 +35,7 @@ Forgery(:monetary).formatted_money :min => 100, :max => 1000
   #=> "$923.36"
 ```
 
-And many many [more]()!
+And many many more!
 
 Alternatively you can write it like this: 
 
@@ -43,7 +46,7 @@ Forgery::Personal.shirt_size
 ```
 
 In addition, you can always write your own dictionaries and formats, overriding the ones in the gem.
-Fully explained [here]().
+Fully explained here.
 
 
 Installing
@@ -59,7 +62,7 @@ $ gem install forgery
 
 This will add it to your gem library, just like any normal gem.
 You can then use it like any normal gem library.
-See [examples]() for more.
+See examples for more.
 
 
 **Rails 3.x**
