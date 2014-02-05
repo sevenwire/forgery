@@ -28,4 +28,7 @@ class Forgery::Internet < Forgery
     (1..4).map{rand(256)}.join('.')
   end
 
+  def self.user_agent
+    dictionaries[:useragents].random
+  end
 end
