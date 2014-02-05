@@ -1,6 +1,6 @@
 require 'date'
 
-class Forgery::Date < Forgery
+class Forgery::Date < Forgery::Tool
   DAYS = Forgery::Extend(%w{Sunday Monday Tuesday Wednesday Thursday Friday Saturday})
   DAYS_ABBR = Forgery::Extend(%w{Sun Mon Tue Wed Thu Fri Sat})
   MONTHS = Forgery::Extend(%w{January February March April May June July August September October November December})
@@ -10,9 +10,9 @@ class Forgery::Date < Forgery
     options = {:abbr => false}.merge(options)
 
     if (options[:abbr])
-      DAYS_ABBR.random.unextend
+      DAYS_ABBR.random
     else
-      DAYS.random.unextend
+      DAYS.random
     end
   end
 
@@ -23,9 +23,9 @@ class Forgery::Date < Forgery
       1 + rand(12)
     else
       if (options[:abbr])
-        MONTHS_ABBR.random.unextend
+        MONTHS_ABBR.random
       else
-        MONTHS.random.unextend
+        MONTHS.random
       end
     end
 

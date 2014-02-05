@@ -83,7 +83,7 @@ describe Forgery::Basic do
 
   describe ".color" do
     it "should return a random color" do
-      Forgery.dictionaries[:colors].should include(Forgery::Basic.color)
+      Forgery::Tool.dictionaries[:colors].should include(Forgery::Basic.color)
     end
   end
 

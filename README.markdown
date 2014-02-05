@@ -19,19 +19,19 @@ Using
 You'll want to read individual Forgery categories for more information, but these are the basics:
 
 ```ruby
-Forgery(:basic).password
+Forgery[:basic].password
   #=> "b6qZTQEH"
 
-Forgery(:internet).email_address
+Forgery[:internet].email_address
   #=> "krainboltgreene@crt.net"
 
-Forgery(:monetary).money
+Forgery[:monetary].money
   #=> "1.58"
 
-Forgery(:lorem_ipsum).words(10)
+Forgery[:lorem_ipsum].words(10)
   #=> "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas."
 
-Forgery(:monetary).formatted_money :min => 100, :max => 1000
+Forgery[:monetary].formatted_money :min => 100, :max => 1000
   #=> "$923.36"
 ```
 
@@ -99,14 +99,15 @@ $ script/generate forgery
 
 This Rails generators will make these directories in your Rails.root directory:
 
-- Rails.root/lib/forgery
-- Rails.root/lib/forgery/dictionaries
-- Rails.root/lib/forgery/extensions
-- Rails.root/lib/forgery/forgeries
-- Rails.root/lib/forgery/formats
+- lib/forgery
+- lib/forgery/dictionaries
+- lib/forgery/extensions
+- lib/forgery/tools
+- lib/forgery/formats
 
-You can then use these directories to write your own dictionaries, class extensions, forgeries, and formats.
+You can then use these directories to write your own dictionaries, class extensions, tools, and formats.
 
+If you are using the older 'forgeries' directory, these will still be loaded and compatible.
 
 Contributing
 ------------

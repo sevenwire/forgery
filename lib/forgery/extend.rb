@@ -1,4 +1,4 @@
-class Forgery
+module Forgery
   def self.Extend(object)
     case object
     when Array

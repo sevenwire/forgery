@@ -5,7 +5,7 @@ class ForgeryGenerator < Rails::Generator::Base
       m.directory 'lib/forgery'
       m.directory 'lib/forgery/dictionaries'
       m.directory 'lib/forgery/extensions'
-      m.directory 'lib/forgery/forgeries'
+      m.directory 'lib/forgery/tools'
       m.directory 'lib/forgery/formats'
     end
   end
