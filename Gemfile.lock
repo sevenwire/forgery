@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    forgery (0.4.4)
+    forgery (0.5.0)
 
 GEM
   remote: http://rubygems.org/
