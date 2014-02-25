@@ -4,6 +4,9 @@
 Forgery
 =======
 
+[![Build Status](https://travis-ci.org/sevenwire/forgery.png)](https://travis-ci.org/sevenwire/forgery)
+
+
 **A Problem**:
 It's harder than *absolutely easy* to make meaningful, simple, data for testing and development.
 
