@@ -25,7 +25,7 @@ describe Range do
   end
 
   it "should not return the maximum at excluded range" do
-    Kernel.should_receive(:rand).with(9).and_return(8)
+    Random.should_receive(:rand).with(0...9).and_return(8)
     Forgery::Extend(0...9).random.should_not be_equal 9
   end
 end
