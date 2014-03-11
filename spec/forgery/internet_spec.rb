@@ -50,4 +50,13 @@ describe Forgery::Internet do
       end
     end
   end
+
+  describe '.ip_v6' do
+    it 'should be a valid ipv6 address' do
+      val = Forgery::Internet.ip_v6
+      address = IPAddr.new(val)
+      address.ipv6?.should eq(true)
+    end
+  end
+
 end
