@@ -19,7 +19,7 @@ describe Forgery::RussianTax do
   end
 
   context 'legal inn' do
-    let(:inn) { Forgery::RussianTax.inn(type: :legal) }
+    let(:inn) { Forgery::RussianTax.inn({ :type =>:legal }) }
 
     it 'legal inn should be 10 symbols' do
       inn.length.should eq 10
@@ -33,7 +33,7 @@ describe Forgery::RussianTax do
   end
 
   context 'person inn' do
-    let(:inn) { Forgery::RussianTax.inn(type: :person) }
+    let(:inn) { Forgery::RussianTax.inn({ :type => :person }) }
 
     it 'person inn should be 12 symbols' do
       inn.length.should eq 12
@@ -52,7 +52,7 @@ describe Forgery::RussianTax do
   end
 
   context 'legal ogrn' do
-    let(:ogrn) { Forgery::RussianTax.ogrn(type: :legal) }
+    let(:ogrn) { Forgery::RussianTax.ogrn({ :type => :legal }) }
 
     it 'legal ogrn should be 13 symbols' do
       ogrn.length.should eq 13
@@ -64,7 +64,7 @@ describe Forgery::RussianTax do
   end
 
   context 'person ogrn' do
-    let(:ogrn) { Forgery::RussianTax.ogrn(type: :person) }
+    let(:ogrn) { Forgery::RussianTax.ogrn({ :type => :person }) }
 
     it 'person ogrn should be 15 symbols' do
       ogrn.length.should eq 15
