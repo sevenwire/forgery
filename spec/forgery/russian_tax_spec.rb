@@ -27,7 +27,7 @@ describe Forgery::RussianTax do
 
     it 'leagl inn crc' do
       mask = [2, 4, 10, 3, 5, 9, 4, 6, 8]
-      ((0..(inn.length-2)).inject(0) {|crc, i| crc + inn[i].to_i*mask[i].to_i} % 11 % 10).should  eq inn[9].to_i
+      ((0..(inn.length-2)).inject(0) {|crc, i| crc + inn[i].to_i*mask[i].to_i} % 11 % 10).should  eq inn[9].chr.to_i
     end
 
   end
@@ -41,12 +41,12 @@ describe Forgery::RussianTax do
 
     it 'person inn crc 10' do
       mask = [7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
-      ((0..(inn.length-3)).inject(0) {|crc, i| crc + inn[i].to_i*mask[i].to_i} % 11 % 10).should eq inn[10].to_i
+      ((0..(inn.length-3)).inject(0) {|crc, i| crc + inn[i].to_i*mask[i].to_i} % 11 % 10).should eq inn[10].chr.to_i
     end
 
     it 'person inn crc 11' do
       mask = [3, 7, 2, 4, 10, 3, 5, 9, 4, 6, 8]
-      ((0..(inn.length-2)).inject(0) {|crc, i| crc + inn[i].to_i*mask[i].to_i} % 11 % 10).should eq inn[11].to_i
+      ((0..(inn.length-2)).inject(0) {|crc, i| crc + inn[i].to_i*mask[i].to_i} % 11 % 10).should eq inn[11].chr.to_i
     end
 
   end
@@ -59,7 +59,7 @@ describe Forgery::RussianTax do
     end
 
     it 'legal ogrn should have valid crc' do
-      (ogrn[0..-2].to_i%11%10).should eq ogrn[-1].to_i
+      (ogrn[0..-2].to_i%11%10).should eq ogrn[-1].chr.to_i
     end
   end
 
@@ -71,7 +71,7 @@ describe Forgery::RussianTax do
     end
 
     it 'person ogrn should have valid crc' do
-      (ogrn[0..-2].to_i%13%10).should eq ogrn[-1].to_i
+      (ogrn[0..-2].to_i%13%10).should eq ogrn[-1].chr.to_i
     end
   end
 
