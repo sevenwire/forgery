@@ -1,6 +1,3 @@
-**This is not really maintained anymore. Use with caution.**
-
-
 Forgery
 =======
 
