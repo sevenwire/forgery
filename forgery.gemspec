@@ -5,8 +5,8 @@ require "forgery/version"
 Gem::Specification.new do |spec|
   spec.name        = "forgery"
   spec.version     = Forgery::VERSION
-  spec.authors     = ["Nathan Sutton", "Brandon Arbini"]
-  spec.email       = ["nate@zencoder.com", "brandon@zencoder.com"]
+  spec.authors     = ["Nathan Sutton", "Brandon Arbini", "Kamil Kieliszczyk"]
+  spec.email       = ["nate@zencoder.com", "brandon@zencoder.com", "kamil@kieliszczyk.net"]
   spec.homepage    = "http://github.com/sevenwire/forgery"
   spec.summary     = "Easy and customizable generation of forged data."
   spec.description = "Easy and customizable generation of forged data. Can be used as a gem or a rails plugin. Includes rails generators for creating your own forgeries."
