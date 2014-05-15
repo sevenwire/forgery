@@ -4,44 +4,44 @@ describe Forgery::CreditCard do
   describe ".number" do
     # basics
     it "should be valid (pass a Luhn test)" do
-      valid_number?(Forgery::CreditCard.number).should eql(true)
+      expect(valid_number?(Forgery::CreditCard.number)).to eql(true)
     end
 
     it "should start with a valid prefix" do
-      which_type?(Forgery::CreditCard.number).should_not eql(false)
+      expect(which_type?(Forgery::CreditCard.number)).not_to eql(false)
     end
 
     # type specified
     it "should be valid if type specified" do
-      valid_number?(Forgery::CreditCard.number :type => 'Discover').should eql(true)
+      expect(valid_number?(Forgery::CreditCard.number :type => 'Discover')).to eql(true)
     end
 
     it "should start with a valid prefix for type specified" do
-      which_type?(Forgery::CreditCard.number :type => 'MasterCard').should eql(:master)
+      expect(which_type?(Forgery::CreditCard.number :type => 'MasterCard')).to eql(:master)
     end
 
     # type and length specified
     it "should be valid if type and length specified" do
-      valid_number?(Forgery::CreditCard.number :type => 'Visa', :length => 13).should eql(true)
+      expect(valid_number?(Forgery::CreditCard.number :type => 'Visa', :length => 13)).to eql(true)
     end
 
     it "should be the length specified" do
-      (Forgery::CreditCard.number :type => 'Visa', :length => 13).length.should eql(13)
+      expect((Forgery::CreditCard.number :type => 'Visa', :length => 13).length).to eql(13)
     end
 
     # length and prefixes specified
     it "should be valid if length and prefixes specified" do
-      valid_number?(Forgery::CreditCard.number :length => 14, :prefixes => %w"300 301 302 303 36 38").should eql(true)
+      expect(valid_number?(Forgery::CreditCard.number :length => 14, :prefixes => %w"300 301 302 303 36 38")).to eql(true)
     end
 
     it "should be a valid Diners Club card, since its length and prefixes are specified" do
-      which_type?(Forgery::CreditCard.number :length => 14, :prefixes => %w"300 301 302 303 36 38").should eql(:diners)
+      expect(which_type?(Forgery::CreditCard.number :length => 14, :prefixes => %w"300 301 302 303 36 38")).to eql(:diners)
     end
   end
 
   describe ".type" do
     it "should return a valid type" do
-      which_type?(Forgery::CreditCard.number :type => Forgery::CreditCard.type).should_not eql(false)
+      expect(which_type?(Forgery::CreditCard.number :type => Forgery::CreditCard.type)).not_to eql(false)
     end
   end
 

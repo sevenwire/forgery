@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe String do
   it "should change a single # to a number 0-9" do
-    (0..9).should include(Integer(Forgery::Extend("#").to_numbers))
+    expect(0..9).to include(Integer(Forgery::Extend("#").to_numbers))
   end
 
   it "should change two #'s to two numbers 0-9" do
     Forgery::Extend("##").to_numbers.split("").each do |s|
-      (0..9).should include(Integer(s))
+      expect(0..9).to include(Integer(s))
     end
   end
 
@@ -16,14 +16,14 @@ describe String do
     n = s.to_numbers
     0.upto(s.size - 1) do |i|
       if s[i, 1] == "#"
-        ('0'..'9').should include(n[i, 1])
+        expect('0'..'9').to include(n[i, 1])
       else
-        ('0'..'9').should_not include(n[i, 1])
+        expect('0'..'9').not_to include(n[i, 1])
       end
     end
   end
 
   it "should allow the replacing of a different character" do
-    (0..9).should include(Integer(Forgery::Extend("-").to_numbers("-")))
+    expect(0..9).to include(Integer(Forgery::Extend("-").to_numbers("-")))
   end
 end

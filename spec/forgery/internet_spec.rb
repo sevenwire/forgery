@@ -3,12 +3,12 @@ require 'spec_helper'
 describe Forgery::Internet do
   describe ".user_name" do
     it "should return a username that is lowercase" do
-      Forgery::Internet.user_name.should only_contain(Forgery::Basic::LOWER_ALPHA)
+      expect(Forgery::Internet.user_name).to only_contain(Forgery::Basic::LOWER_ALPHA)
     end
   end
 
   it "should return a top level domain" do
-    Forgery.dictionaries[:top_level_domains].should include(Forgery::Internet.top_level_domain)
+    expect(Forgery.dictionaries[:top_level_domains]).to include(Forgery::Internet.top_level_domain)
   end
 
   describe ".domain_name" do
@@ -18,23 +18,23 @@ describe Forgery::Internet do
     end
 
     it "should return a domain name that contains a top level domain" do
-      Forgery.dictionaries[:top_level_domains].should include(Forgery::Internet.domain_name.split('.').last)
+      expect(Forgery.dictionaries[:top_level_domains]).to include(Forgery::Internet.domain_name.split('.').last)
     end
   end
 
   describe ".email_address" do
     it "should match the email format" do
-      Forgery::Internet.email_address.should match(/.+@.+\.(#{Forgery.dictionaries[:top_level_domains].join("|")})/)
+      expect(Forgery::Internet.email_address).to match(/.+@.+\.(#{Forgery.dictionaries[:top_level_domains].join("|")})/)
     end
   end
 
   describe ".cctld" do
     it "should return a country-code top level domain" do
-      Forgery.dictionaries[:country_code_top_level_domains].should include(Forgery::Internet.cctld)
+      expect(Forgery.dictionaries[:country_code_top_level_domains]).to include(Forgery::Internet.cctld)
     end
 
     it "should return the cctld in correct two-letter format" do
-      Forgery::Internet.cctld.should =~ /\A[a-z]{2}\Z/
+      expect(Forgery::Internet.cctld).to match(/\A[a-z]{2}\Z/)
     end
   end
 
@@ -42,11 +42,11 @@ describe Forgery::Internet do
     it 'should be 4 integers between 0 and 255 seprated by "."' do
       val = Forgery::Internet.ip_v4
       nums = val.split('.')
-      nums.should have(4).items
+      expect(nums.size).to eq(4)
       nums.each do |num|
-        num.should =~ /\d{1,3}/
-        num.to_i.should <= 255
-        num.to_i.should >= 0
+        expect(num).to match(/\d{1,3}/)
+        expect(num.to_i).to be <= 255
+        expect(num.to_i).to be >= 0
       end
     end
   end
@@ -55,7 +55,7 @@ describe Forgery::Internet do
     it 'should be a valid ipv6 address' do
       val = Forgery::Internet.ip_v6
       address = IPAddr.new(val)
-      address.ipv6?.should eq(true)
+      expect(address.ipv6?).to eq(true)
     end
   end
 
