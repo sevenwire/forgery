@@ -111,114 +111,115 @@ You can then use these directories to write your own dictionaries, class extensi
 Full List of methods:
 --------------------
 
-    Forgery('address').city
-    Forgery('address').continent
-    Forgery('address').country
-    Forgery('address').phone
-    Forgery('address').province
-    Forgery('address').province_abbrev
-    Forgery('address').state
-    Forgery('address').state_abbrev
-    Forgery('address').street_address
-    Forgery('address').street_name
-    Forgery('address').street_number
-    Forgery('address').street_suffix
-    Forgery('address').zip
+```ruby
+Forgery('address').city
+Forgery('address').continent
+Forgery('address').country
+Forgery('address').phone
+Forgery('address').province
+Forgery('address').province_abbrev
+Forgery('address').state
+Forgery('address').state_abbrev
+Forgery('address').street_address
+Forgery('address').street_name
+Forgery('address').street_number
+Forgery('address').street_suffix
+Forgery('address').zip
 
-    Forgery('basic').boolean
-    Forgery('basic').color
-    Forgery('basic').encrypt
-    Forgery('basic').frequency
-    Forgery('basic').hex_color
-    Forgery('basic').number
-    Forgery('basic').password
-    Forgery('basic').short_hex_color
-    Forgery('basic').text
+Forgery('basic').boolean
+Forgery('basic').color
+Forgery('basic').encrypt
+Forgery('basic').frequency
+Forgery('basic').hex_color
+Forgery('basic').number
+Forgery('basic').password
+Forgery('basic').short_hex_color
+Forgery('basic').text
 
-    Forgery('credit_card').check_digit
-    Forgery('credit_card').number
-    Forgery('credit_card').type
-    Forgery('currency').code
-    Forgery('currency').description
+Forgery('credit_card').check_digit
+Forgery('credit_card').number
+Forgery('credit_card').type
+Forgery('currency').code
+Forgery('currency').description
 
-    Forgery('date').date
-    Forgery('date').day
-    Forgery('date').day_of_week
-    Forgery('date').delta
-    Forgery('date').month
-    Forgery('date').year
+Forgery('date').date
+Forgery('date').day
+Forgery('date').day_of_week
+Forgery('date').delta
+Forgery('date').month
+Forgery('date').year
 
-    Forgery('email').address
-    Forgery('email').body
-    Forgery('email').subject
+Forgery('email').address
+Forgery('email').body
+Forgery('email').subject
 
-    Forgery('geo').latitude
-    Forgery('geo').latitude_degrees
-    Forgery('geo').latitude_direction
-    Forgery('geo').latitude_minutes
-    Forgery('geo').latitude_seconds
-    Forgery('geo').longitude
-    Forgery('geo').longitude_degrees
-    Forgery('geo').longitude_direction
-    Forgery('geo').longitude_minutes
-    Forgery('geo').longitude_seconds
+Forgery('geo').latitude
+Forgery('geo').latitude_degrees
+Forgery('geo').latitude_direction
+Forgery('geo').latitude_minutes
+Forgery('geo').latitude_seconds
+Forgery('geo').longitude
+Forgery('geo').longitude_degrees
+Forgery('geo').longitude_direction
+Forgery('geo').longitude_minutes
+Forgery('geo').longitude_seconds
 
-    Forgery('internet').cctld
-    Forgery('internet').domain_name
-    Forgery('internet').email_address
-    Forgery('internet').email_subject
-    Forgery('internet').ip_v4
-    Forgery('internet').ip_v6
-    Forgery('internet').top_level_domain
-    Forgery('internet').user_name
+Forgery('internet').cctld
+Forgery('internet').domain_name
+Forgery('internet').email_address
+Forgery('internet').email_subject
+Forgery('internet').ip_v4
+Forgery('internet').ip_v6
+Forgery('internet').top_level_domain
+Forgery('internet').user_name
 
-    Forgery('lorem_ipsum').character
-    Forgery('lorem_ipsum').characters
-    Forgery('lorem_ipsum').lorem_ipsum_characters
-    Forgery('lorem_ipsum').lorem_ipsum_words
-    Forgery('lorem_ipsum').paragraph
-    Forgery('lorem_ipsum').paragraphs
-    Forgery('lorem_ipsum').range_from_quantity
-    Forgery('lorem_ipsum').sentence
-    Forgery('lorem_ipsum').sentences
-    Forgery('lorem_ipsum').text
-    Forgery('lorem_ipsum').title
-    Forgery('lorem_ipsum').word
-    Forgery('lorem_ipsum').words
+Forgery('lorem_ipsum').character
+Forgery('lorem_ipsum').characters
+Forgery('lorem_ipsum').lorem_ipsum_characters
+Forgery('lorem_ipsum').lorem_ipsum_words
+Forgery('lorem_ipsum').paragraph
+Forgery('lorem_ipsum').paragraphs
+Forgery('lorem_ipsum').range_from_quantity
+Forgery('lorem_ipsum').sentence
+Forgery('lorem_ipsum').sentences
+Forgery('lorem_ipsum').text
+Forgery('lorem_ipsum').title
+Forgery('lorem_ipsum').word
+Forgery('lorem_ipsum').words
 
-    Forgery('monetary').formatted_money
-    Forgery('monetary').money
+Forgery('monetary').formatted_money
+Forgery('monetary').money
 
-    Forgery('name').company_name
-    Forgery('name').female_first_name
-    Forgery('name').first_name
-    Forgery('name').full_name
-    Forgery('name').industry
-    Forgery('name').job_title
-    Forgery('name').job_title_suffix
-    Forgery('name').last_name
-    Forgery('name').location
-    Forgery('name').male_first_name
-    Forgery('name').suffix
-    Forgery('name').title
+Forgery('name').company_name
+Forgery('name').female_first_name
+Forgery('name').first_name
+Forgery('name').full_name
+Forgery('name').industry
+Forgery('name').job_title
+Forgery('name').job_title_suffix
+Forgery('name').last_name
+Forgery('name').location
+Forgery('name').male_first_name
+Forgery('name').suffix
+Forgery('name').title
 
-    Forgery('personal').abbreviated_gender
-    Forgery('personal').gender
-    Forgery('personal').language
-    Forgery('personal').race
-    Forgery('personal').shirt_size
+Forgery('personal').abbreviated_gender
+Forgery('personal').gender
+Forgery('personal').language
+Forgery('personal').race
+Forgery('personal').shirt_size
 
-    Forgery('russian_tax').account_number
-    Forgery('russian_tax').bik
-    Forgery('russian_tax').inn
-    Forgery('russian_tax').legal_inn
-    Forgery('russian_tax').legal_ogrn
-    Forgery('russian_tax').ogrn
-    Forgery('russian_tax').person_inn
-    Forgery('russian_tax').person_ogrn
+Forgery('russian_tax').account_number
+Forgery('russian_tax').bik
+Forgery('russian_tax').inn
+Forgery('russian_tax').legal_inn
+Forgery('russian_tax').legal_ogrn
+Forgery('russian_tax').ogrn
+Forgery('russian_tax').person_inn
+Forgery('russian_tax').person_ogrn
 
-    Forgery('time').zone
-
+Forgery('time').zone
+```
 
 Contributing
 ------------
