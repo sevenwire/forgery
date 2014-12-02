@@ -8,7 +8,9 @@ describe Range do
   end
 
   it "should not take a long time when the range is huge" do
-    expect(Timeout.timeout(1){Forgery::Extend(1234567890..12345678901234567890).random}).not_to raise_error
+    expect {
+      Timeout.timeout(1){Forgery::Extend(1234567890..12345678901234567890).random}
+    }.not_to raise_error
   end
 
   it "should return nil for a random number from a reverse range" do
