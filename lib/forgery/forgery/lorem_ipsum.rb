@@ -75,18 +75,20 @@ class Forgery::LoremIpsum < Forgery
     range = range_from_quantity(quantity, options)
     start = range.first * options[:sentences]
 
-    paragraphs = []
-
-    range.to_a.length.times do |i|
-      paragraphs << (
+    enumer = range.to_a.length.enum_for(:times).lazy.map do
+      paragraph = (
         options[:wrap][:start] +
         dictionaries[:lorem_ipsum][start..(start+options[:sentences]-1)].join(" ") +
         options[:wrap][:end]
       )
       start += options[:sentences]
+      paragraph
     end
 
-    paragraphs.join(options[:separator])
+    if block_given?
+      then enumer.each do |par| yield par end
+      else enumer.to_a.join(options[:separator])
+    end
   end
 
   def self.title(options={})
