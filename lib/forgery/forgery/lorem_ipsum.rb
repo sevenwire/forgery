@@ -88,13 +88,13 @@ class Forgery::LoremIpsum < Forgery
       paragraph
     }
     enumer = Enumerator.new { |yielder|
-      (count - 1).times do yielder.yield next_paragraph.call end
-      yielder.yield next_paragraph.call
+      (count - 1).times do yielder.yield next_paragraph.call, options[:separator] end
+      yielder.yield next_paragraph.call, nil
     }
 
     if block_given?
-      then enumer.each do |par| yield par end
-      else enumer.to_a.join(options[:separator])
+      then enumer.each do |par, sep| yield par, sep end
+      else enumer.to_a.join
     end
   end
 
