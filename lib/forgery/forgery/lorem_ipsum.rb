@@ -75,7 +75,7 @@ class Forgery::LoremIpsum < Forgery
     range = range_from_quantity(quantity, options)
     start = range.first * options[:sentences]
 
-    enumer = range.to_a.length.enum_for(:times).lazy.map do
+    enumer = range.count.enum_for(:times).lazy.map do
       paragraph = (
         options[:wrap][:start] +
         dictionaries[:lorem_ipsum][start..(start+options[:sentences]-1)].join(" ") +
