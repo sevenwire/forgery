@@ -74,8 +74,11 @@ class Forgery::LoremIpsum < Forgery
 
     range = range_from_quantity(quantity, options)
     start = range.first * options[:sentences]
+    count = range.count
 
-    enumer = range.count.enum_for(:times).lazy.map do
+    return '' if count == 0
+
+    next_paragraph = proc {
       paragraph = (
         options[:wrap][:start] +
         dictionaries[:lorem_ipsum][start..(start+options[:sentences]-1)].join(" ") +
@@ -83,7 +86,11 @@ class Forgery::LoremIpsum < Forgery
       )
       start += options[:sentences]
       paragraph
-    end
+    }
+    enumer = Enumerator.new { |yielder|
+      (count - 1).times do yielder.yield next_paragraph.call end
+      yielder.yield next_paragraph.call
+    }
 
     if block_given?
       then enumer.each do |par| yield par end
