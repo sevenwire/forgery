@@ -56,7 +56,7 @@ class Forgery::LoremIpsum < Forgery
   # Yields paragraphs to the given block. If no block is given,
   # returns an Enumerator.
   #
-  # Honors the :sentences and :random-related options (same as #paragraphs).
+  # Honors the :sentences option.
   #
   # @yield paragraph
   def self.each_paragraph(start_at = 0, options = {})
