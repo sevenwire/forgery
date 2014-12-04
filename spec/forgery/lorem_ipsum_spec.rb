@@ -38,6 +38,26 @@ describe Forgery::LoremIpsum do
     it "should separate paragraphs with the specified string" do
       expect(Forgery::LoremIpsum.paragraphs(2, :separator => "foo").split("foo").size).to eq(2)
     end
+
+    it "should yield no separator in the last iteration for a given block" do
+      for i in 1..5 do
+        separator = ' xxx '
+        Forgery::LoremIpsum.paragraphs(i, :separator => separator) do |par, sep|
+          separator = sep
+        end
+        expect(separator).to be_nil
+      end
+    end
+
+    it "should yield the exact same paragraphs and separators to a given block" do
+      for i in 0..5 do
+        args = [i, {:separator => ' xxx '}]
+        retval_no_block = Forgery::LoremIpsum.paragraphs(*args)
+        retval_wt_block = Forgery::LoremIpsum.enum_for(:paragraphs, *args).map { |p,s| "#{p}#{s}" }.join
+        expect(retval_wt_block).to eq(retval_no_block)
+      end
+    end
+
   end
 
   describe ".paragraph" do
