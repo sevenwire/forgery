@@ -59,13 +59,11 @@ class Forgery::LoremIpsum < Forgery
   # Honors the :sentences and :random-related options (same as #paragraphs).
   #
   # @yield paragraph
-  def self.each_paragraph(quantity=2, options = {})
+  def self.each_paragraph(start_at = 0, options = {})
     default_options = {:sentences => 3}
     options = default_options.merge(options)
-    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length/options[:sentences])-quantity) if quantity.is_a?(Fixnum)
 
-    range = range_from_quantity(quantity, options)
-    start = range.first * options[:sentences]
+    start = start_at * options[:sentences]
 
     next_paragraph = lambda {
       paragraph = dictionaries[:lorem_ipsum][start..(start+options[:sentences]-1)].join(" ")
@@ -73,7 +71,7 @@ class Forgery::LoremIpsum < Forgery
       paragraph
     }
     enumer = Enumerator.new { |yielder|
-      range.count.times do
+      loop do
         yielder.yield next_paragraph.call
       end
     }
@@ -96,25 +94,26 @@ class Forgery::LoremIpsum < Forgery
                            :html => false,
                            :sentences => 3}
     options = default_options.merge(options)
+    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length/options[:sentences])-quantity) if quantity.is_a?(Fixnum)
 
     if options[:html]
       options[:wrap] = { :start => "<p>",
                          :end => "</p>" }
     end
 
-    paragraphs = each_paragraph(quantity, options).map { |par|
-      options[:wrap][:start] + par + options[:wrap][:end]
-    }
+    range = range_from_quantity(quantity, options)
+    start_at = range.first
 
-    if block_given? then
-      return if paragraphs.length == 0
-      for i in 0..(paragraphs.length-2) do
-        yield paragraphs[i], options[:separator]
-      end
-      yield paragraphs.last, nil
-    else
-      paragraphs.join(options[:separator])
-    end
+    paragraphs =
+      each_paragraph(start_at, options).
+      take(range.count).
+      map { |par| options[:wrap][:start] + par + options[:wrap][:end] }
+
+    return paragraphs.join(options[:separator]) unless block_given?
+
+    # else
+    for i in 0..(paragraphs.length-2) do yield paragraphs[i], options[:separator] end
+    yield paragraphs.last, nil
   end
 
   def self.title(options={})
