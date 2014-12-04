@@ -53,6 +53,37 @@ class Forgery::LoremIpsum < Forgery
     dictionaries[:lorem_ipsum][range_from_quantity(quantity, options)].join(" ")
   end
 
+  # Yields paragraphs to the given block. If no block is given,
+  # returns an Enumerator.
+  #
+  # Honors the :sentences and :random-related options (same as #paragraphs).
+  #
+  # @yield paragraph
+  def self.each_paragraph(quantity=2, options = {})
+    default_options = {:sentences => 3}
+    options = default_options.merge(options)
+    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length/options[:sentences])-quantity) if quantity.is_a?(Fixnum)
+
+    range = range_from_quantity(quantity, options)
+    start = range.first * options[:sentences]
+
+    next_paragraph = lambda {
+      paragraph = dictionaries[:lorem_ipsum][start..(start+options[:sentences]-1)].join(" ")
+      start += options[:sentences]
+      paragraph
+    }
+    enumer = Enumerator.new { |yielder|
+      range.count.times do
+        yielder.yield next_paragraph.call
+      end
+    }
+
+    if block_given?
+      then enumer.each do |par| yield par end
+      else enumer
+    end
+  end
+
   def self.paragraph(options={})
     paragraphs(1, options)
   end
@@ -65,39 +96,24 @@ class Forgery::LoremIpsum < Forgery
                            :html => false,
                            :sentences => 3}
     options = default_options.merge(options)
-    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length/options[:sentences])-quantity) if quantity.is_a?(Fixnum)
 
     if options[:html]
       options[:wrap] = { :start => "<p>",
                          :end => "</p>" }
     end
 
-    range = range_from_quantity(quantity, options)
-    start = range.first * options[:sentences]
-    count = range.count
-
-    if count == 0
-      return if block_given?
-      return ''
-    end
-
-    next_paragraph = proc {
-      paragraph = (
-        options[:wrap][:start] +
-        dictionaries[:lorem_ipsum][start..(start+options[:sentences]-1)].join(" ") +
-        options[:wrap][:end]
-      )
-      start += options[:sentences]
-      paragraph
-    }
-    enumer = Enumerator.new { |yielder|
-      (count - 1).times do yielder.yield next_paragraph.call, options[:separator] end
-      yielder.yield next_paragraph.call, nil
+    paragraphs = each_paragraph(quantity, options).map { |par|
+      options[:wrap][:start] + par + options[:wrap][:end]
     }
 
-    if block_given?
-      then enumer.each do |par, sep| yield par, sep end
-      else enumer.to_a.join
+    if block_given? then
+      return if paragraphs.length == 0
+      for i in 0..(paragraphs.length-2) do
+        yield paragraphs[i], options[:separator]
+      end
+      yield paragraphs.last, nil
+    else
+      paragraphs.join(options[:separator])
     end
   end
 
