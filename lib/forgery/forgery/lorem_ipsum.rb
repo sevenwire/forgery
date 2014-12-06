@@ -76,7 +76,10 @@ class Forgery::LoremIpsum < Forgery
     start = range.first * options[:sentences]
     count = range.count
 
-    return '' if count == 0
+    if count == 0
+      return if block_given?
+      return ''
+    end
 
     next_paragraph = proc {
       paragraph = (
