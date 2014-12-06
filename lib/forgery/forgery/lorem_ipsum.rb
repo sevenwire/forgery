@@ -70,11 +70,11 @@ class Forgery::LoremIpsum < Forgery
       start += options[:sentences]
       paragraph
     }
-    enumer = Enumerator.new { |yielder|
+    enumer = Enumerator.new do |yielder|
       loop do
         yielder.yield next_paragraph.call
       end
-    }
+    end
 
     if block_given?
       then enumer.each do |par| yield par end
