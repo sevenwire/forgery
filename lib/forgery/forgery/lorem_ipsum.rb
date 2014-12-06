@@ -103,17 +103,21 @@ class Forgery::LoremIpsum < Forgery
 
     range = range_from_quantity(quantity, options)
     start_at = range.first
+    count = range.count
 
-    paragraphs =
-      each_paragraph(start_at, options).
-      take(range.count).
-      map { |par| options[:wrap][:start] + par + options[:wrap][:end] }
+    # re-invent lazy-map because of 1.9 support
+    paragraphs = Enumerator.new do |yielder|
+      each_paragraph(start_at, options) do |par|
+        yielder.yield (options[:wrap][:start] + par + options[:wrap][:end])
+      end
+    end
 
-    return paragraphs.join(options[:separator]) unless block_given?
+    return paragraphs.take(count).join(options[:separator]) unless block_given?
+    return if count == 0
 
     # else
-    for i in 0..(paragraphs.length-2) do yield paragraphs[i], options[:separator] end
-    yield paragraphs.last, nil
+    for i in 0..(count-2) do yield paragraphs.next, options[:separator] end
+    yield paragraphs.next, nil
   end
 
   def self.title(options={})
