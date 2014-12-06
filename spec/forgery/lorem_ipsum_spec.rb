@@ -58,6 +58,14 @@ describe Forgery::LoremIpsum do
       end
     end
 
+    it "should always return nil when block_given?" do
+      expect(Forgery::LoremIpsum.paragraphs(0) do end).to be_nil
+      expect(Forgery::LoremIpsum.paragraphs(1) do end).to be_nil
+      expect(Forgery::LoremIpsum.paragraphs(2) do end).to be_nil
+      expect(Forgery::LoremIpsum.paragraphs(3) do end).to be_nil
+      expect(Forgery::LoremIpsum.paragraphs(4) do end).to be_nil
+    end
+
   end
 
   describe ".paragraph" do
