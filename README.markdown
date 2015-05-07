@@ -210,6 +210,9 @@ Method                                          | Example Output
 `Forgery('personal').race`                      | Indonesian
 `Forgery('personal').shirt_size`                | 2XL
                                                 |
+`Forgery('bank_account').iban`                  | BE68539007547034
+`Forgery('bank_account').bic`                   | VBRSDE33345
+                                                |
 `Forgery('russian_tax').account_number`         | 56335652786612121479
 `Forgery('russian_tax').bik`                    | 046533860
 `Forgery('russian_tax').inn`                    | 7366543467
