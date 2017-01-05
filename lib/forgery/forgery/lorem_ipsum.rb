@@ -28,7 +28,7 @@ class Forgery::LoremIpsum < Forgery
   end
 
   def self.characters(quantity=10, options={})
-    options.merge!(:random_limit => lorem_ipsum_characters.length-quantity) if quantity.is_a?(Fixnum)
+    options.merge!(:random_limit => lorem_ipsum_characters.length-quantity) if quantity.is_a?(0.class)
 
     lorem_ipsum_characters[range_from_quantity(quantity, options)]
   end
@@ -38,7 +38,7 @@ class Forgery::LoremIpsum < Forgery
   end
 
   def self.words(quantity=10, options={})
-    options.merge!(:random_limit => lorem_ipsum_words.length-quantity) if quantity.is_a?(Fixnum)
+    options.merge!(:random_limit => lorem_ipsum_words.length-quantity) if quantity.is_a?(0.class)
 
     lorem_ipsum_words[range_from_quantity(quantity, options)].join(" ")
   end
@@ -48,7 +48,7 @@ class Forgery::LoremIpsum < Forgery
   end
 
   def self.sentences(quantity=2, options={})
-    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length-quantity)) if quantity.is_a?(Fixnum)
+    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length-quantity)) if quantity.is_a?(0.class)
 
     dictionaries[:lorem_ipsum][range_from_quantity(quantity, options)].join(" ")
   end
@@ -65,7 +65,7 @@ class Forgery::LoremIpsum < Forgery
                            :html => false,
                            :sentences => 3}
     options = default_options.merge(options)
-    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length/options[:sentences])-quantity) if quantity.is_a?(Fixnum)
+    options.merge!(:random_limit => (dictionaries[:lorem_ipsum].length/options[:sentences])-quantity) if quantity.is_a?(0.class)
 
     if options[:html]
       options[:wrap] = { :start => "<p>",
