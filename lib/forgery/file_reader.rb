@@ -29,7 +29,7 @@ class Forgery
     def self.find_file(name, folder)
       Forgery.load_paths.reverse.each do |path|
         file = "#{path}/#{folder}/#{name}"
-        return file if File.exists?(file)
+        return file if File.exist?(file)
       end
       raise ArgumentError.new("File '#{name}' wasn't found in '#{folder}' folder. Searched paths: \n#{Forgery.load_paths.join('\n')}")
     end

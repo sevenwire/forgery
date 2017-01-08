@@ -34,7 +34,7 @@ class Forgery::CreditCard < Forgery
   def self.number(options={})
     # find a card by type specified, or select a card randomly
     card = if options[:type]
-      CARDS.find { |card| card[:type] == options[:type] }.clone
+      CARDS.find { |ccard| ccard[:type] == options[:type] }.clone
     else
       CARDS.random.clone
     end

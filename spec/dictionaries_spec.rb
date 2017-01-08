@@ -6,7 +6,7 @@ describe Forgery::Dictionaries do
 
     dictionaries[:colors]
 
-    dictionaries.should be_loaded(:colors)
+    expect(dictionaries).to be_loaded(:colors)
   end
 
   it "should load a dictionary when called by the key" do
@@ -14,11 +14,11 @@ describe Forgery::Dictionaries do
 
     dictionaries.reset!
 
-    dictionaries.should_not be_loaded(:colors)
+    expect(dictionaries).not_to be_loaded(:colors)
 
     dictionaries[:colors]
 
-    dictionaries.should be_loaded(:colors)
+    expect(dictionaries).to be_loaded(:colors)
   end
 
   it "should clear the loaded dictionaries when calling reset!" do
@@ -26,10 +26,10 @@ describe Forgery::Dictionaries do
 
     dictionaries[:colors]
 
-    dictionaries.should be_loaded(:colors)
+    expect(dictionaries).to be_loaded(:colors)
 
     dictionaries.reset!
 
-    dictionaries.should_not be_loaded(:colors)
+    expect(dictionaries).not_to be_loaded(:colors)
   end
 end

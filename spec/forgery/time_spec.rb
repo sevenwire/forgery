@@ -2,6 +2,6 @@ require 'spec_helper'
 
 describe Forgery::Time do
   it "should return a random timezone" do
-    Forgery.dictionaries[:zones].should include(Forgery::Time.zone)
+    expect(Forgery.dictionaries[:zones]).to include(Forgery::Time.zone)
   end
 end

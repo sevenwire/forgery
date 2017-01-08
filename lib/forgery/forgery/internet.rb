@@ -1,3 +1,5 @@
+require 'ipaddr'
+
 class Forgery::Internet < Forgery
 
   def self.user_name
@@ -26,6 +28,11 @@ class Forgery::Internet < Forgery
 
   def self.ip_v4
     (1..4).map{rand(256)}.join('.')
+  end
+
+  # credit for this method from http://stackoverflow.com/a/2811349/793330
+  def self.ip_v6
+    IPAddr.new(rand(2**128),Socket::AF_INET6).to_s
   end
 
 end
