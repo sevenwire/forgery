@@ -282,6 +282,7 @@ Thanks to the authors and contributors:
 * Diego Plentz (plentz)
 * Gabe Berke-Williams (gabebw)
 * Todd Mazierski (toddmazierski)
+* Galen Palmer (palmergs)
 
 
 Licensing
