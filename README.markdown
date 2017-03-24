@@ -111,7 +111,7 @@ You can then use these directories to write your own dictionaries, class extensi
 Full List of methods:
 --------------------
 
-Method                                          | Example Output
+Address                                         | Example Output
 :------------------------------                 |:----------------
 `Forgery('address').city`                       | Loomis
 `Forgery('address').continent`                  | South America
@@ -126,7 +126,10 @@ Method                                          | Example Output
 `Forgery('address').street_number`              | 222
 `Forgery('address').street_suffix`              | Drive
 `Forgery('address').zip`                        | 11281-5568
-                                                |
+
+
+Basic                                           | Example Output
+:------------------------------                 |:----------------
 `Forgery('basic').boolean`                      | `true` (`TrueClass`)
 `Forgery('basic').color`                        | Red
 `Forgery('basic').encrypt`                      | fc0d835dd4e4df144a33a6a346298b0f23dcd14a
@@ -136,24 +139,33 @@ Method                                          | Example Output
 `Forgery('basic').password`                     | KcLBHCv6
 `Forgery('basic').short_hex_color`              | #c1d
 `Forgery('basic').text`                         | G8gECFfvDs2
-                                                |
+
+Credit Car                                      | Example Output
+:------------------------------                 |:----------------
 `Forgery('credit_card').check_digit(number)`    | 5
 `Forgery('credit_card').number`                 | 343682330855371
 `Forgery('credit_card').type`                   | American Express
 `Forgery('currency').code`                      | XPF
 `Forgery('currency').description`               | Austria Schillings
-                                                |
+
+Date                                            | Example Output
+:------------------------------                 |:----------------
 `Forgery('date').date`                          | Fri, 20 Mar 2009 (`Date`)
 `Forgery('date').day`                           | 15
 `Forgery('date').day_of_week`                   | Monday
 `Forgery('date').delta(options)`                | 3
 `Forgery('date').month`                         | January
 `Forgery('date').year`                          | 1994
-                                                |
+
+Email                                           | Example Output
+:------------------------------                 |:----------------
 `Forgery('email').address`                      | gsmith@kamba.org
 `Forgery('email').body`                         | Lorem ipsum dolor sit amet, consectetuer ...
 `Forgery('email').subject`                      | Lorem Ipsum Dolor Sit Amet...
-                                                |
+
+
+Geo                                             | Example Output
+:------------------------------                 |:----------------
 `Forgery('geo').latitude`                       | -8.095096815540515 (`Float`)
 `Forgery('geo').latitude_degrees`               | -49
 `Forgery('geo').latitude_direction`             | N
@@ -164,7 +176,9 @@ Method                                          | Example Output
 `Forgery('geo').longitude_direction`            | W
 `Forgery('geo').longitude_minutes`              | 47
 `Forgery('geo').longitude_seconds`              | 41
-                                                |
+
+Internet                                        | Example Output
+:------------------------------                 |:----------------
 `Forgery('internet').cctld`                     | cf
 `Forgery('internet').domain_name`               | bubbletube.net
 `Forgery('internet').email_address`             | cwalker@quire.name
@@ -173,7 +187,9 @@ Method                                          | Example Output
 `Forgery('internet').ip_v6`                     | c61e:5926:15e6:d225:8eef:fb39:7412:e9d5
 `Forgery('internet').top_level_domain`          | com
 `Forgery('internet').user_name`                 | sdixon
-                                                |
+
+Lorem Ipsu                                      | Example Output
+:------------------------------                 |:----------------
 `Forgery('lorem_ipsum').character`              | l
 `Forgery('lorem_ipsum').characters`             | lorem ipsu
 `Forgery('lorem_ipsum').lorem_ipsum_characters` | lorem ipsum dolor sit amet...
@@ -187,10 +203,15 @@ Method                                          | Example Output
 `Forgery('lorem_ipsum').title`                  | Lorem Ipsum Dolor Sit Amet...
 `Forgery('lorem_ipsum').word`                   | lorem
 `Forgery('lorem_ipsum').words`                  | lorem ipsum dolor sit amet...
-                                                |
+
+Monetary                                        | Example Output
+:------------------------------                 |:----------------
 `Forgery('monetary').formatted_money`           | $5.49
 `Forgery('monetary').money`                     | 9.20 (`String`)
-                                                |
+
+
+Name                                            | Example Output
+:------------------------------                 |:----------------
 `Forgery('name').company_name`                  | Bubbletube
 `Forgery('name').female_first_name`             | Judy
 `Forgery('name').first_name`                    | Albert
@@ -203,16 +224,22 @@ Method                                          | Example Output
 `Forgery('name').male_first_name`               | Donald
 `Forgery('name').suffix`                        | Sr
 `Forgery('name').title`                         | Mr
-                                                |
+
+Personal                                        | Example Output
+:------------------------------                 |:----------------
 `Forgery('personal').abbreviated_gender`        | F
 `Forgery('personal').gender`                    | Female
 `Forgery('personal').language`                  | Bislama
 `Forgery('personal').race`                      | Indonesian
 `Forgery('personal').shirt_size`                | 2XL
-                                                |
+
+Bank Accou                                      | Example Output
+:------------------------------                 |:----------------
 `Forgery('bank_account').iban`                  | BE68539007547034
 `Forgery('bank_account').bic`                   | VBRSDE33345
-                                                |
+
+Russian Tax                                     | Example Output
+:------------------------------                 |:----------------
 `Forgery('russian_tax').account_number`         | 56335652786612121479
 `Forgery('russian_tax').bik`                    | 046533860
 `Forgery('russian_tax').inn`                    | 7366543467
@@ -221,7 +248,9 @@ Method                                          | Example Output
 `Forgery('russian_tax').ogrn`                   | 666325227817763
 `Forgery('russian_tax').person_inn`             | 451559765443
 `Forgery('russian_tax').person_ogrn`            | 195478617554621
-                                                |
+
+Time                                            | Example Output
+:------------------------------                 |:----------------
 `Forgery('time').zone`                          | Amsterdam (`String`)
 
 
@@ -280,3 +309,4 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 On that note, have fun!
+
