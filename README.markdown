@@ -136,20 +136,20 @@ Method                                          | Example Output
 `Forgery('basic').password`                     | KcLBHCv6
 `Forgery('basic').short_hex_color`              | #c1d
 `Forgery('basic').text`                         | G8gECFfvDs2
-                                                |
+                                                | 
 `Forgery('credit_card').check_digit(number)`    | 5
 `Forgery('credit_card').number`                 | 343682330855371
 `Forgery('credit_card').type`                   | American Express
 `Forgery('currency').code`                      | XPF
 `Forgery('currency').description`               | Austria Schillings
-                                                |
+                                                | 
 `Forgery('date').date`                          | Fri, 20 Mar 2009 (`Date`)
 `Forgery('date').day`                           | 15
 `Forgery('date').day_of_week`                   | Monday
 `Forgery('date').delta(options)`                | 3
 `Forgery('date').month`                         | January
 `Forgery('date').year`                          | 1994
-                                                |
+                                                | 
 `Forgery('email').address`                      | gsmith@kamba.org
 `Forgery('email').body`                         | Lorem ipsum dolor sit amet, consectetuer ...
 `Forgery('email').subject`                      | Lorem Ipsum Dolor Sit Amet...
