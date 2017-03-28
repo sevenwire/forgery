@@ -27,7 +27,7 @@ describe Range do
   end
 
   it "should not return the maximum at excluded range" do
-    expect(Kernel).to receive(:rand).with(9).and_return(8)
-    expect(Forgery::Extend(0...9).random).not_to be_equal 9
+    Random.should_receive(:rand).with(0...9).and_return(8)
+    Forgery::Extend(0...9).random.should_not be_equal 9
   end
 end
