@@ -3,7 +3,7 @@ require 'ipaddr'
 class Forgery::Internet < Forgery
 
   def self.user_name
-    (dictionaries[:male_first_names].random[0,1] + dictionaries[:last_names].random).downcase
+    (dictionaries[:male_first_names].random[0,1] + dictionaries[:last_names].random).downcase.strip.gsub(' ','_')
   end
 
   def self.top_level_domain
@@ -11,7 +11,7 @@ class Forgery::Internet < Forgery
   end
 
   def self.domain_name
-    dictionaries[:company_names].random.downcase + '.' + self.top_level_domain
+    dictionaries[:company_names].random.downcase.strip.gsub(' ','_') + '.' + self.top_level_domain
   end
 
   def self.email_address
