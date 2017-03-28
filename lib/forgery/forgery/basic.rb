@@ -82,7 +82,14 @@ class Forgery::Basic < Forgery
     options = {:at_least => 1,
                :at_most => 10}.merge(options)
 
-    Forgery::Extend(options[:at_least]..options[:at_most]).random
+    if(options[:digits])
+      numeric = { :allow_upper => false, :allow_lower => false, :exactly => options[:digits] }
+      num = 0
+      num = text(numeric).to_i until(num.to_s.length == options[:digits].to_i)
+      num
+    else
+      Forgery::Extend(options[:at_least]..options[:at_most]).random
+    end
   end
 
   def self.text(options={})
