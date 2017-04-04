@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    forgery (0.6.0)
+    forgery (0.6.1)
 
 GEM
   remote: https://rubygems.org/
@@ -26,7 +26,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.3)
+  bundler (~> 1.14.6)
   forgery!
   rake
   rspec
