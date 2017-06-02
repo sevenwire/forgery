@@ -140,7 +140,7 @@ Basic                                           | Example Output
 `Forgery('basic').short_hex_color`              | #c1d
 `Forgery('basic').text`                         | G8gECFfvDs2
 
-Credit Car                                      | Example Output
+Credit Card                                     | Example Output
 :------------------------------                 |:----------------
 `Forgery('credit_card').check_digit(number)`    | 5
 `Forgery('credit_card').number`                 | 343682330855371
@@ -188,7 +188,7 @@ Internet                                        | Example Output
 `Forgery('internet').top_level_domain`          | com
 `Forgery('internet').user_name`                 | sdixon
 
-Lorem Ipsu                                      | Example Output
+Lorem Ipsum                                     | Example Output
 :------------------------------                 |:----------------
 `Forgery('lorem_ipsum').character`              | l
 `Forgery('lorem_ipsum').characters`             | lorem ipsu
@@ -233,7 +233,7 @@ Personal                                        | Example Output
 `Forgery('personal').race`                      | Indonesian
 `Forgery('personal').shirt_size`                | 2XL
 
-Bank Accou                                      | Example Output
+Bank Account                                    | Example Output
 :------------------------------                 |:----------------
 `Forgery('bank_account').iban`                  | BE68539007547034
 `Forgery('bank_account').bic`                   | VBRSDE33345
