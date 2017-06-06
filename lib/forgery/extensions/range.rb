@@ -9,7 +9,7 @@ class Forgery
       def random
         Integer(first) && Integer(last)
         raise ArgumentError if first > last
-        Kernel.rand(last - first + (exclude_end? ? 0 : 1)) + first
+        Random.rand self
       rescue ArgumentError
         Forgery::Extend(to_a).random
       end
