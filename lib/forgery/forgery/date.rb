@@ -49,6 +49,13 @@ class Forgery::Date < Forgery
     ::Date.today + delta(options)
   end
 
+  def self.datetime(options={})
+    options = {:future => false, :past => false, :min_delta => 0, :max_delta => 7300}.merge(options)
+    day_delta = delta(options)
+    second_delta = delta(:min_delta => 0, :max_delta => 86400, :future => options[:future], :past => options[:past])
+    ::DateTime.now + day_delta.days + second_delta.seconds
+  end
+
   private
   #Calculate our delta
   def self.delta(options)
