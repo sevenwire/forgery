@@ -53,11 +53,11 @@ describe Forgery do
   end
 
   it "should not be a rails environment when there is not a rails_root" do
-    expect(Forgery.rails?).to be_false
+    expect(Forgery.rails?).to be false
   end
 
   it "should be a rails environment when there is a rails_root" do
     allow(Forgery).to receive(:rails?).and_return(true)
-    expect(Forgery.rails?).to be_true
+    expect(Forgery.rails?).to be true
   end
 end

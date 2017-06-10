@@ -19,5 +19,5 @@ Gem::Specification.new do |spec|
   spec.test_files    = `git ls-files spec`.split($/)
   spec.require_paths = %w(lib)
 
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "bundler", "~> 1.14.6"
 end
