@@ -1,8 +1,8 @@
 Forgery
 =======
 
-[![Build Status](https://travis-ci.org/sevenwire/forgery.png)](https://travis-ci.org/sevenwire/forgery)
-[![Code Climate](https://codeclimate.com/github/sevenwire/forgery.png)](https://codeclimate.com/github/sevenwire/forgery)
+[![Build Status](https://travis-ci.org/sevenwire/forgery.svg)](https://travis-ci.org/sevenwire/forgery)
+[![Code Climate](https://codeclimate.com/github/sevenwire/forgery.svg)](https://codeclimate.com/github/sevenwire/forgery)
 
 
 **A Problem**:
