@@ -52,14 +52,14 @@ Like any gem, you can install Forgery two ways depending on it's use.
 For normal Ruby development, you need simply use:
 
 ```bash
-$ gem install forgery
+gem install forgery
 ```
 
 This will add it to your gem library, just like any normal gem.
 You can then use it like any normal gem library.
 See examples for more.
 
-**Rails 3.x**
+### Rails 3.x
 
 If you're using Rails 3.x you need to do a few extra things (that are probably rote).
 First step is to add it to your `Rails.root/Gemfile`, we also suggest specifying the latest version (found on rubygems):
@@ -71,11 +71,11 @@ gem 'forgery', '0.6.0'
 Then you'll need to run `bundle install` to install and lock in your new gem.
 Next you'll want to run the special Rails 3 generator:
 
-```
-$ [bundle exec] rails generate forgery
+```bash
+bundle exec rails generate forgery
 ```
 
-**Rails 2.x**
+### Rails 2.x
 
 For **Rails 2.x** you'll need to do something a little different, by first editing your `Rails.root/config/environment.rb` and adding this to the configuration block:
 
@@ -86,10 +86,10 @@ config.gem 'forgery'
 Then you'll need to run this in your command line:
 
 ```bash
-$ script/generate forgery
+script/generate forgery
 ```
 
-**Generators**
+### Generators
 
 This Rails generators will make these directories in your Rails.root directory:
 
@@ -101,7 +101,7 @@ This Rails generators will make these directories in your Rails.root directory:
 
 You can then use these directories to write your own dictionaries, class extensions, forgeries, and formats.
 
-## Full List of methods:
+## Full List of Methods
 
 | Address                              | Example Output    |
 | :----------------------------------- | :---------------- |
