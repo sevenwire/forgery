@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Forgery
-  VERSION = '0.7.0'.freeze
+  VERSION = '0.8.0'
 end
