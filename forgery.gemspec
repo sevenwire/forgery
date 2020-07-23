@@ -11,6 +11,7 @@ Gem::Specification.new do |spec|
   spec.homepage    = 'http://github.com/sevenwire/forgery'
   spec.summary     = 'Easy and customizable generation of forged data.'
   spec.description = 'Easy and customizable generation of forged data. Can be used as a gem or a rails plugin. Includes rails generators for creating your own forgeries.'
+  spec.licenses    = ['MIT']
 
   spec.platform = Gem::Platform::RUBY
   spec.required_rubygems_version = '>= 1.3.6'

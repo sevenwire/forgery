@@ -245,53 +245,6 @@ You can then use these directories to write your own dictionaries, class extensi
 ## Contributing
 
 This is a work in progress and an open source project, so feel free to contribute.
+
 We'll take pull requests via git or suggestions via the issues tab.
 Any work done on Forgery will get you into the credits list and in our hearts.
-
-## Credits
-
-Thanks to the authors and contributors:
-
-- Nate Sutton (nate aka fowlduck)
-- Brandon Arbini (brandonarbini)
-- Josh Nichols (technicalpickles)
-- Jeremy Stephens (viking aka crookshanks)
-- Darcy Laycock (Sutto)
-- Lukas Westermann (lwe)
-- Mike Dungan
-- Andrew Selder (aselder)
-- Thomas Sinclair (anathematic)
-- Stafford Brunk (wingrunr21)
-- SixArm (SixArm)
-- Akira Matsuda (amatsuda)
-- Diego Plentz (plentz)
-- Gabe Berke-Williams (gabebw)
-- Todd Mazierski (toddmazierski)
-- Galen Palmer (palmergs)
-- Matt Bertino (mbbertino)
-- Olle Jonsson (olleolleolle)
-
-## Licensing
-
-Copyright (c) 2007 Sevenwire LLC
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-On that note, have fun!
