@@ -19,5 +19,5 @@ Gem::Specification.new do |spec|
   spec.test_files    = `git ls-files spec`.split($INPUT_RECORD_SEPARATOR)
   spec.require_paths = %w[lib]
 
-  spec.add_development_dependency 'bundler', '~> 1.16.0'
+  spec.add_development_dependency 'bundler', '~> 2.1.4'
 end
