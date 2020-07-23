@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 
-$LOAD_PATH.push File.expand_path('../lib', __FILE__)
+$LOAD_PATH.push File.expand_path('lib', __dir__)
 require 'forgery/version'
 
 Gem::Specification.new do |spec|
@@ -13,7 +14,6 @@ Gem::Specification.new do |spec|
 
   spec.platform = Gem::Platform::RUBY
   spec.required_rubygems_version = '>= 1.3.6'
-  spec.rubyforge_project = 'forgery'
 
   spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   spec.test_files    = `git ls-files spec`.split($INPUT_RECORD_SEPARATOR)
